@@ -167,7 +167,7 @@
     "known_limitations": ""
   },
   "block_reason": "",
-  "conflict_risks": "None. These are new files; no existing files were modified.\nNone \u2014 only new file created, no existing files modified.\nNone. Only new file created; no existing files modified.\nNone \u2014 `pypptx/ops/pack.py` is a new file with no overlap with other in-progress beads.\nNone \u2014 this is a new file with no overlap with sibling beads.",
+  "conflict_risks": "None. These are new files; no existing files were modified.\nNone \u2014 only new file created, no existing files modified.\nNone. Only new file created; no existing files modified.\nNone \u2014 `pypptx/ops/pack.py` is a new file with no overlap with other in-progress beads.\nNone \u2014 this is a new file with no overlap with sibling beads.\nNo conflicts expected; only `pypptx/cli.py` was modified and no sibling beads claim that file.",
   "branch_name": "",
   "worktree_path": "",
   "lease": null,
