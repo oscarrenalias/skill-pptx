@@ -6,7 +6,10 @@
   "status": "ready",
   "bead_type": "task",
   "parent_id": "B-f993e1f7",
-  "dependencies": [],
+  "dependencies": [
+    "B-ed5b3c37",
+    "B-9ec19a2c"
+  ],
   "acceptance_criteria": [
     "`pypptx slide list deck.pptx` outputs `{\"slides\": [{\"index\": 1, \"file\": \"slide1.xml\", \"hidden\": false}, ...]}` in presentation order.",
     "`pypptx slide list deck.pptx --plain` outputs one slide per line, appending `[hidden]` when applicable.",
