@@ -6,7 +6,10 @@
   "status": "ready",
   "bead_type": "task",
   "parent_id": "B-f993e1f7",
-  "dependencies": [],
+  "dependencies": [
+    "B-ed5b3c37",
+    "B-5a1824ba"
+  ],
   "acceptance_criteria": [
     "`pypptx slide add deck.pptx --duplicate 1` outputs `{\"added_file\": \"slideN.xml\", \"position\": N}`; resulting file opens correctly.",
     "`pypptx slide add deck.pptx --layout 1 --position 2` inserts at position 2 and outputs correct JSON.",
