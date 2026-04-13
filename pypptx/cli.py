@@ -119,6 +119,26 @@ def pack_cmd(src_dir: Path, output_file: Path, plain: bool) -> None:
     )
 
 
+@cli.command("clean")
+@click.argument("path", type=click.Path(exists=True, path_type=Path))
+@click.option("--plain", is_flag=True, default=False, help="Output plain text instead of JSON.")
+def clean_cmd(path: Path, plain: bool) -> None:
+    """Remove orphaned files from a .pptx file or unpacked directory."""
+    from pypptx.ops.clean import clean_unused_files
+
+    try:
+        removed = clean_unused_files(path)
+    except Exception as e:
+        click.echo(f"Error: {e}", err=True)
+        sys.exit(1)
+
+    output_result(
+        {"removed": removed},
+        plain,
+        lambda d: "\n".join(d["removed"]),
+    )
+
+
 @cli.group()
 def slide() -> None:
     """Commands for working with slides."""
