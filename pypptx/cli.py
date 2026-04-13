@@ -184,3 +184,84 @@ def slide_layouts_cmd(path: Path, plain: bool) -> None:
         plain,
         lambda d: "\n".join(l["file"] for l in d["layouts"]),
     )
+
+
+@slide.command("add")
+@click.argument("file", type=click.Path(exists=True, path_type=Path))
+@click.option("--duplicate", default=None, type=int, help="1-based index of slide to duplicate.")
+@click.option("--layout", default=None, type=int, help="1-based index of layout for a new blank slide.")
+@click.option("--position", default=None, type=int, help="1-based insertion position (default: end of presentation).")
+@click.option("--plain", is_flag=True, default=False, help="Output plain text instead of JSON.")
+def slide_add_cmd(file: Path, duplicate: int | None, layout: int | None, position: int | None, plain: bool) -> None:
+    """Add a slide to a .pptx file or unpacked directory."""
+    from pypptx.ops.slides import add_slide, move_slide
+
+    if (duplicate is None) == (layout is None):
+        click.echo("Error: exactly one of --duplicate or --layout must be provided.", err=True)
+        sys.exit(1)
+
+    try:
+        result = add_slide(file, duplicate=duplicate, layout=layout)
+    except Exception as e:
+        click.echo(f"Error: {e}", err=True)
+        sys.exit(1)
+
+    added_filename = result["file"]
+    final_position = result["index"]
+
+    if position is not None and position != final_position:
+        try:
+            move_result = move_slide(file, final_position, position)
+            final_position = move_result["to"]
+        except Exception as e:
+            click.echo(f"Error: {e}", err=True)
+            sys.exit(1)
+
+    output_result(
+        {"added_file": added_filename, "position": final_position},
+        plain,
+        lambda d: f"{d['added_file']} at position {d['position']}",
+    )
+
+
+@slide.command("delete")
+@click.argument("file", type=click.Path(exists=True, path_type=Path))
+@click.argument("index", type=int)
+@click.option("--plain", is_flag=True, default=False, help="Output plain text instead of JSON.")
+def slide_delete_cmd(file: Path, index: int, plain: bool) -> None:
+    """Delete a slide from a .pptx file or unpacked directory."""
+    from pypptx.ops.slides import delete_slide
+
+    try:
+        result = delete_slide(file, index)
+    except Exception as e:
+        click.echo(f"Error: {e}", err=True)
+        sys.exit(1)
+
+    output_result(
+        result,
+        plain,
+        lambda d: f"deleted {d['deleted_file']} (index {d['deleted_index']})",
+    )
+
+
+@slide.command("move")
+@click.argument("file", type=click.Path(exists=True, path_type=Path))
+@click.argument("from_idx", type=int, metavar="FROM")
+@click.argument("to_idx", type=int, metavar="TO")
+@click.option("--plain", is_flag=True, default=False, help="Output plain text instead of JSON.")
+def slide_move_cmd(file: Path, from_idx: int, to_idx: int, plain: bool) -> None:
+    """Move a slide within a .pptx file or unpacked directory."""
+    from pypptx.ops.slides import move_slide
+
+    try:
+        result = move_slide(file, from_idx, to_idx)
+    except Exception as e:
+        click.echo(f"Error: {e}", err=True)
+        sys.exit(1)
+
+    output_result(
+        result,
+        plain,
+        lambda d: f"{d['file']}: {d['from']} -> {d['to']}",
+    )
