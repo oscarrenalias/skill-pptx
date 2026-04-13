@@ -6,7 +6,11 @@
   "status": "ready",
   "bead_type": "task",
   "parent_id": "B-f993e1f7",
-  "dependencies": [],
+  "dependencies": [
+    "B-9ec19a2c",
+    "B-6fa5ac31",
+    "B-dd655ec2"
+  ],
   "acceptance_criteria": [
     "`pptx_edit()` is a context manager yielding the temp unpacked path.",
     "On clean exit: `clean_unused_files()` is called, then the directory is repacked over the original atomically.",
