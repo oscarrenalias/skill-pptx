@@ -6,7 +6,10 @@
   "status": "ready",
   "bead_type": "task",
   "parent_id": "B-f993e1f7",
-  "dependencies": [],
+  "dependencies": [
+    "B-ed5b3c37",
+    "B-dd655ec2"
+  ],
   "acceptance_criteria": [
     "`pypptx unpack deck.pptx` produces `{\"unpacked_dir\": \"deck\"}` on stdout and extracts files to that directory.",
     "`pypptx unpack deck.pptx mydir` extracts to `mydir` and outputs `{\"unpacked_dir\": \"mydir\"}`.",
