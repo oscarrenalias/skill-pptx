@@ -1,0 +1,71 @@
+{
+  "bead_id": "B-ce4fa0e6",
+  "title": "ops/extract.py: text extraction",
+  "agent_type": "developer",
+  "description": "Implement `pypptx/ops/extract.py` with `extract_text(path: Path, slides: list[int] | None = None) -> str`. Iterates over all slides (or the specified 1-based subset), sorts shapes by vertical then horizontal position for reading order, and returns the full text with `--- Slide N ---` delimiters. Uses python-pptx.",
+  "status": "ready",
+  "bead_type": "task",
+  "parent_id": "B-f993e1f7",
+  "dependencies": [
+    "B-338d86fc"
+  ],
+  "acceptance_criteria": [
+    "`extract_text()` produces output with `--- Slide N ---` delimiter lines where N is the 1-based slide index.",
+    "Shapes within each slide are sorted top-to-bottom, left-to-right by their `top` and `left` position attributes.",
+    "When `slides` is provided, only those 1-based indices are included; other slides are skipped.",
+    "Text from all text frames in each shape is included; non-text shapes are silently skipped.",
+    "Returns a string (caller is responsible for writing to stdout or file)."
+  ],
+  "linked_docs": [
+    "specs/drafts/pypptx-cli-powerpoint-manipulation-toolkit.md"
+  ],
+  "feature_root_id": "B-f993e1f7",
+  "execution_branch_name": "feature/b-f993e1f7",
+  "execution_worktree_path": "/Users/oscar.renalias/Projects/skill-pptx/.takt/worktrees/B-f993e1f7",
+  "expected_files": [
+    "pypptx/ops/extract.py"
+  ],
+  "expected_globs": [],
+  "touched_files": [],
+  "changed_files": [],
+  "updated_docs": [],
+  "handoff_summary": {
+    "completed": "",
+    "remaining": "",
+    "risks": "",
+    "verdict": "",
+    "findings_count": 0,
+    "requires_followup": false,
+    "changed_files": [],
+    "updated_docs": [],
+    "next_action": "",
+    "next_agent": "",
+    "block_reason": "",
+    "expected_files": [],
+    "expected_globs": [],
+    "touched_files": [],
+    "conflict_risks": "",
+    "design_decisions": "",
+    "test_coverage_notes": "",
+    "known_limitations": ""
+  },
+  "block_reason": "",
+  "conflict_risks": "",
+  "branch_name": "",
+  "worktree_path": "",
+  "lease": null,
+  "retries": 0,
+  "execution_history": [
+    {
+      "timestamp": "2026-04-13T21:08:27.899305+00:00",
+      "event": "created",
+      "agent_type": "scheduler",
+      "summary": "Bead created",
+      "details": {}
+    }
+  ],
+  "metadata": {},
+  "labels": [],
+  "recovery_for": null,
+  "priority": null
+}

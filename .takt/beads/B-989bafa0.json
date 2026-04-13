@@ -1,0 +1,73 @@
+{
+  "bead_id": "B-989bafa0",
+  "title": "cli.py: slide list and layouts commands",
+  "agent_type": "developer",
+  "description": "Wire `pypptx slide list <file_or_dir>` and `pypptx slide layouts <file_or_dir>` into the `slide` subgroup. Call `ops.slides.list_slides()` and `ops.slides.list_layouts()` respectively. Format output via `output_result()`.",
+  "status": "ready",
+  "bead_type": "task",
+  "parent_id": "B-f993e1f7",
+  "dependencies": [
+    "B-ed5b3c37",
+    "B-9ec19a2c"
+  ],
+  "acceptance_criteria": [
+    "`pypptx slide list deck.pptx` outputs `{\"slides\": [{\"index\": 1, \"file\": \"slide1.xml\", \"hidden\": false}, ...]}` in presentation order.",
+    "`pypptx slide list deck.pptx --plain` outputs one slide per line, appending `[hidden]` when applicable.",
+    "`pypptx slide layouts deck.pptx` outputs `{\"layouts\": [{\"index\": 1, \"file\": \"slideLayout1.xml\"}, ...]}` .",
+    "`pypptx slide layouts deck.pptx --plain` outputs one layout per line.",
+    "Both commands accept a directory as input.",
+    "Errors go to stderr; exit code is non-zero on failure."
+  ],
+  "linked_docs": [
+    "specs/drafts/pypptx-cli-powerpoint-manipulation-toolkit.md"
+  ],
+  "feature_root_id": "B-f993e1f7",
+  "execution_branch_name": "feature/b-f993e1f7",
+  "execution_worktree_path": "/Users/oscar.renalias/Projects/skill-pptx/.takt/worktrees/B-f993e1f7",
+  "expected_files": [
+    "pypptx/cli.py"
+  ],
+  "expected_globs": [],
+  "touched_files": [],
+  "changed_files": [],
+  "updated_docs": [],
+  "handoff_summary": {
+    "completed": "",
+    "remaining": "",
+    "risks": "",
+    "verdict": "",
+    "findings_count": 0,
+    "requires_followup": false,
+    "changed_files": [],
+    "updated_docs": [],
+    "next_action": "",
+    "next_agent": "",
+    "block_reason": "",
+    "expected_files": [],
+    "expected_globs": [],
+    "touched_files": [],
+    "conflict_risks": "",
+    "design_decisions": "",
+    "test_coverage_notes": "",
+    "known_limitations": ""
+  },
+  "block_reason": "",
+  "conflict_risks": "",
+  "branch_name": "",
+  "worktree_path": "",
+  "lease": null,
+  "retries": 0,
+  "execution_history": [
+    {
+      "timestamp": "2026-04-13T21:08:29.232267+00:00",
+      "event": "created",
+      "agent_type": "scheduler",
+      "summary": "Bead created",
+      "details": {}
+    }
+  ],
+  "metadata": {},
+  "labels": [],
+  "recovery_for": null,
+  "priority": null
+}

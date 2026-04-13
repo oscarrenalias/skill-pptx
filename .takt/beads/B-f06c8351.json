@@ -1,0 +1,73 @@
+{
+  "bead_id": "B-f06c8351",
+  "title": "cli.py: unpack and pack commands",
+  "agent_type": "developer",
+  "description": "Wire `pypptx unpack <file.pptx> [output_dir]` and `pypptx pack <unpacked_dir> <output.pptx>` into `cli.py`. Each command calls the corresponding `ops.pack` function, formats output via `output_result()`, and passes `--plain` through. Errors caught at the top level are written to stderr and exit with code 1.",
+  "status": "ready",
+  "bead_type": "task",
+  "parent_id": "B-f993e1f7",
+  "dependencies": [
+    "B-ed5b3c37",
+    "B-dd655ec2"
+  ],
+  "acceptance_criteria": [
+    "`pypptx unpack deck.pptx` produces `{\"unpacked_dir\": \"deck\"}` on stdout and extracts files to that directory.",
+    "`pypptx unpack deck.pptx mydir` extracts to `mydir` and outputs `{\"unpacked_dir\": \"mydir\"}`.",
+    "`pypptx unpack deck.pptx --plain` outputs just the directory name to stdout.",
+    "`pypptx pack mydir/ out.pptx` produces `{\"output_file\": \"out.pptx\"}` on stdout.",
+    "`pypptx pack mydir/ out.pptx --plain` outputs just `out.pptx`.",
+    "Errors (missing file, permission denied) are written to stderr; exit code is non-zero."
+  ],
+  "linked_docs": [
+    "specs/drafts/pypptx-cli-powerpoint-manipulation-toolkit.md"
+  ],
+  "feature_root_id": "B-f993e1f7",
+  "execution_branch_name": "feature/b-f993e1f7",
+  "execution_worktree_path": "/Users/oscar.renalias/Projects/skill-pptx/.takt/worktrees/B-f993e1f7",
+  "expected_files": [
+    "pypptx/cli.py"
+  ],
+  "expected_globs": [],
+  "touched_files": [],
+  "changed_files": [],
+  "updated_docs": [],
+  "handoff_summary": {
+    "completed": "",
+    "remaining": "",
+    "risks": "",
+    "verdict": "",
+    "findings_count": 0,
+    "requires_followup": false,
+    "changed_files": [],
+    "updated_docs": [],
+    "next_action": "",
+    "next_agent": "",
+    "block_reason": "",
+    "expected_files": [],
+    "expected_globs": [],
+    "touched_files": [],
+    "conflict_risks": "",
+    "design_decisions": "",
+    "test_coverage_notes": "",
+    "known_limitations": ""
+  },
+  "block_reason": "",
+  "conflict_risks": "",
+  "branch_name": "",
+  "worktree_path": "",
+  "lease": null,
+  "retries": 0,
+  "execution_history": [
+    {
+      "timestamp": "2026-04-13T21:08:28.538157+00:00",
+      "event": "created",
+      "agent_type": "scheduler",
+      "summary": "Bead created",
+      "details": {}
+    }
+  ],
+  "metadata": {},
+  "labels": [],
+  "recovery_for": null,
+  "priority": null
+}

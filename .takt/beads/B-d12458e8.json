@@ -1,0 +1,89 @@
+{
+  "bead_id": "B-d12458e8",
+  "title": "Review",
+  "agent_type": "review",
+  "description": "Review the full implementation for correctness, security, and spec compliance. Check: defusedxml is used everywhere XML is parsed in pack.py and clean.py; xml.etree.ElementTree is never used for writing; atomic writes are correct; pptx_edit context manager does not repack on exception; 1-based/0-based index boundary is handled consistently; JSON output is always valid; --plain never leaks JSON; all exit codes are correct; test coverage is adequate.",
+  "status": "ready",
+  "bead_type": "task",
+  "parent_id": "B-f993e1f7",
+  "dependencies": [
+    "B-338d86fc",
+    "B-dd655ec2",
+    "B-6fa5ac31",
+    "B-9ec19a2c",
+    "B-5a1824ba",
+    "B-ce4fa0e6",
+    "B-ed5b3c37",
+    "B-f06c8351",
+    "B-ea8ae4c9",
+    "B-989bafa0",
+    "B-bffed7c3",
+    "B-150f15c0",
+    "B-4befdc71",
+    "B-d95f6847"
+  ],
+  "acceptance_criteria": [
+    "`defusedxml` is used for all XML parsing in `pack.py` and `clean.py`; `xml.etree.ElementTree` is not imported in those modules.",
+    "`pack()` uses temp-file-then-rename atomicity; `pptx_edit` does not repack on exception.",
+    "All CLI commands exit with code 0 on success and non-zero on failure with errors on stderr.",
+    "1-based index conversion is applied consistently at every CLI/ops boundary.",
+    "No `json.loads` is called on untrusted input without error handling.",
+    "Test coverage spans all ops functions and all CLI commands including error paths.",
+    "No spec requirements are missing from the implementation."
+  ],
+  "linked_docs": [
+    "specs/drafts/pypptx-cli-powerpoint-manipulation-toolkit.md"
+  ],
+  "feature_root_id": "B-f993e1f7",
+  "execution_branch_name": "feature/b-f993e1f7",
+  "execution_worktree_path": "/Users/oscar.renalias/Projects/skill-pptx/.takt/worktrees/B-f993e1f7",
+  "expected_files": [],
+  "expected_globs": [
+    "pypptx/**/*.py",
+    "tests/**/*.py",
+    "pyproject.toml",
+    "README.md"
+  ],
+  "touched_files": [],
+  "changed_files": [],
+  "updated_docs": [],
+  "handoff_summary": {
+    "completed": "",
+    "remaining": "",
+    "risks": "",
+    "verdict": "",
+    "findings_count": 0,
+    "requires_followup": false,
+    "changed_files": [],
+    "updated_docs": [],
+    "next_action": "",
+    "next_agent": "",
+    "block_reason": "",
+    "expected_files": [],
+    "expected_globs": [],
+    "touched_files": [],
+    "conflict_risks": "",
+    "design_decisions": "",
+    "test_coverage_notes": "",
+    "known_limitations": ""
+  },
+  "block_reason": "",
+  "conflict_risks": "",
+  "branch_name": "",
+  "worktree_path": "",
+  "lease": null,
+  "retries": 0,
+  "execution_history": [
+    {
+      "timestamp": "2026-04-13T21:08:30.900233+00:00",
+      "event": "created",
+      "agent_type": "scheduler",
+      "summary": "Bead created",
+      "details": {}
+    }
+  ],
+  "metadata": {},
+  "labels": [],
+  "recovery_for": null,
+  "priority": null
+}

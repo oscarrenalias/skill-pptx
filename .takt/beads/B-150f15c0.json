@@ -1,0 +1,73 @@
+{
+  "bead_id": "B-150f15c0",
+  "title": "cli.py: extract-text command",
+  "agent_type": "developer",
+  "description": "Wire `pypptx extract-text <file.pptx> [--slides 1,3,5] [--output file.txt]` into `cli.py`. Parse the `--slides` comma-separated list into a `list[int]`. Without `--output`, write plain text directly to stdout (bypassing `output_result()`). With `--output`, write text to the file and output JSON `{\"output_file\": \"...\", \"slide_count\": N}` to stdout.",
+  "status": "ready",
+  "bead_type": "task",
+  "parent_id": "B-f993e1f7",
+  "dependencies": [
+    "B-ed5b3c37",
+    "B-ce4fa0e6"
+  ],
+  "acceptance_criteria": [
+    "`pypptx extract-text deck.pptx` writes plain text with `--- Slide N ---` delimiters to stdout regardless of `--plain`.",
+    "`pypptx extract-text deck.pptx --slides 1,3` outputs only slides 1 and 3.",
+    "`pypptx extract-text deck.pptx --output out.txt` writes text to `out.txt` and outputs `{\"output_file\": \"out.txt\", \"slide_count\": N}` to stdout.",
+    "`--plain` with `--output` outputs just the filename to stdout.",
+    "Invalid slide indices (out of range, non-integer) go to stderr; exit code is non-zero.",
+    "Errors go to stderr; exit code is non-zero on failure."
+  ],
+  "linked_docs": [
+    "specs/drafts/pypptx-cli-powerpoint-manipulation-toolkit.md"
+  ],
+  "feature_root_id": "B-f993e1f7",
+  "execution_branch_name": "feature/b-f993e1f7",
+  "execution_worktree_path": "/Users/oscar.renalias/Projects/skill-pptx/.takt/worktrees/B-f993e1f7",
+  "expected_files": [
+    "pypptx/cli.py"
+  ],
+  "expected_globs": [],
+  "touched_files": [],
+  "changed_files": [],
+  "updated_docs": [],
+  "handoff_summary": {
+    "completed": "",
+    "remaining": "",
+    "risks": "",
+    "verdict": "",
+    "findings_count": 0,
+    "requires_followup": false,
+    "changed_files": [],
+    "updated_docs": [],
+    "next_action": "",
+    "next_agent": "",
+    "block_reason": "",
+    "expected_files": [],
+    "expected_globs": [],
+    "touched_files": [],
+    "conflict_risks": "",
+    "design_decisions": "",
+    "test_coverage_notes": "",
+    "known_limitations": ""
+  },
+  "block_reason": "",
+  "conflict_risks": "",
+  "branch_name": "",
+  "worktree_path": "",
+  "lease": null,
+  "retries": 0,
+  "execution_history": [
+    {
+      "timestamp": "2026-04-13T21:08:29.868425+00:00",
+      "event": "created",
+      "agent_type": "scheduler",
+      "summary": "Bead created",
+      "details": {}
+    }
+  ],
+  "metadata": {},
+  "labels": [],
+  "recovery_for": null,
+  "priority": null
+}

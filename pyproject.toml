@@ -1,0 +1,22 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "pypptx"
+version = "0.1.0"
+description = "A Python CLI package for manipulating .pptx files"
+requires-python = ">=3.9"
+dependencies = [
+    "click",
+    "defusedxml",
+    "python-pptx",
+]
+
+[project.optional-dependencies]
+thumbnails = [
+    "Pillow",
+]
+
+[project.scripts]
+pypptx = "pypptx.cli:cli"

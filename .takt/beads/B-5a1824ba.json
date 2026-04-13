@@ -1,0 +1,76 @@
+{
+  "bead_id": "B-5a1824ba",
+  "title": "ops/slides.py: write operations and pptx_edit context manager",
+  "agent_type": "developer",
+  "description": "Extend `pypptx/ops/slides.py` with the `pptx_edit(path)` context manager and write operations: `add_slide()`, `delete_slide()`, and `move_slide()`. The context manager unpacks to a temp dir on enter; on normal exit it cleans and repacks atomically; on exception it leaves the original file untouched. `add_slide` handles both `--duplicate` (strip notes relationship from copy) and `--layout` modes. All indexing is 1-based at the interface boundary.",
+  "status": "ready",
+  "bead_type": "task",
+  "parent_id": "B-f993e1f7",
+  "dependencies": [
+    "B-9ec19a2c",
+    "B-6fa5ac31",
+    "B-dd655ec2"
+  ],
+  "acceptance_criteria": [
+    "`pptx_edit()` is a context manager yielding the temp unpacked path.",
+    "On clean exit: `clean_unused_files()` is called, then the directory is repacked over the original atomically.",
+    "On exception: the original `.pptx` is not modified.",
+    "`add_slide(path, duplicate=N)` strips the notes-slide relationship from the duplicated slide's `.rels`.",
+    "`add_slide(path, layout=N)` creates a blank slide from the specified layout index.",
+    "`delete_slide(path, index)` removes the slide at 1-based index and returns `{deleted_file, deleted_index}`.",
+    "`move_slide(path, from_idx, to_idx)` reorders `sldIdLst` and returns `{file, from, to}`.",
+    "Exactly one of `duplicate` or `layout` must be provided to `add_slide`; raises `ValueError` otherwise."
+  ],
+  "linked_docs": [
+    "specs/drafts/pypptx-cli-powerpoint-manipulation-toolkit.md"
+  ],
+  "feature_root_id": "B-f993e1f7",
+  "execution_branch_name": "feature/b-f993e1f7",
+  "execution_worktree_path": "/Users/oscar.renalias/Projects/skill-pptx/.takt/worktrees/B-f993e1f7",
+  "expected_files": [
+    "pypptx/ops/slides.py"
+  ],
+  "expected_globs": [],
+  "touched_files": [],
+  "changed_files": [],
+  "updated_docs": [],
+  "handoff_summary": {
+    "completed": "",
+    "remaining": "",
+    "risks": "",
+    "verdict": "",
+    "findings_count": 0,
+    "requires_followup": false,
+    "changed_files": [],
+    "updated_docs": [],
+    "next_action": "",
+    "next_agent": "",
+    "block_reason": "",
+    "expected_files": [],
+    "expected_globs": [],
+    "touched_files": [],
+    "conflict_risks": "",
+    "design_decisions": "",
+    "test_coverage_notes": "",
+    "known_limitations": ""
+  },
+  "block_reason": "",
+  "conflict_risks": "",
+  "branch_name": "",
+  "worktree_path": "",
+  "lease": null,
+  "retries": 0,
+  "execution_history": [
+    {
+      "timestamp": "2026-04-13T21:08:27.524749+00:00",
+      "event": "created",
+      "agent_type": "scheduler",
+      "summary": "Bead created",
+      "details": {}
+    }
+  ],
+  "metadata": {},
+  "labels": [],
+  "recovery_for": null,
+  "priority": null
+}

@@ -1,0 +1,74 @@
+{
+  "bead_id": "B-6fa5ac31",
+  "title": "ops/clean.py: orphan file detection and removal",
+  "agent_type": "developer",
+  "description": "Implement `pypptx/ops/clean.py` with `clean_unused_files(path: Path) -> list[str]`. If `path` is a `.pptx`, unpack to a temp dir, clean, and repack in-place. If a directory, operate directly. Orphan detection: walk all `.rels` files transitively to find reachable files, then remove anything not reachable (slides missing from `sldIdLst`, their `.rels`, unreferenced media/charts/etc.). Update `[Content_Types].xml` and `presentation.xml.rels`. Iterate until convergence.",
+  "status": "ready",
+  "bead_type": "task",
+  "parent_id": "B-f993e1f7",
+  "dependencies": [
+    "B-338d86fc",
+    "B-dd655ec2"
+  ],
+  "acceptance_criteria": [
+    "`clean_unused_files()` accepts both a `.pptx` path and an unpacked directory path.",
+    "Reachability walk is fully transitive and iterates until no more removals occur.",
+    "Slides not listed in `sldIdLst` and their `.rels` counterparts are detected and removed.",
+    "Unreachable media, embeddings, charts, diagrams, drawings, tags, ink, notesSlides are removed.",
+    "`[Content_Types].xml` and `presentation.xml.rels` are updated to reflect removed files.",
+    "Returns an empty list `[]` when nothing was removed.",
+    "All XML parsing uses `defusedxml`."
+  ],
+  "linked_docs": [
+    "specs/drafts/pypptx-cli-powerpoint-manipulation-toolkit.md"
+  ],
+  "feature_root_id": "B-f993e1f7",
+  "execution_branch_name": "feature/b-f993e1f7",
+  "execution_worktree_path": "/Users/oscar.renalias/Projects/skill-pptx/.takt/worktrees/B-f993e1f7",
+  "expected_files": [
+    "pypptx/ops/clean.py"
+  ],
+  "expected_globs": [],
+  "touched_files": [],
+  "changed_files": [],
+  "updated_docs": [],
+  "handoff_summary": {
+    "completed": "",
+    "remaining": "",
+    "risks": "",
+    "verdict": "",
+    "findings_count": 0,
+    "requires_followup": false,
+    "changed_files": [],
+    "updated_docs": [],
+    "next_action": "",
+    "next_agent": "",
+    "block_reason": "",
+    "expected_files": [],
+    "expected_globs": [],
+    "touched_files": [],
+    "conflict_risks": "",
+    "design_decisions": "",
+    "test_coverage_notes": "",
+    "known_limitations": ""
+  },
+  "block_reason": "",
+  "conflict_risks": "",
+  "branch_name": "",
+  "worktree_path": "",
+  "lease": null,
+  "retries": 0,
+  "execution_history": [
+    {
+      "timestamp": "2026-04-13T21:08:26.733264+00:00",
+      "event": "created",
+      "agent_type": "scheduler",
+      "summary": "Bead created",
+      "details": {}
+    }
+  ],
+  "metadata": {},
+  "labels": [],
+  "recovery_for": null,
+  "priority": null
+}
