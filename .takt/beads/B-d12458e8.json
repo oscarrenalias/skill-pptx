@@ -58,9 +58,16 @@
     ".takt/beads/B-f993e1f7.json",
     "pypptx/__init__.py",
     "pypptx/__pycache__/__init__.cpython-314.pyc",
+    "pypptx/__pycache__/cli.cpython-314.pyc",
+    "pypptx/cli.py",
     "pypptx/ops/__init__.py",
     "pypptx/ops/__pycache__/__init__.cpython-314.pyc",
-    "pyproject.toml"
+    "pypptx/ops/__pycache__/extract.cpython-314.pyc",
+    "pypptx/ops/__pycache__/pack.cpython-314.pyc",
+    "pypptx/ops/extract.py",
+    "pypptx/ops/pack.py",
+    "pyproject.toml",
+    "uv.lock"
   ],
   "expected_globs": [
     "README.md",
@@ -89,9 +96,16 @@
     ".takt/beads/B-f993e1f7.json",
     "pypptx/__init__.py",
     "pypptx/__pycache__/__init__.cpython-314.pyc",
+    "pypptx/__pycache__/cli.cpython-314.pyc",
+    "pypptx/cli.py",
     "pypptx/ops/__init__.py",
     "pypptx/ops/__pycache__/__init__.cpython-314.pyc",
-    "pyproject.toml"
+    "pypptx/ops/__pycache__/extract.cpython-314.pyc",
+    "pypptx/ops/__pycache__/pack.cpython-314.pyc",
+    "pypptx/ops/extract.py",
+    "pypptx/ops/pack.py",
+    "pyproject.toml",
+    "uv.lock"
   ],
   "changed_files": [
     ".takt/beads/.gitkeep",
@@ -114,9 +128,16 @@
     ".takt/beads/B-f993e1f7.json",
     "pypptx/__init__.py",
     "pypptx/__pycache__/__init__.cpython-314.pyc",
+    "pypptx/__pycache__/cli.cpython-314.pyc",
+    "pypptx/cli.py",
     "pypptx/ops/__init__.py",
     "pypptx/ops/__pycache__/__init__.cpython-314.pyc",
-    "pyproject.toml"
+    "pypptx/ops/__pycache__/extract.cpython-314.pyc",
+    "pypptx/ops/__pycache__/pack.cpython-314.pyc",
+    "pypptx/ops/extract.py",
+    "pypptx/ops/pack.py",
+    "pyproject.toml",
+    "uv.lock"
   ],
   "updated_docs": [],
   "handoff_summary": {
@@ -140,7 +161,7 @@
     "known_limitations": ""
   },
   "block_reason": "",
-  "conflict_risks": "None. These are new files; no existing files were modified.",
+  "conflict_risks": "None. These are new files; no existing files were modified.\nNone \u2014 only new file created, no existing files modified.",
   "branch_name": "",
   "worktree_path": "",
   "lease": null,
