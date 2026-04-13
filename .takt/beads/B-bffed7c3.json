@@ -1,0 +1,71 @@
+{
+  "bead_id": "B-bffed7c3",
+  "title": "cli.py: slide add, delete, and move commands",
+  "agent_type": "developer",
+  "description": "Wire `pypptx slide add`, `pypptx slide delete`, and `pypptx slide move` into the `slide` subgroup. Validate that exactly one of `--duplicate`/`--layout` is provided for `add` (fail with stderr message and exit code 1 otherwise). Call the corresponding `ops.slides` write functions. Format output via `output_result()`.",
+  "status": "ready",
+  "bead_type": "task",
+  "parent_id": "B-f993e1f7",
+  "dependencies": [],
+  "acceptance_criteria": [
+    "`pypptx slide add deck.pptx --duplicate 1` outputs `{\"added_file\": \"slideN.xml\", \"position\": N}`; resulting file opens correctly.",
+    "`pypptx slide add deck.pptx --layout 1 --position 2` inserts at position 2 and outputs correct JSON.",
+    "`pypptx slide add` with both or neither `--duplicate`/`--layout` writes an error to stderr and exits non-zero.",
+    "`pypptx slide delete deck.pptx 2` outputs `{\"deleted_file\": \"slide2.xml\", \"deleted_index\": 2}`.",
+    "`pypptx slide move deck.pptx 3 1` outputs `{\"file\": \"slide3.xml\", \"from\": 3, \"to\": 1}`; slide order is correct.",
+    "All three commands support `--plain` for human-readable output.",
+    "Errors go to stderr; exit code is non-zero on failure."
+  ],
+  "linked_docs": [
+    "specs/drafts/pypptx-cli-powerpoint-manipulation-toolkit.md"
+  ],
+  "feature_root_id": "B-f993e1f7",
+  "execution_branch_name": "feature/b-f993e1f7",
+  "execution_worktree_path": "/Users/oscar.renalias/Projects/skill-pptx/.takt/worktrees/B-f993e1f7",
+  "expected_files": [
+    "pypptx/cli.py"
+  ],
+  "expected_globs": [],
+  "touched_files": [],
+  "changed_files": [],
+  "updated_docs": [],
+  "handoff_summary": {
+    "completed": "",
+    "remaining": "",
+    "risks": "",
+    "verdict": "",
+    "findings_count": 0,
+    "requires_followup": false,
+    "changed_files": [],
+    "updated_docs": [],
+    "next_action": "",
+    "next_agent": "",
+    "block_reason": "",
+    "expected_files": [],
+    "expected_globs": [],
+    "touched_files": [],
+    "conflict_risks": "",
+    "design_decisions": "",
+    "test_coverage_notes": "",
+    "known_limitations": ""
+  },
+  "block_reason": "",
+  "conflict_risks": "",
+  "branch_name": "",
+  "worktree_path": "",
+  "lease": null,
+  "retries": 0,
+  "execution_history": [
+    {
+      "timestamp": "2026-04-13T21:08:29.547394+00:00",
+      "event": "created",
+      "agent_type": "scheduler",
+      "summary": "Bead created",
+      "details": {}
+    }
+  ],
+  "metadata": {},
+  "labels": [],
+  "recovery_for": null,
+  "priority": null
+}
