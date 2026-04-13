@@ -61,8 +61,10 @@
     "pypptx/ops/__pycache__/__init__.cpython-314.pyc",
     "pypptx/ops/__pycache__/extract.cpython-314.pyc",
     "pypptx/ops/__pycache__/pack.cpython-314.pyc",
+    "pypptx/ops/__pycache__/slides.cpython-314.pyc",
     "pypptx/ops/extract.py",
     "pypptx/ops/pack.py",
+    "pypptx/ops/slides.py",
     "pyproject.toml",
     "uv.lock"
   ],
@@ -94,8 +96,10 @@
     "pypptx/ops/__pycache__/__init__.cpython-314.pyc",
     "pypptx/ops/__pycache__/extract.cpython-314.pyc",
     "pypptx/ops/__pycache__/pack.cpython-314.pyc",
+    "pypptx/ops/__pycache__/slides.cpython-314.pyc",
     "pypptx/ops/extract.py",
     "pypptx/ops/pack.py",
+    "pypptx/ops/slides.py",
     "pyproject.toml",
     "uv.lock"
   ],
@@ -126,8 +130,10 @@
     "pypptx/ops/__pycache__/__init__.cpython-314.pyc",
     "pypptx/ops/__pycache__/extract.cpython-314.pyc",
     "pypptx/ops/__pycache__/pack.cpython-314.pyc",
+    "pypptx/ops/__pycache__/slides.cpython-314.pyc",
     "pypptx/ops/extract.py",
     "pypptx/ops/pack.py",
+    "pypptx/ops/slides.py",
     "pyproject.toml",
     "uv.lock"
   ],
@@ -153,7 +159,7 @@
     "known_limitations": ""
   },
   "block_reason": "",
-  "conflict_risks": "None. These are new files; no existing files were modified.\nNone \u2014 only new file created, no existing files modified.\nNone. Only new file created; no existing files modified.\nNone \u2014 `pypptx/ops/pack.py` is a new file with no overlap with other in-progress beads.",
+  "conflict_risks": "None. These are new files; no existing files were modified.\nNone \u2014 only new file created, no existing files modified.\nNone. Only new file created; no existing files modified.\nNone \u2014 `pypptx/ops/pack.py` is a new file with no overlap with other in-progress beads.\nNone \u2014 this is a new file with no overlap with sibling beads.",
   "branch_name": "",
   "worktree_path": "",
   "lease": null,
