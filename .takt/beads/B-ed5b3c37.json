@@ -6,7 +6,9 @@
   "status": "ready",
   "bead_type": "task",
   "parent_id": "B-f993e1f7",
-  "dependencies": [],
+  "dependencies": [
+    "B-338d86fc"
+  ],
   "acceptance_criteria": [
     "`pypptx --version` prints the version string.",
     "`pypptx --help` prints top-level usage listing available subcommands.",
