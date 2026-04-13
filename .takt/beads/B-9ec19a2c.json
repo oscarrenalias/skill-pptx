@@ -3,7 +3,7 @@
   "title": "ops/slides.py: read operations (list_slides, list_layouts)",
   "agent_type": "developer",
   "description": "Implement the read half of `pypptx/ops/slides.py`: `list_slides(path: Path) -> list[dict]` returning dicts with `index` (1-based), `file`, and `hidden`; and `list_layouts(path: Path) -> list[dict]` returning dicts with `index` and `file`. Both accept either a `.pptx` or an unpacked directory. Use python-pptx for all access.",
-  "status": "in_progress",
+  "status": "done",
   "bead_type": "task",
   "parent_id": "B-f993e1f7",
   "dependencies": [
@@ -26,37 +26,48 @@
     "pypptx/ops/slides.py"
   ],
   "expected_globs": [],
-  "touched_files": [],
-  "changed_files": [],
+  "touched_files": [
+    "pypptx/ops/__pycache__/slides.cpython-314.pyc",
+    "pypptx/ops/slides.py"
+  ],
+  "changed_files": [
+    "pypptx/ops/__pycache__/slides.cpython-314.pyc",
+    "pypptx/ops/slides.py"
+  ],
   "updated_docs": [],
   "handoff_summary": {
-    "completed": "",
-    "remaining": "",
-    "risks": "",
-    "verdict": "",
+    "completed": "Implemented `list_slides()` and `list_layouts()` in `pypptx/ops/slides.py`. `_open_presentation()` handles both `.pptx` and unpacked directory inputs. Hidden detection uses raw `_element.get('show')` string comparison. Layouts are gathered across all slide masters, deduplicated, and sorted by filename.",
+    "remaining": "None for this bead. Downstream: tester bead needs to validate with real pptx fixtures; CLI wiring (list_slides/list_layouts into cli.py commands) is a separate bead.",
+    "risks": "Directory-to-BytesIO re-packing preserves OPC entry ordering (Content_Types first) but uses sorted() for remaining files \u2014 if any other entry ordering is required by a specific pptx consumer, this may need adjustment. No other risks identified.",
+    "verdict": "approved",
     "findings_count": 0,
     "requires_followup": false,
-    "changed_files": [],
+    "changed_files": [
+      "pypptx/ops/__pycache__/slides.cpython-314.pyc",
+      "pypptx/ops/slides.py"
+    ],
     "updated_docs": [],
-    "next_action": "",
-    "next_agent": "",
+    "next_action": "Tester agent should write tests covering: slides in order, hidden=True only when show='0'/'false', directory input, layouts sorted by filename, 1-based indexing.",
+    "next_agent": "tester",
     "block_reason": "",
-    "expected_files": [],
+    "expected_files": [
+      "pypptx/ops/slides.py"
+    ],
     "expected_globs": [],
-    "touched_files": [],
-    "conflict_risks": "",
-    "design_decisions": "",
-    "test_coverage_notes": "",
-    "known_limitations": ""
+    "touched_files": [
+      "pypptx/ops/__pycache__/slides.cpython-314.pyc",
+      "pypptx/ops/slides.py"
+    ],
+    "conflict_risks": "None \u2014 this is a new file with no overlap with sibling beads.",
+    "design_decisions": "Used `_element.get('show')` string comparison ('0'/'false') per acceptance criteria. Layouts gathered from all slide_masters to handle multi-master decks. Directory input re-packed into BytesIO for python-pptx compatibility.",
+    "test_coverage_notes": "No tests written (developer scope). Tester should cover: single/multi-slide deck, hidden slide with show='0' and show='false', unpacked directory input, layout filename ordering, 1-based indexes.",
+    "known_limitations": "Directory re-packing iterates files via rglob+sorted; entry ordering beyond Content_Types-first is alphabetical. This is sufficient for python-pptx reads but may differ from a canonical pack() implementation."
   },
   "block_reason": "",
-  "conflict_risks": "",
+  "conflict_risks": "None \u2014 this is a new file with no overlap with sibling beads.",
   "branch_name": "feature/b-f993e1f7",
   "worktree_path": "/Users/oscar.renalias/Projects/skill-pptx/.takt/worktrees/B-f993e1f7",
-  "lease": {
-    "owner": "developer:B-9ec19a2c",
-    "expires_at": "2026-04-13T21:42:24.384838+00:00"
-  },
+  "lease": null,
   "retries": 0,
   "execution_history": [
     {
@@ -98,6 +109,13 @@
       "details": {
         "template_path": ".takt/agent-runs/B-9ec19a2c/repo/templates/agents/developer.md"
       }
+    },
+    {
+      "timestamp": "2026-04-13T21:14:29.477789+00:00",
+      "event": "completed",
+      "agent_type": "developer",
+      "summary": "Implemented `pypptx/ops/slides.py` with `list_slides` and `list_layouts`. Both functions accept a `.pptx` file or an unpacked directory (via `_open_presentation` which re-packs a directory into an in-memory BytesIO zip for python-pptx). `list_slides` returns 1-based index, bare filename, and hidden status (True only when `show` attribute is explicitly `'0'` or `'false'`). `list_layouts` collects layouts from all slide masters, deduplicates, sorts by filename, and returns 1-based indexed entries. Syntax check passes.",
+      "details": {}
     }
   ],
   "metadata": {
@@ -169,7 +187,53 @@
         "test_coverage_notes": "",
         "known_limitations": ""
       }
-    }
+    },
+    "last_agent_result": {
+      "outcome": "completed",
+      "summary": "Implemented `pypptx/ops/slides.py` with `list_slides` and `list_layouts`. Both functions accept a `.pptx` file or an unpacked directory (via `_open_presentation` which re-packs a directory into an in-memory BytesIO zip for python-pptx). `list_slides` returns 1-based index, bare filename, and hidden status (True only when `show` attribute is explicitly `'0'` or `'false'`). `list_layouts` collects layouts from all slide masters, deduplicates, sorts by filename, and returns 1-based indexed entries. Syntax check passes.",
+      "verdict": "approved",
+      "findings_count": 0,
+      "requires_followup": false,
+      "next_agent": "tester",
+      "block_reason": ""
+    },
+    "telemetry": {
+      "cost_usd": 0.28308479999999997,
+      "duration_ms": 121468,
+      "duration_api_ms": 114305,
+      "num_turns": 16,
+      "input_tokens": 14,
+      "output_tokens": 7214,
+      "cache_creation_tokens": 23330,
+      "cache_read_tokens": 291151,
+      "stop_reason": "end_turn",
+      "session_id": "cbfbcf71-2c53-4fb6-9dee-81de6890dec5",
+      "permission_denials": [],
+      "prompt_chars": 5948,
+      "prompt_lines": 135,
+      "source": "provider",
+      "attempt": 1
+    },
+    "telemetry_history": [
+      {
+        "cost_usd": 0.28308479999999997,
+        "duration_ms": 121468,
+        "duration_api_ms": 114305,
+        "num_turns": 16,
+        "input_tokens": 14,
+        "output_tokens": 7214,
+        "cache_creation_tokens": 23330,
+        "cache_read_tokens": 291151,
+        "stop_reason": "end_turn",
+        "session_id": "cbfbcf71-2c53-4fb6-9dee-81de6890dec5",
+        "permission_denials": [],
+        "prompt_chars": 5948,
+        "prompt_lines": 135,
+        "source": "provider",
+        "attempt": 1
+      }
+    ],
+    "last_commit": "b5eb88cc3f0f5d2ca73015b5c15506101117f2e5"
   },
   "labels": [],
   "recovery_for": null,
