@@ -1,0 +1,69 @@
+{
+  "bead_id": "B-dd655ec2",
+  "title": "ops/pack.py: unpack and pack operations",
+  "agent_type": "developer",
+  "description": "Implement `pypptx/ops/pack.py` with two public functions: `unpack(src: Path, dest: Path) -> Path` (pure zipfile extraction, no post-processing) and `pack(src_dir: Path, dest: Path) -> Path` (rezip with `[Content_Types].xml` as the first ZIP entry per OPC spec, writing atomically via temp-file-then-rename).",
+  "status": "ready",
+  "bead_type": "task",
+  "parent_id": "B-f993e1f7",
+  "dependencies": [],
+  "acceptance_criteria": [
+    "`unpack()` extracts all ZIP entries unchanged and returns the destination directory path.",
+    "`pack()` produces a ZIP where `[Content_Types].xml` is the first entry.",
+    "`pack()` writes atomically: writes to a `.tmp` file first, then renames to `dest`.",
+    "All XML parsing within this module uses `defusedxml`; `xml.etree.ElementTree` is not imported.",
+    "Both functions raise `ValueError` with a descriptive message on bad input."
+  ],
+  "linked_docs": [
+    "specs/drafts/pypptx-cli-powerpoint-manipulation-toolkit.md"
+  ],
+  "feature_root_id": "B-f993e1f7",
+  "execution_branch_name": "feature/b-f993e1f7",
+  "execution_worktree_path": "/Users/oscar.renalias/Projects/skill-pptx/.takt/worktrees/B-f993e1f7",
+  "expected_files": [
+    "pypptx/ops/pack.py"
+  ],
+  "expected_globs": [],
+  "touched_files": [],
+  "changed_files": [],
+  "updated_docs": [],
+  "handoff_summary": {
+    "completed": "",
+    "remaining": "",
+    "risks": "",
+    "verdict": "",
+    "findings_count": 0,
+    "requires_followup": false,
+    "changed_files": [],
+    "updated_docs": [],
+    "next_action": "",
+    "next_agent": "",
+    "block_reason": "",
+    "expected_files": [],
+    "expected_globs": [],
+    "touched_files": [],
+    "conflict_risks": "",
+    "design_decisions": "",
+    "test_coverage_notes": "",
+    "known_limitations": ""
+  },
+  "block_reason": "",
+  "conflict_risks": "",
+  "branch_name": "",
+  "worktree_path": "",
+  "lease": null,
+  "retries": 0,
+  "execution_history": [
+    {
+      "timestamp": "2026-04-13T21:08:26.454739+00:00",
+      "event": "created",
+      "agent_type": "scheduler",
+      "summary": "Bead created",
+      "details": {}
+    }
+  ],
+  "metadata": {},
+  "labels": [],
+  "recovery_for": null,
+  "priority": null
+}
