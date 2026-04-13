@@ -3,7 +3,7 @@
   "title": "Test suite",
   "agent_type": "tester",
   "description": "Write a pytest test suite covering all ops modules and CLI commands. Use a real minimal `.pptx` fixture (generated via python-pptx in a conftest fixture) rather than mocks. Test JSON output by parsing stdout, test --plain output by string matching. Test error paths (missing files, invalid indices, conflicting flags). Test round-trip integrity: unpack \u2192 edit \u2192 pack produces a file python-pptx can re-open.",
-  "status": "blocked",
+  "status": "ready",
   "bead_type": "task",
   "parent_id": "B-f993e1f7",
   "dependencies": [
@@ -219,7 +219,7 @@
     "test_coverage_notes": "",
     "known_limitations": ""
   },
-  "block_reason": "Agent timed out after 900 seconds",
+  "block_reason": "",
   "conflict_risks": "",
   "branch_name": "feature/b-f993e1f7",
   "worktree_path": "/Users/oscar.renalias/Projects/skill-pptx/.takt/worktrees/B-f993e1f7",
@@ -277,6 +277,13 @@
       "event": "failed",
       "agent_type": "tester",
       "summary": "Worker execution failed: Agent timed out after 900 seconds",
+      "details": {}
+    },
+    {
+      "timestamp": "2026-04-13T22:03:42.115703+00:00",
+      "event": "retried",
+      "agent_type": "tester",
+      "summary": "Requeued blocked bead after transient infrastructure/auth error",
       "details": {}
     }
   ],
