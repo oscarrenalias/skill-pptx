@@ -6,7 +6,22 @@
   "status": "ready",
   "bead_type": "task",
   "parent_id": "B-f993e1f7",
-  "dependencies": [],
+  "dependencies": [
+    "B-338d86fc",
+    "B-dd655ec2",
+    "B-6fa5ac31",
+    "B-9ec19a2c",
+    "B-5a1824ba",
+    "B-ce4fa0e6",
+    "B-ed5b3c37",
+    "B-f06c8351",
+    "B-ea8ae4c9",
+    "B-989bafa0",
+    "B-bffed7c3",
+    "B-150f15c0",
+    "B-4befdc71",
+    "B-d95f6847"
+  ],
   "acceptance_criteria": [
     "`defusedxml` is used for all XML parsing in `pack.py` and `clean.py`; `xml.etree.ElementTree` is not imported in those modules.",
     "`pack()` uses temp-file-then-rename atomicity; `pptx_edit` does not repack on exception.",
