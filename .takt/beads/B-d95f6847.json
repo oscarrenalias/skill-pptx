@@ -1,0 +1,69 @@
+{
+  "bead_id": "B-d95f6847",
+  "title": "Documentation",
+  "agent_type": "documentation",
+  "description": "Write a concise `README.md` covering: installation (`pip install -e .`), the core editing workflow (unpack \u2192 edit XML \u2192 clean \u2192 pack), a usage example for each command showing both JSON and --plain output, and a note on the JSON-first output contract. No API docs needed \u2014 CLI --help is the API reference.",
+  "status": "ready",
+  "bead_type": "task",
+  "parent_id": "B-f993e1f7",
+  "dependencies": [],
+  "acceptance_criteria": [
+    "`README.md` covers installation, the unpack\u2192edit\u2192clean\u2192pack workflow, and all eight command groups.",
+    "Each command section shows at least one example invocation with its expected JSON stdout.",
+    "The --plain flag is explained with an example.",
+    "The output contract (JSON default, --plain opt-out, errors to stderr, exit codes) is documented.",
+    "README renders without errors in standard Markdown."
+  ],
+  "linked_docs": [
+    "specs/drafts/pypptx-cli-powerpoint-manipulation-toolkit.md"
+  ],
+  "feature_root_id": "B-f993e1f7",
+  "execution_branch_name": "feature/b-f993e1f7",
+  "execution_worktree_path": "/Users/oscar.renalias/Projects/skill-pptx/.takt/worktrees/B-f993e1f7",
+  "expected_files": [
+    "README.md"
+  ],
+  "expected_globs": [],
+  "touched_files": [],
+  "changed_files": [],
+  "updated_docs": [],
+  "handoff_summary": {
+    "completed": "",
+    "remaining": "",
+    "risks": "",
+    "verdict": "",
+    "findings_count": 0,
+    "requires_followup": false,
+    "changed_files": [],
+    "updated_docs": [],
+    "next_action": "",
+    "next_agent": "",
+    "block_reason": "",
+    "expected_files": [],
+    "expected_globs": [],
+    "touched_files": [],
+    "conflict_risks": "",
+    "design_decisions": "",
+    "test_coverage_notes": "",
+    "known_limitations": ""
+  },
+  "block_reason": "",
+  "conflict_risks": "",
+  "branch_name": "",
+  "worktree_path": "",
+  "lease": null,
+  "retries": 0,
+  "execution_history": [
+    {
+      "timestamp": "2026-04-13T21:08:30.510268+00:00",
+      "event": "created",
+      "agent_type": "scheduler",
+      "summary": "Bead created",
+      "details": {}
+    }
+  ],
+  "metadata": {},
+  "labels": [],
+  "recovery_for": null,
+  "priority": null
+}
