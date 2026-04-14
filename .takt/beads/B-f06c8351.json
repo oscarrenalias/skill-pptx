@@ -1,0 +1,245 @@
+{
+  "bead_id": "B-f06c8351",
+  "title": "cli.py: unpack and pack commands",
+  "agent_type": "developer",
+  "description": "Wire `pypptx unpack <file.pptx> [output_dir]` and `pypptx pack <unpacked_dir> <output.pptx>` into `cli.py`. Each command calls the corresponding `ops.pack` function, formats output via `output_result()`, and passes `--plain` through. Errors caught at the top level are written to stderr and exit with code 1.",
+  "status": "done",
+  "bead_type": "task",
+  "parent_id": "B-f993e1f7",
+  "dependencies": [
+    "B-ed5b3c37",
+    "B-dd655ec2"
+  ],
+  "acceptance_criteria": [
+    "`pypptx unpack deck.pptx` produces `{\"unpacked_dir\": \"deck\"}` on stdout and extracts files to that directory.",
+    "`pypptx unpack deck.pptx mydir` extracts to `mydir` and outputs `{\"unpacked_dir\": \"mydir\"}`.",
+    "`pypptx unpack deck.pptx --plain` outputs just the directory name to stdout.",
+    "`pypptx pack mydir/ out.pptx` produces `{\"output_file\": \"out.pptx\"}` on stdout.",
+    "`pypptx pack mydir/ out.pptx --plain` outputs just `out.pptx`.",
+    "Errors (missing file, permission denied) are written to stderr; exit code is non-zero."
+  ],
+  "linked_docs": [
+    "specs/drafts/pypptx-cli-powerpoint-manipulation-toolkit.md"
+  ],
+  "feature_root_id": "B-f993e1f7",
+  "execution_branch_name": "feature/b-f993e1f7",
+  "execution_worktree_path": "/Users/oscar.renalias/Projects/skill-pptx/.takt/worktrees/B-f993e1f7",
+  "expected_files": [
+    "pypptx/cli.py"
+  ],
+  "expected_globs": [],
+  "touched_files": [
+    "pypptx/__pycache__/cli.cpython-314.pyc",
+    "pypptx/cli.py"
+  ],
+  "changed_files": [
+    "pypptx/__pycache__/cli.cpython-314.pyc",
+    "pypptx/cli.py"
+  ],
+  "updated_docs": [],
+  "handoff_summary": {
+    "completed": "- Added `@cli.command(\"unpack\")` that accepts `file` (required) and `output_dir` (optional, defaults to `file.stem`), calls `ops.pack.unpack()`, and outputs `{\"unpacked_dir\": ...}` or plain dir name with `--plain`. - Added `@cli.command(\"pack\")` that accepts `src_dir` and `output_file`, calls `ops.pack.pack()`, and outputs `{\"output_file\": ...}` or plain filename with `--plain`. - Both commands write errors to stderr via `click.echo(..., err=True)` and exit with code 1. - Syntax verified with `python -m py_compile`.",
+    "remaining": "None.",
+    "risks": "None identified. The `ops.pack` module already handles all error conditions (missing file, not a ZIP, missing [Content_Types].xml, etc.) and raises `ValueError`/OS exceptions that the CLI catches.",
+    "verdict": "approved",
+    "findings_count": 0,
+    "requires_followup": false,
+    "changed_files": [
+      "pypptx/__pycache__/cli.cpython-314.pyc",
+      "pypptx/cli.py"
+    ],
+    "updated_docs": [],
+    "next_action": "Tester bead should verify all six acceptance criteria end-to-end.",
+    "next_agent": "tester",
+    "block_reason": "",
+    "expected_files": [
+      "pypptx/cli.py"
+    ],
+    "expected_globs": [],
+    "touched_files": [
+      "pypptx/__pycache__/cli.cpython-314.pyc",
+      "pypptx/cli.py"
+    ],
+    "conflict_risks": "None. Only `pypptx/cli.py` was modified; no other in-progress beads claim this file.",
+    "design_decisions": "Defaulted `output_dir` to `Path(file.stem)` (relative to CWD at invocation time) matching the acceptance criterion `pypptx unpack deck.pptx` \u2192 extracts to `deck`. Used lazy imports (inside command body) consistent with existing `extract-text` command style.",
+    "test_coverage_notes": "All six acceptance criteria map directly to testable CLI invocations; tester bead should cover: default output dir, explicit output dir, --plain for both commands, and error paths (missing file, bad zip).",
+    "known_limitations": "None."
+  },
+  "block_reason": "",
+  "conflict_risks": "None. Only `pypptx/cli.py` was modified; no other in-progress beads claim this file.",
+  "branch_name": "feature/b-f993e1f7",
+  "worktree_path": "/Users/oscar.renalias/Projects/skill-pptx/.takt/worktrees/B-f993e1f7",
+  "lease": null,
+  "retries": 0,
+  "execution_history": [
+    {
+      "timestamp": "2026-04-13T21:08:28.538157+00:00",
+      "event": "created",
+      "agent_type": "scheduler",
+      "summary": "Bead created",
+      "details": {}
+    },
+    {
+      "timestamp": "2026-04-13T21:15:28.372067+00:00",
+      "event": "skills_loaded",
+      "agent_type": "developer",
+      "summary": "Loaded 7 skill(s) for isolated execution",
+      "details": {
+        "loaded_skills": [
+          "core/base-orchestrator",
+          "role/developer-implementation",
+          "capability/code-edit",
+          "task/corrective-implementation",
+          "task/refactor-safe",
+          "task/migration",
+          "memory"
+        ]
+      }
+    },
+    {
+      "timestamp": "2026-04-13T21:15:28.372092+00:00",
+      "event": "started",
+      "agent_type": "developer",
+      "summary": "Worker started",
+      "details": {}
+    },
+    {
+      "timestamp": "2026-04-13T21:15:28.669237+00:00",
+      "event": "guardrails_applied",
+      "agent_type": "developer",
+      "summary": "Applied guardrails from .takt/agent-runs/B-f06c8351/repo/templates/agents/developer.md",
+      "details": {
+        "template_path": ".takt/agent-runs/B-f06c8351/repo/templates/agents/developer.md"
+      }
+    },
+    {
+      "timestamp": "2026-04-13T21:16:24.634499+00:00",
+      "event": "completed",
+      "agent_type": "developer",
+      "summary": "Added `unpack` and `pack` CLI commands to `pypptx/cli.py`. Both commands follow the existing pattern: lazy-import the ops function, catch exceptions and write to stderr with `sys.exit(1)`, and format output via `output_result()` supporting `--plain`. The `unpack` command defaults `output_dir` to the file stem when omitted.",
+      "details": {}
+    }
+  ],
+  "metadata": {
+    "execution_root": "/Users/oscar.renalias/Projects/skill-pptx/.takt/agent-runs/B-f06c8351",
+    "workspace_repo_path": "repo",
+    "loaded_skills": [
+      "core/base-orchestrator",
+      "role/developer-implementation",
+      "capability/code-edit",
+      "task/corrective-implementation",
+      "task/refactor-safe",
+      "task/migration",
+      "memory"
+    ],
+    "skill_bundle_hash": "2cbacb3ae07c8eee2a6bb3d65b99b3e4df7fa47ac8b10c5c68be4b338a583348",
+    "isolated_home": "/Users/oscar.renalias/Projects/skill-pptx/.takt/agent-runs/B-f06c8351/home",
+    "runner_backend": "claude",
+    "guardrails": {
+      "agent_type": "developer",
+      "template_path": ".takt/agent-runs/B-f06c8351/repo/templates/agents/developer.md",
+      "template_text": "# Developer Guardrails\n\nPrimary responsibility: Implement only the assigned bead inside the existing architecture and file scope.\n\nAllowed actions:\n- Modify code, configuration, or local docs required to complete the assigned bead.\n- Create sub-beads for discovered follow-up work that should be handled separately.\n- Verify your `Python` changes compile and import correctly with a quick syntax check: `python -m py_compile`.\n\nDisallowed actions:\n- Run any test suite \u2014 not even a targeted `pytest` run or any subset. Test execution is exclusively the tester agent's responsibility. Running tests wastes the agent budget and delays the pipeline.\n- Redesign unrelated architecture or broaden scope beyond the assigned bead.\n- Perform final review signoff in place of a review agent.\n- Silently absorb unrelated test, documentation, or planning work that should be handed off.\n\nExpected outputs:\n- Completed or blocked JSON with concise implementation summary.\n- Accurate touched files, changed files, risks, and follow-up handoff fields.",
+      "captured_at": "2026-04-13T21:15:28.669222+00:00"
+    },
+    "worker_prompt_context": {
+      "bead_id": "B-f06c8351",
+      "feature_root_id": "B-f993e1f7",
+      "title": "cli.py: unpack and pack commands",
+      "agent_type": "developer",
+      "description": "Wire `pypptx unpack <file.pptx> [output_dir]` and `pypptx pack <unpacked_dir> <output.pptx>` into `cli.py`. Each command calls the corresponding `ops.pack` function, formats output via `output_result()`, and passes `--plain` through. Errors caught at the top level are written to stderr and exit with code 1.",
+      "status": "in_progress",
+      "acceptance_criteria": [
+        "`pypptx unpack deck.pptx` produces `{\"unpacked_dir\": \"deck\"}` on stdout and extracts files to that directory.",
+        "`pypptx unpack deck.pptx mydir` extracts to `mydir` and outputs `{\"unpacked_dir\": \"mydir\"}`.",
+        "`pypptx unpack deck.pptx --plain` outputs just the directory name to stdout.",
+        "`pypptx pack mydir/ out.pptx` produces `{\"output_file\": \"out.pptx\"}` on stdout.",
+        "`pypptx pack mydir/ out.pptx --plain` outputs just `out.pptx`.",
+        "Errors (missing file, permission denied) are written to stderr; exit code is non-zero."
+      ],
+      "dependencies": [
+        "B-ed5b3c37",
+        "B-dd655ec2"
+      ],
+      "linked_docs": [
+        "specs/drafts/pypptx-cli-powerpoint-manipulation-toolkit.md"
+      ],
+      "execution_branch_name": "feature/b-f993e1f7",
+      "execution_worktree_path": "/Users/oscar.renalias/Projects/skill-pptx/.takt/worktrees/B-f993e1f7",
+      "expected_files": [
+        "pypptx/cli.py"
+      ],
+      "expected_globs": [],
+      "touched_files": [],
+      "conflict_risks": "",
+      "handoff_summary": {
+        "completed": "",
+        "remaining": "",
+        "risks": "",
+        "verdict": "",
+        "findings_count": 0,
+        "requires_followup": false,
+        "changed_files": [],
+        "updated_docs": [],
+        "next_action": "",
+        "next_agent": "",
+        "block_reason": "",
+        "expected_files": [],
+        "expected_globs": [],
+        "touched_files": [],
+        "conflict_risks": "",
+        "design_decisions": "",
+        "test_coverage_notes": "",
+        "known_limitations": ""
+      }
+    },
+    "last_agent_result": {
+      "outcome": "completed",
+      "summary": "Added `unpack` and `pack` CLI commands to `pypptx/cli.py`. Both commands follow the existing pattern: lazy-import the ops function, catch exceptions and write to stderr with `sys.exit(1)`, and format output via `output_result()` supporting `--plain`. The `unpack` command defaults `output_dir` to the file stem when omitted.",
+      "verdict": "approved",
+      "findings_count": 0,
+      "requires_followup": false,
+      "next_agent": "tester",
+      "block_reason": ""
+    },
+    "telemetry": {
+      "cost_usd": 0.16597409999999999,
+      "duration_ms": 55332,
+      "duration_api_ms": 49909,
+      "num_turns": 13,
+      "input_tokens": 12,
+      "output_tokens": 2998,
+      "cache_creation_tokens": 15942,
+      "cache_read_tokens": 203952,
+      "stop_reason": "end_turn",
+      "session_id": "3f2a5975-2caf-44ba-9120-c435f2083c2e",
+      "permission_denials": [],
+      "prompt_chars": 6054,
+      "prompt_lines": 137,
+      "source": "provider",
+      "attempt": 1
+    },
+    "telemetry_history": [
+      {
+        "cost_usd": 0.16597409999999999,
+        "duration_ms": 55332,
+        "duration_api_ms": 49909,
+        "num_turns": 13,
+        "input_tokens": 12,
+        "output_tokens": 2998,
+        "cache_creation_tokens": 15942,
+        "cache_read_tokens": 203952,
+        "stop_reason": "end_turn",
+        "session_id": "3f2a5975-2caf-44ba-9120-c435f2083c2e",
+        "permission_denials": [],
+        "prompt_chars": 6054,
+        "prompt_lines": 137,
+        "source": "provider",
+        "attempt": 1
+      }
+    ],
+    "last_commit": "485ee3ffcd4c7e9108f7c8c93fb93b3cbce543a8"
+  },
+  "labels": [],
+  "recovery_for": null,
+  "priority": null
+}

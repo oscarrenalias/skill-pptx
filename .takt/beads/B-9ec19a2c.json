@@ -1,0 +1,241 @@
+{
+  "bead_id": "B-9ec19a2c",
+  "title": "ops/slides.py: read operations (list_slides, list_layouts)",
+  "agent_type": "developer",
+  "description": "Implement the read half of `pypptx/ops/slides.py`: `list_slides(path: Path) -> list[dict]` returning dicts with `index` (1-based), `file`, and `hidden`; and `list_layouts(path: Path) -> list[dict]` returning dicts with `index` and `file`. Both accept either a `.pptx` or an unpacked directory. Use python-pptx for all access.",
+  "status": "done",
+  "bead_type": "task",
+  "parent_id": "B-f993e1f7",
+  "dependencies": [
+    "B-338d86fc"
+  ],
+  "acceptance_criteria": [
+    "`list_slides()` returns entries in presentation order; `index` is 1-based.",
+    "`hidden` is `True` only when the slide's `show` attribute is explicitly `false`/`0`.",
+    "`list_layouts()` returns all layouts from `ppt/slideLayouts/` in file-name order; `index` is 1-based.",
+    "Both functions accept a `.pptx` file path or an already-unpacked directory.",
+    "python-pptx is the only XML-level library used here."
+  ],
+  "linked_docs": [
+    "specs/drafts/pypptx-cli-powerpoint-manipulation-toolkit.md"
+  ],
+  "feature_root_id": "B-f993e1f7",
+  "execution_branch_name": "feature/b-f993e1f7",
+  "execution_worktree_path": "/Users/oscar.renalias/Projects/skill-pptx/.takt/worktrees/B-f993e1f7",
+  "expected_files": [
+    "pypptx/ops/slides.py"
+  ],
+  "expected_globs": [],
+  "touched_files": [
+    "pypptx/ops/__pycache__/slides.cpython-314.pyc",
+    "pypptx/ops/slides.py"
+  ],
+  "changed_files": [
+    "pypptx/ops/__pycache__/slides.cpython-314.pyc",
+    "pypptx/ops/slides.py"
+  ],
+  "updated_docs": [],
+  "handoff_summary": {
+    "completed": "Implemented `list_slides()` and `list_layouts()` in `pypptx/ops/slides.py`. `_open_presentation()` handles both `.pptx` and unpacked directory inputs. Hidden detection uses raw `_element.get('show')` string comparison. Layouts are gathered across all slide masters, deduplicated, and sorted by filename.",
+    "remaining": "None for this bead. Downstream: tester bead needs to validate with real pptx fixtures; CLI wiring (list_slides/list_layouts into cli.py commands) is a separate bead.",
+    "risks": "Directory-to-BytesIO re-packing preserves OPC entry ordering (Content_Types first) but uses sorted() for remaining files \u2014 if any other entry ordering is required by a specific pptx consumer, this may need adjustment. No other risks identified.",
+    "verdict": "approved",
+    "findings_count": 0,
+    "requires_followup": false,
+    "changed_files": [
+      "pypptx/ops/__pycache__/slides.cpython-314.pyc",
+      "pypptx/ops/slides.py"
+    ],
+    "updated_docs": [],
+    "next_action": "Tester agent should write tests covering: slides in order, hidden=True only when show='0'/'false', directory input, layouts sorted by filename, 1-based indexing.",
+    "next_agent": "tester",
+    "block_reason": "",
+    "expected_files": [
+      "pypptx/ops/slides.py"
+    ],
+    "expected_globs": [],
+    "touched_files": [
+      "pypptx/ops/__pycache__/slides.cpython-314.pyc",
+      "pypptx/ops/slides.py"
+    ],
+    "conflict_risks": "None \u2014 this is a new file with no overlap with sibling beads.",
+    "design_decisions": "Used `_element.get('show')` string comparison ('0'/'false') per acceptance criteria. Layouts gathered from all slide_masters to handle multi-master decks. Directory input re-packed into BytesIO for python-pptx compatibility.",
+    "test_coverage_notes": "No tests written (developer scope). Tester should cover: single/multi-slide deck, hidden slide with show='0' and show='false', unpacked directory input, layout filename ordering, 1-based indexes.",
+    "known_limitations": "Directory re-packing iterates files via rglob+sorted; entry ordering beyond Content_Types-first is alphabetical. This is sufficient for python-pptx reads but may differ from a canonical pack() implementation."
+  },
+  "block_reason": "",
+  "conflict_risks": "None \u2014 this is a new file with no overlap with sibling beads.",
+  "branch_name": "feature/b-f993e1f7",
+  "worktree_path": "/Users/oscar.renalias/Projects/skill-pptx/.takt/worktrees/B-f993e1f7",
+  "lease": null,
+  "retries": 0,
+  "execution_history": [
+    {
+      "timestamp": "2026-04-13T21:08:27.120016+00:00",
+      "event": "created",
+      "agent_type": "scheduler",
+      "summary": "Bead created",
+      "details": {}
+    },
+    {
+      "timestamp": "2026-04-13T21:12:25.047588+00:00",
+      "event": "skills_loaded",
+      "agent_type": "developer",
+      "summary": "Loaded 7 skill(s) for isolated execution",
+      "details": {
+        "loaded_skills": [
+          "core/base-orchestrator",
+          "role/developer-implementation",
+          "capability/code-edit",
+          "task/corrective-implementation",
+          "task/refactor-safe",
+          "task/migration",
+          "memory"
+        ]
+      }
+    },
+    {
+      "timestamp": "2026-04-13T21:12:25.047613+00:00",
+      "event": "started",
+      "agent_type": "developer",
+      "summary": "Worker started",
+      "details": {}
+    },
+    {
+      "timestamp": "2026-04-13T21:12:25.764366+00:00",
+      "event": "guardrails_applied",
+      "agent_type": "developer",
+      "summary": "Applied guardrails from .takt/agent-runs/B-9ec19a2c/repo/templates/agents/developer.md",
+      "details": {
+        "template_path": ".takt/agent-runs/B-9ec19a2c/repo/templates/agents/developer.md"
+      }
+    },
+    {
+      "timestamp": "2026-04-13T21:14:29.477789+00:00",
+      "event": "completed",
+      "agent_type": "developer",
+      "summary": "Implemented `pypptx/ops/slides.py` with `list_slides` and `list_layouts`. Both functions accept a `.pptx` file or an unpacked directory (via `_open_presentation` which re-packs a directory into an in-memory BytesIO zip for python-pptx). `list_slides` returns 1-based index, bare filename, and hidden status (True only when `show` attribute is explicitly `'0'` or `'false'`). `list_layouts` collects layouts from all slide masters, deduplicates, sorts by filename, and returns 1-based indexed entries. Syntax check passes.",
+      "details": {}
+    }
+  ],
+  "metadata": {
+    "execution_root": "/Users/oscar.renalias/Projects/skill-pptx/.takt/agent-runs/B-9ec19a2c",
+    "workspace_repo_path": "repo",
+    "loaded_skills": [
+      "core/base-orchestrator",
+      "role/developer-implementation",
+      "capability/code-edit",
+      "task/corrective-implementation",
+      "task/refactor-safe",
+      "task/migration",
+      "memory"
+    ],
+    "skill_bundle_hash": "2cbacb3ae07c8eee2a6bb3d65b99b3e4df7fa47ac8b10c5c68be4b338a583348",
+    "isolated_home": "/Users/oscar.renalias/Projects/skill-pptx/.takt/agent-runs/B-9ec19a2c/home",
+    "runner_backend": "claude",
+    "guardrails": {
+      "agent_type": "developer",
+      "template_path": ".takt/agent-runs/B-9ec19a2c/repo/templates/agents/developer.md",
+      "template_text": "# Developer Guardrails\n\nPrimary responsibility: Implement only the assigned bead inside the existing architecture and file scope.\n\nAllowed actions:\n- Modify code, configuration, or local docs required to complete the assigned bead.\n- Create sub-beads for discovered follow-up work that should be handled separately.\n- Verify your `Python` changes compile and import correctly with a quick syntax check: `python -m py_compile`.\n\nDisallowed actions:\n- Run any test suite \u2014 not even a targeted `pytest` run or any subset. Test execution is exclusively the tester agent's responsibility. Running tests wastes the agent budget and delays the pipeline.\n- Redesign unrelated architecture or broaden scope beyond the assigned bead.\n- Perform final review signoff in place of a review agent.\n- Silently absorb unrelated test, documentation, or planning work that should be handed off.\n\nExpected outputs:\n- Completed or blocked JSON with concise implementation summary.\n- Accurate touched files, changed files, risks, and follow-up handoff fields.",
+      "captured_at": "2026-04-13T21:12:25.764351+00:00"
+    },
+    "worker_prompt_context": {
+      "bead_id": "B-9ec19a2c",
+      "feature_root_id": "B-f993e1f7",
+      "title": "ops/slides.py: read operations (list_slides, list_layouts)",
+      "agent_type": "developer",
+      "description": "Implement the read half of `pypptx/ops/slides.py`: `list_slides(path: Path) -> list[dict]` returning dicts with `index` (1-based), `file`, and `hidden`; and `list_layouts(path: Path) -> list[dict]` returning dicts with `index` and `file`. Both accept either a `.pptx` or an unpacked directory. Use python-pptx for all access.",
+      "status": "in_progress",
+      "acceptance_criteria": [
+        "`list_slides()` returns entries in presentation order; `index` is 1-based.",
+        "`hidden` is `True` only when the slide's `show` attribute is explicitly `false`/`0`.",
+        "`list_layouts()` returns all layouts from `ppt/slideLayouts/` in file-name order; `index` is 1-based.",
+        "Both functions accept a `.pptx` file path or an already-unpacked directory.",
+        "python-pptx is the only XML-level library used here."
+      ],
+      "dependencies": [
+        "B-338d86fc"
+      ],
+      "linked_docs": [
+        "specs/drafts/pypptx-cli-powerpoint-manipulation-toolkit.md"
+      ],
+      "execution_branch_name": "feature/b-f993e1f7",
+      "execution_worktree_path": "/Users/oscar.renalias/Projects/skill-pptx/.takt/worktrees/B-f993e1f7",
+      "expected_files": [
+        "pypptx/ops/slides.py"
+      ],
+      "expected_globs": [],
+      "touched_files": [],
+      "conflict_risks": "",
+      "handoff_summary": {
+        "completed": "",
+        "remaining": "",
+        "risks": "",
+        "verdict": "",
+        "findings_count": 0,
+        "requires_followup": false,
+        "changed_files": [],
+        "updated_docs": [],
+        "next_action": "",
+        "next_agent": "",
+        "block_reason": "",
+        "expected_files": [],
+        "expected_globs": [],
+        "touched_files": [],
+        "conflict_risks": "",
+        "design_decisions": "",
+        "test_coverage_notes": "",
+        "known_limitations": ""
+      }
+    },
+    "last_agent_result": {
+      "outcome": "completed",
+      "summary": "Implemented `pypptx/ops/slides.py` with `list_slides` and `list_layouts`. Both functions accept a `.pptx` file or an unpacked directory (via `_open_presentation` which re-packs a directory into an in-memory BytesIO zip for python-pptx). `list_slides` returns 1-based index, bare filename, and hidden status (True only when `show` attribute is explicitly `'0'` or `'false'`). `list_layouts` collects layouts from all slide masters, deduplicates, sorts by filename, and returns 1-based indexed entries. Syntax check passes.",
+      "verdict": "approved",
+      "findings_count": 0,
+      "requires_followup": false,
+      "next_agent": "tester",
+      "block_reason": ""
+    },
+    "telemetry": {
+      "cost_usd": 0.28308479999999997,
+      "duration_ms": 121468,
+      "duration_api_ms": 114305,
+      "num_turns": 16,
+      "input_tokens": 14,
+      "output_tokens": 7214,
+      "cache_creation_tokens": 23330,
+      "cache_read_tokens": 291151,
+      "stop_reason": "end_turn",
+      "session_id": "cbfbcf71-2c53-4fb6-9dee-81de6890dec5",
+      "permission_denials": [],
+      "prompt_chars": 5948,
+      "prompt_lines": 135,
+      "source": "provider",
+      "attempt": 1
+    },
+    "telemetry_history": [
+      {
+        "cost_usd": 0.28308479999999997,
+        "duration_ms": 121468,
+        "duration_api_ms": 114305,
+        "num_turns": 16,
+        "input_tokens": 14,
+        "output_tokens": 7214,
+        "cache_creation_tokens": 23330,
+        "cache_read_tokens": 291151,
+        "stop_reason": "end_turn",
+        "session_id": "cbfbcf71-2c53-4fb6-9dee-81de6890dec5",
+        "permission_denials": [],
+        "prompt_chars": 5948,
+        "prompt_lines": 135,
+        "source": "provider",
+        "attempt": 1
+      }
+    ],
+    "last_commit": "b5eb88cc3f0f5d2ca73015b5c15506101117f2e5"
+  },
+  "labels": [],
+  "recovery_for": null,
+  "priority": null
+}

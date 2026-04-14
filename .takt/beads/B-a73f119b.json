@@ -1,0 +1,66 @@
+{
+  "bead_id": "B-a73f119b",
+  "title": "Add Pillow optional dependency to pyproject.toml",
+  "agent_type": "developer",
+  "description": "Add a `thumbnails` optional dependency group to pyproject.toml declaring `Pillow>=10.0`, enabling `pip install 'pypptx[thumbnails]'`.",
+  "status": "ready",
+  "bead_type": "task",
+  "parent_id": "B-74563794",
+  "dependencies": [],
+  "acceptance_criteria": [
+    "pyproject.toml contains a thumbnails optional-dependencies group with Pillow>=10.0",
+    "Existing dependencies and optional groups are unchanged"
+  ],
+  "linked_docs": [
+    "specs/drafts/pypptx-thumbnails-command.md"
+  ],
+  "feature_root_id": "B-74563794",
+  "execution_branch_name": "feature/b-74563794",
+  "execution_worktree_path": "/Users/oscar.renalias/Projects/skill-pptx/.takt/worktrees/B-74563794",
+  "expected_files": [
+    "pyproject.toml"
+  ],
+  "expected_globs": [],
+  "touched_files": [],
+  "changed_files": [],
+  "updated_docs": [],
+  "handoff_summary": {
+    "completed": "",
+    "remaining": "",
+    "risks": "",
+    "verdict": "",
+    "findings_count": 0,
+    "requires_followup": false,
+    "changed_files": [],
+    "updated_docs": [],
+    "next_action": "",
+    "next_agent": "",
+    "block_reason": "",
+    "expected_files": [],
+    "expected_globs": [],
+    "touched_files": [],
+    "conflict_risks": "",
+    "design_decisions": "",
+    "test_coverage_notes": "",
+    "known_limitations": ""
+  },
+  "block_reason": "",
+  "conflict_risks": "",
+  "branch_name": "",
+  "worktree_path": "",
+  "lease": null,
+  "retries": 0,
+  "execution_history": [
+    {
+      "timestamp": "2026-04-14T06:33:06.209475+00:00",
+      "event": "created",
+      "agent_type": "scheduler",
+      "summary": "Bead created",
+      "details": {}
+    }
+  ],
+  "metadata": {},
+  "labels": [],
+  "recovery_for": null,
+  "priority": null
+}
