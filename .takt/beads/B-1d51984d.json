@@ -174,7 +174,7 @@
     "known_limitations": ""
   },
   "block_reason": "",
-  "conflict_risks": "None \u2014 only pyproject.toml was touched and the change is additive (version constraint only).\nNo conflict risks \u2014 new file, no modifications to existing code.\nNone \u2014 only thumbnails.py was modified; no other in-progress beads touch this file.\nNo conflicts expected; only `pypptx/ops/thumbnails.py` was modified and no sibling beads claim this file.\nNone \u2014 assemble_grid() is a new function added between _make_hatched_placeholder and generate_thumbnails; no existing code modified.",
+  "conflict_risks": "None \u2014 only pyproject.toml was touched and the change is additive (version constraint only).\nNo conflict risks \u2014 new file, no modifications to existing code.\nNone \u2014 only thumbnails.py was modified; no other in-progress beads touch this file.\nNo conflicts expected; only `pypptx/ops/thumbnails.py` was modified and no sibling beads claim this file.\nNone \u2014 assemble_grid() is a new function added between _make_hatched_placeholder and generate_thumbnails; no existing code modified.\nCLI bead (thumbnails command) must call generate_thumbnails() with the new 4-argument signature (pptx_path, output_prefix, temp_dir, cols). The old 2-argument form no longer exists.",
   "branch_name": "",
   "worktree_path": "",
   "lease": null,
