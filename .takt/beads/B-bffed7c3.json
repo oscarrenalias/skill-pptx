@@ -3,7 +3,7 @@
   "title": "cli.py: slide add, delete, and move commands",
   "agent_type": "developer",
   "description": "Wire `pypptx slide add`, `pypptx slide delete`, and `pypptx slide move` into the `slide` subgroup. Validate that exactly one of `--duplicate`/`--layout` is provided for `add` (fail with stderr message and exit code 1 otherwise). Call the corresponding `ops.slides` write functions. Format output via `output_result()`.",
-  "status": "ready",
+  "status": "done",
   "bead_type": "task",
   "parent_id": "B-f993e1f7",
   "dependencies": [
@@ -29,33 +29,47 @@
     "pypptx/cli.py"
   ],
   "expected_globs": [],
-  "touched_files": [],
-  "changed_files": [],
+  "touched_files": [
+    "pypptx/__pycache__/cli.cpython-314.pyc",
+    "pypptx/cli.py"
+  ],
+  "changed_files": [
+    "pypptx/__pycache__/cli.cpython-314.pyc",
+    "pypptx/cli.py"
+  ],
   "updated_docs": [],
   "handoff_summary": {
-    "completed": "",
-    "remaining": "",
-    "risks": "",
-    "verdict": "",
+    "completed": "Added `slide_add_cmd`, `slide_delete_cmd`, and `slide_move_cmd` to `pypptx/cli.py` \u2014 all commands are registered under the `slide` subgroup, call the correct `ops.slides` functions, validate inputs, format output via `output_result()`, and respect `--plain`.",
+    "remaining": "None \u2014 bead is fully implemented.",
+    "risks": "The `slide add --position` flow calls `add_slide` (which unpacks/repacks for .pptx files) then `move_slide` (a second unpack/repack cycle). This is two I/O passes on the file but is correct; a potential optimisation could do both in a single pptx_edit context, but that is out of scope for this bead.",
+    "verdict": "approved",
     "findings_count": 0,
     "requires_followup": false,
-    "changed_files": [],
+    "changed_files": [
+      "pypptx/__pycache__/cli.cpython-314.pyc",
+      "pypptx/cli.py"
+    ],
     "updated_docs": [],
-    "next_action": "",
-    "next_agent": "",
+    "next_action": "Tester agent should validate the three commands against the acceptance criteria using a real .pptx fixture.",
+    "next_agent": "tester",
     "block_reason": "",
-    "expected_files": [],
+    "expected_files": [
+      "pypptx/cli.py"
+    ],
     "expected_globs": [],
-    "touched_files": [],
-    "conflict_risks": "",
-    "design_decisions": "",
-    "test_coverage_notes": "",
-    "known_limitations": ""
+    "touched_files": [
+      "pypptx/__pycache__/cli.cpython-314.pyc",
+      "pypptx/cli.py"
+    ],
+    "conflict_risks": "None \u2014 only `pypptx/cli.py` was modified; no other in-flight beads claim this file.",
+    "design_decisions": "Output keys for `slide add` are `added_file`/`position` (matching acceptance criteria) rather than the `file`/`index` keys returned internally by `add_slide`. The `--position` option triggers a second `move_slide` call after the initial add, keeping implementation simple at the cost of two unpack/repack cycles for .pptx inputs.",
+    "test_coverage_notes": "No tests run (tester agent responsibility). Acceptance criteria cover: duplicate add, layout add with position, mutual-exclusion error, delete, move, --plain flag, stderr/exit-code behaviour.",
+    "known_limitations": "Adding with `--position` on a .pptx file performs two unpack/repack cycles. This is functionally correct but less efficient than a single-pass implementation."
   },
   "block_reason": "",
-  "conflict_risks": "",
-  "branch_name": "",
-  "worktree_path": "",
+  "conflict_risks": "None \u2014 only `pypptx/cli.py` was modified; no other in-flight beads claim this file.",
+  "branch_name": "feature/b-f993e1f7",
+  "worktree_path": "/Users/oscar.renalias/Projects/skill-pptx/.takt/worktrees/B-f993e1f7",
   "lease": null,
   "retries": 0,
   "execution_history": [
@@ -65,9 +79,168 @@
       "agent_type": "scheduler",
       "summary": "Bead created",
       "details": {}
+    },
+    {
+      "timestamp": "2026-04-13T21:27:27.290309+00:00",
+      "event": "skills_loaded",
+      "agent_type": "developer",
+      "summary": "Loaded 7 skill(s) for isolated execution",
+      "details": {
+        "loaded_skills": [
+          "core/base-orchestrator",
+          "role/developer-implementation",
+          "capability/code-edit",
+          "task/corrective-implementation",
+          "task/refactor-safe",
+          "task/migration",
+          "memory"
+        ]
+      }
+    },
+    {
+      "timestamp": "2026-04-13T21:27:27.290337+00:00",
+      "event": "started",
+      "agent_type": "developer",
+      "summary": "Worker started",
+      "details": {}
+    },
+    {
+      "timestamp": "2026-04-13T21:27:27.528058+00:00",
+      "event": "guardrails_applied",
+      "agent_type": "developer",
+      "summary": "Applied guardrails from .takt/agent-runs/B-bffed7c3/repo/templates/agents/developer.md",
+      "details": {
+        "template_path": ".takt/agent-runs/B-bffed7c3/repo/templates/agents/developer.md"
+      }
+    },
+    {
+      "timestamp": "2026-04-13T21:31:56.254361+00:00",
+      "event": "completed",
+      "agent_type": "developer",
+      "summary": "Implemented `pypptx slide add`, `pypptx slide delete`, and `pypptx slide move` CLI commands in `pypptx/cli.py`. All three are wired into the existing `slide` subgroup and call the corresponding `ops.slides` public functions (`add_slide`, `delete_slide`, `move_slide`). The `add` command validates that exactly one of `--duplicate`/`--layout` is provided (stderr + exit 1 otherwise), supports an optional `--position` by calling `move_slide` after `add_slide`, and outputs `{\"added_file\": ..., \"position\": N}`. The `delete` command outputs `{\"deleted_file\": ..., \"deleted_index\": N}`. The `move` command outputs `{\"file\": ..., \"from\": N, \"to\": N}`. All three support `--plain` for human-readable output and route errors to stderr with non-zero exit codes. Syntax verified with `uv run python -m py_compile`.",
+      "details": {}
     }
   ],
-  "metadata": {},
+  "metadata": {
+    "execution_root": "/Users/oscar.renalias/Projects/skill-pptx/.takt/agent-runs/B-bffed7c3",
+    "workspace_repo_path": "repo",
+    "loaded_skills": [
+      "core/base-orchestrator",
+      "role/developer-implementation",
+      "capability/code-edit",
+      "task/corrective-implementation",
+      "task/refactor-safe",
+      "task/migration",
+      "memory"
+    ],
+    "skill_bundle_hash": "2cbacb3ae07c8eee2a6bb3d65b99b3e4df7fa47ac8b10c5c68be4b338a583348",
+    "isolated_home": "/Users/oscar.renalias/Projects/skill-pptx/.takt/agent-runs/B-bffed7c3/home",
+    "runner_backend": "claude",
+    "guardrails": {
+      "agent_type": "developer",
+      "template_path": ".takt/agent-runs/B-bffed7c3/repo/templates/agents/developer.md",
+      "template_text": "# Developer Guardrails\n\nPrimary responsibility: Implement only the assigned bead inside the existing architecture and file scope.\n\nAllowed actions:\n- Modify code, configuration, or local docs required to complete the assigned bead.\n- Create sub-beads for discovered follow-up work that should be handled separately.\n- Verify your `Python` changes compile and import correctly with a quick syntax check: `python -m py_compile`.\n\nDisallowed actions:\n- Run any test suite \u2014 not even a targeted `pytest` run or any subset. Test execution is exclusively the tester agent's responsibility. Running tests wastes the agent budget and delays the pipeline.\n- Redesign unrelated architecture or broaden scope beyond the assigned bead.\n- Perform final review signoff in place of a review agent.\n- Silently absorb unrelated test, documentation, or planning work that should be handed off.\n\nExpected outputs:\n- Completed or blocked JSON with concise implementation summary.\n- Accurate touched files, changed files, risks, and follow-up handoff fields.",
+      "captured_at": "2026-04-13T21:27:27.528045+00:00"
+    },
+    "worker_prompt_context": {
+      "bead_id": "B-bffed7c3",
+      "feature_root_id": "B-f993e1f7",
+      "title": "cli.py: slide add, delete, and move commands",
+      "agent_type": "developer",
+      "description": "Wire `pypptx slide add`, `pypptx slide delete`, and `pypptx slide move` into the `slide` subgroup. Validate that exactly one of `--duplicate`/`--layout` is provided for `add` (fail with stderr message and exit code 1 otherwise). Call the corresponding `ops.slides` write functions. Format output via `output_result()`.",
+      "status": "in_progress",
+      "acceptance_criteria": [
+        "`pypptx slide add deck.pptx --duplicate 1` outputs `{\"added_file\": \"slideN.xml\", \"position\": N}`; resulting file opens correctly.",
+        "`pypptx slide add deck.pptx --layout 1 --position 2` inserts at position 2 and outputs correct JSON.",
+        "`pypptx slide add` with both or neither `--duplicate`/`--layout` writes an error to stderr and exits non-zero.",
+        "`pypptx slide delete deck.pptx 2` outputs `{\"deleted_file\": \"slide2.xml\", \"deleted_index\": 2}`.",
+        "`pypptx slide move deck.pptx 3 1` outputs `{\"file\": \"slide3.xml\", \"from\": 3, \"to\": 1}`; slide order is correct.",
+        "All three commands support `--plain` for human-readable output.",
+        "Errors go to stderr; exit code is non-zero on failure."
+      ],
+      "dependencies": [
+        "B-ed5b3c37",
+        "B-5a1824ba"
+      ],
+      "linked_docs": [
+        "specs/drafts/pypptx-cli-powerpoint-manipulation-toolkit.md"
+      ],
+      "execution_branch_name": "feature/b-f993e1f7",
+      "execution_worktree_path": "/Users/oscar.renalias/Projects/skill-pptx/.takt/worktrees/B-f993e1f7",
+      "expected_files": [
+        "pypptx/cli.py"
+      ],
+      "expected_globs": [],
+      "touched_files": [],
+      "conflict_risks": "",
+      "handoff_summary": {
+        "completed": "",
+        "remaining": "",
+        "risks": "",
+        "verdict": "",
+        "findings_count": 0,
+        "requires_followup": false,
+        "changed_files": [],
+        "updated_docs": [],
+        "next_action": "",
+        "next_agent": "",
+        "block_reason": "",
+        "expected_files": [],
+        "expected_globs": [],
+        "touched_files": [],
+        "conflict_risks": "",
+        "design_decisions": "",
+        "test_coverage_notes": "",
+        "known_limitations": ""
+      }
+    },
+    "last_agent_result": {
+      "outcome": "completed",
+      "summary": "Implemented `pypptx slide add`, `pypptx slide delete`, and `pypptx slide move` CLI commands in `pypptx/cli.py`. All three are wired into the existing `slide` subgroup and call the corresponding `ops.slides` public functions (`add_slide`, `delete_slide`, `move_slide`). The `add` command validates that exactly one of `--duplicate`/`--layout` is provided (stderr + exit 1 otherwise), supports an optional `--position` by calling `move_slide` after `add_slide`, and outputs `{\"added_file\": ..., \"position\": N}`. The `delete` command outputs `{\"deleted_file\": ..., \"deleted_index\": N}`. The `move` command outputs `{\"file\": ..., \"from\": N, \"to\": N}`. All three support `--plain` for human-readable output and route errors to stderr with non-zero exit codes. Syntax verified with `uv run python -m py_compile`.",
+      "verdict": "approved",
+      "findings_count": 0,
+      "requires_followup": false,
+      "next_agent": "tester",
+      "block_reason": ""
+    },
+    "telemetry": {
+      "cost_usd": 0.3481518,
+      "duration_ms": 101119,
+      "duration_api_ms": 261451,
+      "num_turns": 14,
+      "input_tokens": 14,
+      "output_tokens": 5277,
+      "cache_creation_tokens": 36814,
+      "cache_read_tokens": 343170,
+      "stop_reason": "end_turn",
+      "session_id": "06f2266e-26bb-41ea-bbb3-ee2b2573b491",
+      "permission_denials": [],
+      "prompt_chars": 6250,
+      "prompt_lines": 138,
+      "source": "provider",
+      "attempt": 1
+    },
+    "telemetry_history": [
+      {
+        "cost_usd": 0.3481518,
+        "duration_ms": 101119,
+        "duration_api_ms": 261451,
+        "num_turns": 14,
+        "input_tokens": 14,
+        "output_tokens": 5277,
+        "cache_creation_tokens": 36814,
+        "cache_read_tokens": 343170,
+        "stop_reason": "end_turn",
+        "session_id": "06f2266e-26bb-41ea-bbb3-ee2b2573b491",
+        "permission_denials": [],
+        "prompt_chars": 6250,
+        "prompt_lines": 138,
+        "source": "provider",
+        "attempt": 1
+      }
+    ],
+    "last_commit": "c45d5314257e14363fab2cb6d082d7c1df9f948f"
+  },
   "labels": [],
   "recovery_for": null,
   "priority": null
