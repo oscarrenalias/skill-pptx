@@ -1,0 +1,70 @@
+{
+  "bead_id": "B-8c9fdaa7",
+  "title": "Document thumbnails command",
+  "agent_type": "documentation",
+  "description": "Update project documentation to describe the thumbnails command, its options (--output, --cols), system dependencies (LibreOffice, Poppler/pdftoppm), the optional Pillow dependency, install instructions, and multi-file output behavior.",
+  "status": "ready",
+  "bead_type": "task",
+  "parent_id": "B-74563794",
+  "dependencies": [],
+  "acceptance_criteria": [
+    "README or docs describe `pypptx thumbnails` with all options",
+    "System dependency requirements (soffice, pdftoppm) are documented with platform install hints",
+    "Optional Pillow dependency and `pip install 'pypptx[thumbnails]'` install path are documented",
+    "Multi-file output behavior and the cols \u00d7 (cols + 1) threshold are explained",
+    "Hidden slide placeholder behavior is noted"
+  ],
+  "linked_docs": [
+    "specs/drafts/pypptx-thumbnails-command.md"
+  ],
+  "feature_root_id": "B-74563794",
+  "execution_branch_name": "feature/b-74563794",
+  "execution_worktree_path": "/Users/oscar.renalias/Projects/skill-pptx/.takt/worktrees/B-74563794",
+  "expected_files": [],
+  "expected_globs": [
+    "*.md",
+    "docs/**/*.md"
+  ],
+  "touched_files": [],
+  "changed_files": [],
+  "updated_docs": [],
+  "handoff_summary": {
+    "completed": "",
+    "remaining": "",
+    "risks": "",
+    "verdict": "",
+    "findings_count": 0,
+    "requires_followup": false,
+    "changed_files": [],
+    "updated_docs": [],
+    "next_action": "",
+    "next_agent": "",
+    "block_reason": "",
+    "expected_files": [],
+    "expected_globs": [],
+    "touched_files": [],
+    "conflict_risks": "",
+    "design_decisions": "",
+    "test_coverage_notes": "",
+    "known_limitations": ""
+  },
+  "block_reason": "",
+  "conflict_risks": "",
+  "branch_name": "",
+  "worktree_path": "",
+  "lease": null,
+  "retries": 0,
+  "execution_history": [
+    {
+      "timestamp": "2026-04-14T06:33:09.831434+00:00",
+      "event": "created",
+      "agent_type": "scheduler",
+      "summary": "Bead created",
+      "details": {}
+    }
+  ],
+  "metadata": {},
+  "labels": [],
+  "recovery_for": null,
+  "priority": null
+}
