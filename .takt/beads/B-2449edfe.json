@@ -7,12 +7,12 @@
   "bead_type": "task",
   "parent_id": "B-f5bbcf85",
   "dependencies": [
+    "B-084ff280",
     "B-0d1f2859",
-    "B-c91f9ae8",
-    "B-966cf34d",
-    "B-89996fdb",
     "B-677c8330",
-    "B-084ff280"
+    "B-89996fdb",
+    "B-966cf34d",
+    "B-c91f9ae8"
   ],
   "acceptance_criteria": [
     "No hardcoded font names, template dimension constants, or locale-specific placeholder text patterns in verify.py",
