@@ -1,0 +1,69 @@
+{
+  "bead_id": "B-084ff280",
+  "title": "Update SKILL.md QA checklist to include pypptx verify",
+  "agent_type": "documentation",
+  "description": "Update SKILL.md to add pypptx verify as the first step in the QA checklist, placed before the existing thumbnail inspection step. The new entry should include the example command and a one-line description of what structural issues it catches. No other content in SKILL.md should be altered.",
+  "status": "ready",
+  "bead_type": "task",
+  "parent_id": "B-f5bbcf85",
+  "dependencies": [],
+  "acceptance_criteria": [
+    "SKILL.md QA checklist contains pypptx verify as step 1",
+    "pypptx verify entry appears before the thumbnail check step in the list",
+    "Entry includes example command usage",
+    "Entry briefly describes the checks covered (unfilled placeholders, font size, overflow, clipping, overlap)",
+    "No other content in SKILL.md is modified"
+  ],
+  "linked_docs": [
+    "specs/drafts/add-pypptx-verify-command-for-post-generation-validation.md"
+  ],
+  "feature_root_id": "B-f5bbcf85",
+  "execution_branch_name": "feature/b-f5bbcf85",
+  "execution_worktree_path": "/Users/oscar.renalias/Projects/skill-pptx/.takt/worktrees/B-f5bbcf85",
+  "expected_files": [],
+  "expected_globs": [
+    "**/SKILL.md"
+  ],
+  "touched_files": [],
+  "changed_files": [],
+  "updated_docs": [],
+  "handoff_summary": {
+    "completed": "",
+    "remaining": "",
+    "risks": "",
+    "verdict": "",
+    "findings_count": 0,
+    "requires_followup": false,
+    "changed_files": [],
+    "updated_docs": [],
+    "next_action": "",
+    "next_agent": "",
+    "block_reason": "",
+    "expected_files": [],
+    "expected_globs": [],
+    "touched_files": [],
+    "conflict_risks": "",
+    "design_decisions": "",
+    "test_coverage_notes": "",
+    "known_limitations": ""
+  },
+  "block_reason": "",
+  "conflict_risks": "",
+  "branch_name": "",
+  "worktree_path": "",
+  "lease": null,
+  "retries": 0,
+  "execution_history": [
+    {
+      "timestamp": "2026-04-14T18:31:54.504779+00:00",
+      "event": "created",
+      "agent_type": "scheduler",
+      "summary": "Bead created",
+      "details": {}
+    }
+  ],
+  "metadata": {},
+  "labels": [],
+  "recovery_for": null,
+  "priority": null
+}
