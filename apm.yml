@@ -1,5 +1,5 @@
 name: skill-pptx
-version: 0.1.2
+version: 0.1.3
 description: Powerpoint creation and editing skill for agents
 author: Renalias, Oscar
 dependencies:
