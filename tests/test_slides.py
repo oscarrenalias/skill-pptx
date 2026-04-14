@@ -205,11 +205,18 @@ class TestMoveSlide:
         assert result["to"] == 3
 
     def test_reorders_slides(self, minimal_pptx):
-        """Moving slide 3 to position 1 places it first."""
-        slides_before = [s["file"] for s in list_slides(minimal_pptx)]
+        """Moving slide 3 (hidden) to position 1 places it first.
+
+        python-pptx renumbers slide files in sldIdLst order on every open,
+        so filenames are not stable across moves. Check the ``hidden``
+        attribute, which is derived from slide XML content, not the filename.
+        """
+        slides_before = list_slides(minimal_pptx)
         move_slide(minimal_pptx, 3, 1)
-        slides_after = [s["file"] for s in list_slides(minimal_pptx)]
-        assert slides_after[0] == slides_before[2]
+        slides_after = list_slides(minimal_pptx)
+        # The hidden slide (position 3 before) should now be at position 1.
+        assert slides_after[0]["hidden"] == slides_before[2]["hidden"]
+        assert slides_after[0]["hidden"] is True
 
     def test_slide_count_unchanged_after_move(self, minimal_pptx):
         move_slide(minimal_pptx, 1, 3)

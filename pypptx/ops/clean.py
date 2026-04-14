@@ -8,6 +8,7 @@ serialisation — never for parsing untrusted input.
 
 from __future__ import annotations
 
+import os
 import shutil
 import tempfile
 import xml.etree.ElementTree as StdET
@@ -56,11 +57,13 @@ def _resolve_target(base_part: PurePosixPath, target: str) -> PurePosixPath | No
 
 
 def _normalize(p: PurePosixPath) -> str:
-    """Canonical string key for a package-relative path."""
-    s = p.as_posix()
-    if s.startswith("./"):
-        s = s[2:]
-    return s
+    """Canonical string key for a package-relative path.
+
+    Resolves ``..`` components so that paths like
+    ``ppt/slideMasters/../slideLayouts/slideLayout1.xml``
+    normalise to ``ppt/slideLayouts/slideLayout1.xml``.
+    """
+    return os.path.normpath(p.as_posix())
 
 
 # ── XML helpers ───────────────────────────────────────────────────────────────
