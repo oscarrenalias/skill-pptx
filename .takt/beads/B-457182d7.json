@@ -6,7 +6,12 @@
   "status": "ready",
   "bead_type": "task",
   "parent_id": "B-90115bee",
-  "dependencies": [],
+  "dependencies": [
+    "B-bae205b8",
+    "B-d71811b9",
+    "B-23fe63b6",
+    "B-379f2433"
+  ],
   "acceptance_criteria": [
     "pypptx.py implementation matches the spec pattern exactly",
     "_DEPS does not include Pillow",
