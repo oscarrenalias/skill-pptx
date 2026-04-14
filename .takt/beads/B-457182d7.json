@@ -3,7 +3,7 @@
   "title": "Review standalone entry point implementation",
   "agent_type": "review",
   "description": "Review the complete implementation: verify pypptx.py exactly matches the spec pattern (correct _DEPS list, correct sys.prefix guard, correct venv creation and pip install invocation, correct os.execv call, correct sys.path setup, shebang present, file is executable), verify .gitignore covers .venv/, verify tests are comprehensive and pass, verify CLAUDE.md no longer references 'in development', and verify the pypptx/ package directory and pyproject.toml are completely unchanged.",
-  "status": "ready",
+  "status": "in_progress",
   "bead_type": "task",
   "parent_id": "B-90115bee",
   "dependencies": [
@@ -220,9 +220,12 @@
   },
   "block_reason": "",
   "conflict_risks": "Low \u2014 only .gitignore was touched; no overlap expected with other beads.\nNone. pypptx.py is a new file with no overlap with other beads.",
-  "branch_name": "",
+  "branch_name": "feature/b-90115bee",
   "worktree_path": "",
-  "lease": null,
+  "lease": {
+    "owner": "review:B-457182d7",
+    "expires_at": "2026-04-14T08:27:00.962350+00:00"
+  },
   "retries": 0,
   "execution_history": [
     {
@@ -231,9 +234,46 @@
       "agent_type": "scheduler",
       "summary": "Bead created",
       "details": {}
+    },
+    {
+      "timestamp": "2026-04-14T07:57:01.434375+00:00",
+      "event": "skills_loaded",
+      "agent_type": "review",
+      "summary": "Loaded 6 skill(s) for isolated execution",
+      "details": {
+        "loaded_skills": [
+          "core/base-orchestrator",
+          "role/reviewer-signoff",
+          "capability/code-review",
+          "task/corrective-bead-creation",
+          "task/risk-assessment",
+          "memory"
+        ]
+      }
+    },
+    {
+      "timestamp": "2026-04-14T07:57:01.434399+00:00",
+      "event": "started",
+      "agent_type": "review",
+      "summary": "Worker started",
+      "details": {}
     }
   ],
-  "metadata": {},
+  "metadata": {
+    "execution_root": "/Users/oscar.renalias/Projects/skill-pptx/.takt/agent-runs/B-457182d7",
+    "workspace_repo_path": "repo",
+    "loaded_skills": [
+      "core/base-orchestrator",
+      "role/reviewer-signoff",
+      "capability/code-review",
+      "task/corrective-bead-creation",
+      "task/risk-assessment",
+      "memory"
+    ],
+    "skill_bundle_hash": "e49ae02cdd641b1b539810ca3dc9f7cb45c7fa56ae2c7f96d6d53ebce3109bd4",
+    "isolated_home": "/Users/oscar.renalias/Projects/skill-pptx/.takt/agent-runs/B-457182d7/home",
+    "runner_backend": "claude"
+  },
   "labels": [],
   "recovery_for": null,
   "priority": null
