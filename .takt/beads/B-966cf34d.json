@@ -6,7 +6,9 @@
   "status": "ready",
   "bead_type": "task",
   "parent_id": "B-f5bbcf85",
-  "dependencies": [],
+  "dependencies": [
+    "B-c91f9ae8"
+  ],
   "acceptance_criteria": [
     "Check 5 reports WARNING when two non-tiny shapes overlap significantly (>0.3 sq in and >20% of smaller shape)",
     "Check 5 does not trigger when one shape fully contains the other",
