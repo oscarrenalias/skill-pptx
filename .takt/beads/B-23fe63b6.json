@@ -6,7 +6,10 @@
   "status": "ready",
   "bead_type": "task",
   "parent_id": "B-90115bee",
-  "dependencies": [],
+  "dependencies": [
+    "B-bae205b8",
+    "B-d71811b9"
+  ],
   "acceptance_criteria": [
     "tests/test_standalone.py exists with tests for bootstrap guard, version invocation, first-run venv creation, and second-run silence",
     "uv run pytest passes with no regressions in the existing 159 tests"
