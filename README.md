@@ -14,6 +14,22 @@ Or with [uv](https://github.com/astral-sh/uv):
 uv pip install -e .
 ```
 
+### Optional: thumbnails support
+
+The `thumbnails` command requires [Pillow](https://pillow.readthedocs.io/) and two system tools.
+Install the optional extra to get Pillow:
+
+```
+pip install 'pypptx[thumbnails]'
+```
+
+Then install the system tools:
+
+| Tool | macOS | Debian/Ubuntu |
+|---|---|---|
+| LibreOffice (`soffice`) | `brew install --cask libreoffice` | `sudo apt-get install libreoffice` |
+| Poppler (`pdftoppm`) | `brew install poppler` | `sudo apt-get install poppler-utils` |
+
 ## Core editing workflow
 
 The recommended workflow for making structural edits is:
@@ -178,6 +194,58 @@ pypptx clean presentation.pptx --plain
 ppt/slides/slide3.xml
 ppt/slides/_rels/slide3.xml.rels
 ```
+
+---
+
+### `thumbnails`
+
+Generate labeled thumbnail grid images from a `.pptx` file.
+Requires LibreOffice, Poppler/pdftoppm, and Pillow — see [thumbnails support](#optional-thumbnails-support).
+
+```
+pypptx thumbnails presentation.pptx
+```
+
+```json
+{"files": ["thumbnails.jpg"]}
+```
+
+With `--plain` (one file path per line):
+
+```
+pypptx thumbnails presentation.pptx --plain
+```
+
+```
+thumbnails.jpg
+```
+
+**Options:**
+
+| Option | Default | Description |
+|---|---|---|
+| `--output PREFIX` | `thumbnails` | Output filename prefix; `.jpg` is appended automatically. |
+| `--cols N` | `3` (max `6`) | Number of columns in the thumbnail grid. |
+| `--plain` | off | Emit one file path per line instead of JSON. |
+
+**Multi-file output:**
+
+When the slide count exceeds `cols × (cols + 1)`, the output is split across multiple JPEG files.
+With the default `--cols 3` each grid holds up to 12 slides (3 × 4).
+A deck with more than 12 slides produces multiple files suffixed `-1`, `-2`, …:
+
+```
+pypptx thumbnails big-deck.pptx
+```
+
+```json
+{"files": ["thumbnails-1.jpg", "thumbnails-2.jpg"]}
+```
+
+**Hidden slides:**
+
+Hidden slides are rendered as a hatched grey placeholder image in the grid rather than being skipped,
+so the grid index always matches the presentation slide number.
 
 ---
 

@@ -15,7 +15,7 @@ dependencies = [
 
 [project.optional-dependencies]
 thumbnails = [
-    "Pillow",
+    "Pillow>=10.0",
 ]
 
 [project.scripts]

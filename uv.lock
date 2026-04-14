@@ -495,7 +495,7 @@ dev = [
 requires-dist = [
     { name = "click" },
     { name = "defusedxml" },
-    { name = "pillow", marker = "extra == 'thumbnails'" },
+    { name = "pillow", marker = "extra == 'thumbnails'", specifier = ">=10.0" },
     { name = "python-pptx" },
 ]
 provides-extras = ["thumbnails"]

@@ -139,6 +139,37 @@ def clean_cmd(path: Path, plain: bool) -> None:
     )
 
 
+@cli.command("thumbnails")
+@click.argument("file", type=click.Path(exists=True, path_type=Path))
+@click.option("--output", "output_prefix", default="thumbnails", show_default=True, help="Output filename prefix.")
+@click.option("--cols", default=3, show_default=True, type=int, help="Number of grid columns (max: 6).")
+@click.option("--plain", is_flag=True, default=False, help="Output one file path per line instead of JSON.")
+def thumbnails_cmd(file: Path, output_prefix: str, cols: int, plain: bool) -> None:
+    """Generate labeled thumbnail grid images from a .pptx file."""
+    import tempfile
+
+    from pypptx.ops.thumbnails import check_dependencies, generate_thumbnails
+
+    if cols > 6:
+        click.echo("Error: --cols must be 6 or fewer.", err=True)
+        sys.exit(1)
+
+    check_dependencies()
+
+    with tempfile.TemporaryDirectory() as temp_dir:
+        try:
+            output_paths = generate_thumbnails(file, output_prefix, temp_dir, cols=cols)
+        except Exception as e:
+            click.echo(f"Error: {e}", err=True)
+            sys.exit(1)
+
+    output_result(
+        {"files": [str(p) for p in output_paths]},
+        plain,
+        lambda d: "\n".join(d["files"]),
+    )
+
+
 @cli.group()
 def slide() -> None:
     """Commands for working with slides."""
