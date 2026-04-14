@@ -87,6 +87,13 @@ class TestListLayouts:
         result = list_layouts(unpacked_pptx)
         assert len(result) > 0
 
+    def test_name_field_is_non_empty_string(self, minimal_pptx):
+        result = list_layouts(minimal_pptx)
+        for entry in result:
+            assert "name" in entry
+            assert isinstance(entry["name"], str)
+            assert len(entry["name"]) > 0
+
 
 # ── add_slide ─────────────────────────────────────────────────────────────────
 

@@ -205,7 +205,18 @@ class TestSlideLayoutsCmd:
         assert result.exit_code == 0
         lines = [l for l in result.output.strip().splitlines() if l]
         assert len(lines) > 0
-        assert all(l.endswith(".xml") for l in lines)
+        assert all(".xml" in l for l in lines)
+
+    def test_plain_output_includes_filename_and_name(self, runner, minimal_pptx):
+        result = runner.invoke(cli, ["slide", "layouts", "--plain", str(minimal_pptx)])
+        assert result.exit_code == 0
+        lines = [l for l in result.output.strip().splitlines() if l]
+        assert len(lines) > 0
+        for line in lines:
+            parts = line.split("  ", 1)
+            assert len(parts) == 2
+            assert parts[0].endswith(".xml")
+            assert len(parts[1].strip()) > 0
 
 
 # ── slide add command ─────────────────────────────────────────────────────────
