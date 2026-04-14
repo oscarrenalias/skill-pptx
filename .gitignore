@@ -12,3 +12,5 @@
 __pycache__/
 *.pyc
 *.pyo
+.takt/memory/
+.claude/settings.local.json
