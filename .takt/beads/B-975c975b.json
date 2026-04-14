@@ -3,7 +3,7 @@
   "title": "Update SKILL.md with layout selection and placeholder guidance",
   "agent_type": "documentation",
   "description": "Add the layout selection and placeholder guidance block to .apm/skills/pypptx/SKILL.md under the Creating a presentation from scratch section. Content must include: (1) instruction to always run slide layouts before choosing an index; (2) warning that index 0 / entry 1 is almost always the cover slide; (3) the name/use table from the spec; (4) the placeholder inspection snippet; (5) explicit prohibition on add_textbox() for slides that have layout placeholders.",
-  "status": "ready",
+  "status": "in_progress",
   "bead_type": "task",
   "parent_id": "B-680b5593",
   "dependencies": [
@@ -201,9 +201,12 @@
   },
   "block_reason": "",
   "conflict_risks": "None \u2014 only list_layouts() was modified; no shared state with sibling beads.\nNone \u2014 only the plain formatter lambda was changed; no structural or JSON changes.",
-  "branch_name": "",
-  "worktree_path": "",
-  "lease": null,
+  "branch_name": "feature/b-680b5593",
+  "worktree_path": "/Users/oscar.renalias/Projects/skill-pptx/.takt/worktrees/B-680b5593",
+  "lease": {
+    "owner": "documentation:B-975c975b",
+    "expires_at": "2026-04-14T13:28:34.314317+00:00"
+  },
   "retries": 0,
   "execution_history": [
     {
@@ -212,9 +215,46 @@
       "agent_type": "scheduler",
       "summary": "Bead created",
       "details": {}
+    },
+    {
+      "timestamp": "2026-04-14T12:58:34.633043+00:00",
+      "event": "skills_loaded",
+      "agent_type": "documentation",
+      "summary": "Loaded 6 skill(s) for isolated execution",
+      "details": {
+        "loaded_skills": [
+          "core/base-orchestrator",
+          "role/docs-agent",
+          "capability/docs-edit",
+          "task/release-notes",
+          "task/spec-sync",
+          "memory"
+        ]
+      }
+    },
+    {
+      "timestamp": "2026-04-14T12:58:34.633068+00:00",
+      "event": "started",
+      "agent_type": "documentation",
+      "summary": "Worker started",
+      "details": {}
     }
   ],
-  "metadata": {},
+  "metadata": {
+    "execution_root": "/Users/oscar.renalias/Projects/skill-pptx/.takt/agent-runs/B-975c975b",
+    "workspace_repo_path": "repo",
+    "loaded_skills": [
+      "core/base-orchestrator",
+      "role/docs-agent",
+      "capability/docs-edit",
+      "task/release-notes",
+      "task/spec-sync",
+      "memory"
+    ],
+    "skill_bundle_hash": "7c857dabbe34fe4a554141d698301444e918c67a8039f2ad572e46df3ff67cb3",
+    "isolated_home": "/Users/oscar.renalias/Projects/skill-pptx/.takt/agent-runs/B-975c975b/home",
+    "runner_backend": "claude"
+  },
   "labels": [],
   "recovery_for": null,
   "priority": null
