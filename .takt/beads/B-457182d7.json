@@ -3,7 +3,7 @@
   "title": "Review standalone entry point implementation",
   "agent_type": "review",
   "description": "Review the complete implementation: verify pypptx.py exactly matches the spec pattern (correct _DEPS list, correct sys.prefix guard, correct venv creation and pip install invocation, correct os.execv call, correct sys.path setup, shebang present, file is executable), verify .gitignore covers .venv/, verify tests are comprehensive and pass, verify CLAUDE.md no longer references 'in development', and verify the pypptx/ package directory and pyproject.toml are completely unchanged.",
-  "status": "ready",
+  "status": "done",
   "bead_type": "task",
   "parent_id": "B-90115bee",
   "dependencies": [
@@ -152,6 +152,13 @@
       "event": "retried",
       "agent_type": "review",
       "summary": "Requeued blocked bead after corrective bead B-457182d7-corrective completed",
+      "details": {}
+    },
+    {
+      "timestamp": "2026-04-14T08:01:43.228483+00:00",
+      "event": "updated",
+      "agent_type": "review",
+      "summary": "Bead updated via CLI",
       "details": {}
     }
   ],
