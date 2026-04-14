@@ -1,3 +1,20 @@
+---
+name: pypptx
+description: Python CLI for reading, editing, and creating PowerPoint .pptx files
+author: Renalias, Oscar
+tags:
+  - powerpoint
+  - pptx
+  - presentations
+  - office
+entry_point: pypptx.py
+requires:
+  optional:
+    - LibreOffice (soffice) — needed for thumbnails command
+    - Poppler (pdftoppm) — needed for thumbnails command
+    - Pillow — needed for thumbnails command (installed automatically via pip)
+---
+
 # pypptx
 
 A Python CLI for reading, editing, and creating PowerPoint `.pptx` files.
