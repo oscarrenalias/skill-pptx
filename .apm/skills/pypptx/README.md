@@ -4,7 +4,7 @@ A Python CLI toolkit for reading, editing, and creating `.pptx` files,
 designed for use by AI agents.
 
 **Source repository:** https://github.com/oscarrenalias/skill-pptx
-**Version:** 0.1.7
+**Version:** 0.1.8
 
 ## What this skill provides
 
