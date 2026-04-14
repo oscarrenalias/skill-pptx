@@ -1,0 +1,69 @@
+{
+  "bead_id": "B-f5bbcf85",
+  "title": "verify command feature root",
+  "agent_type": "planner",
+  "description": "Non-runnable container bead for the full verify command feature. All implementation, testing, documentation, and review work is expressed as children.",
+  "status": "done",
+  "bead_type": "feature",
+  "parent_id": "B-1023fd74",
+  "dependencies": [],
+  "acceptance_criteria": [
+    "pypptx verify clean.pptx exits 0 and returns {\"passed\": true, \"errors\": [], \"warnings\": [], ...}",
+    "pypptx verify bad.pptx exits 1 when errors are present",
+    "Each of the 5 checks is covered by at least one test asserting it triggers correctly on bad input",
+    "Each check is covered by at least one test asserting it does NOT trigger on clean input",
+    "--plain output is tested",
+    "SKILL.md QA checklist updated: pypptx verify appears as step 1, before the thumbnail check",
+    "No Accenture-specific logic: no hardcoded font names, no template dimension constants, no locale-specific placeholder text patterns"
+  ],
+  "linked_docs": [
+    "specs/drafts/add-pypptx-verify-command-for-post-generation-validation.md"
+  ],
+  "feature_root_id": "B-f5bbcf85",
+  "execution_branch_name": "feature/b-f5bbcf85",
+  "execution_worktree_path": "/Users/oscar.renalias/Projects/skill-pptx/.takt/worktrees/B-f5bbcf85",
+  "expected_files": [],
+  "expected_globs": [],
+  "touched_files": [],
+  "changed_files": [],
+  "updated_docs": [],
+  "handoff_summary": {
+    "completed": "",
+    "remaining": "",
+    "risks": "",
+    "verdict": "",
+    "findings_count": 0,
+    "requires_followup": false,
+    "changed_files": [],
+    "updated_docs": [],
+    "next_action": "",
+    "next_agent": "",
+    "block_reason": "",
+    "expected_files": [],
+    "expected_globs": [],
+    "touched_files": [],
+    "conflict_risks": "",
+    "design_decisions": "",
+    "test_coverage_notes": "",
+    "known_limitations": ""
+  },
+  "block_reason": "",
+  "conflict_risks": "",
+  "branch_name": "",
+  "worktree_path": "",
+  "lease": null,
+  "retries": 0,
+  "execution_history": [
+    {
+      "timestamp": "2026-04-14T18:31:51.796989+00:00",
+      "event": "created",
+      "agent_type": "scheduler",
+      "summary": "Bead created",
+      "details": {}
+    }
+  ],
+  "metadata": {},
+  "labels": [],
+  "recovery_for": null,
+  "priority": null
+}
