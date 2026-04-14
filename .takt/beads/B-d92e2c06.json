@@ -6,7 +6,9 @@
   "status": "ready",
   "bead_type": "task",
   "parent_id": "B-74563794",
-  "dependencies": [],
+  "dependencies": [
+    "B-ba2dfa23"
+  ],
   "acceptance_criteria": [
     "Hidden slides are identified by reading the slide.show attribute via python-pptx",
     "A hatched grey PIL Image is generated at the same pixel dimensions as a normal slide thumbnail",
