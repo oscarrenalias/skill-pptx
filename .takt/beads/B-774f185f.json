@@ -86,6 +86,15 @@
       "agent_type": "developer",
       "summary": "Worker started",
       "details": {}
+    },
+    {
+      "timestamp": "2026-04-14T12:54:53.438188+00:00",
+      "event": "guardrails_applied",
+      "agent_type": "developer",
+      "summary": "Applied guardrails from .takt/agent-runs/B-774f185f/repo/templates/agents/developer.md",
+      "details": {
+        "template_path": ".takt/agent-runs/B-774f185f/repo/templates/agents/developer.md"
+      }
     }
   ],
   "metadata": {
@@ -102,7 +111,59 @@
     ],
     "skill_bundle_hash": "2cbacb3ae07c8eee2a6bb3d65b99b3e4df7fa47ac8b10c5c68be4b338a583348",
     "isolated_home": "/Users/oscar.renalias/Projects/skill-pptx/.takt/agent-runs/B-774f185f/home",
-    "runner_backend": "claude"
+    "runner_backend": "claude",
+    "guardrails": {
+      "agent_type": "developer",
+      "template_path": ".takt/agent-runs/B-774f185f/repo/templates/agents/developer.md",
+      "template_text": "# Developer Guardrails\n\nPrimary responsibility: Implement only the assigned bead inside the existing architecture and file scope.\n\nAllowed actions:\n- Modify code, configuration, or local docs required to complete the assigned bead.\n- Create sub-beads for discovered follow-up work that should be handled separately.\n- Verify your `Python` changes compile and import correctly with a quick syntax check: `python -m py_compile`.\n\nDisallowed actions:\n- Run any test suite \u2014 not even a targeted `pytest` run or any subset. Test execution is exclusively the tester agent's responsibility. Running tests wastes the agent budget and delays the pipeline.\n- Redesign unrelated architecture or broaden scope beyond the assigned bead.\n- Perform final review signoff in place of a review agent.\n- Silently absorb unrelated test, documentation, or planning work that should be handed off.\n\nExpected outputs:\n- Completed or blocked JSON with concise implementation summary.\n- Accurate touched files, changed files, risks, and follow-up handoff fields.",
+      "captured_at": "2026-04-14T12:54:53.438146+00:00"
+    },
+    "worker_prompt_context": {
+      "bead_id": "B-774f185f",
+      "feature_root_id": "B-680b5593",
+      "title": "Add name field to list_layouts()",
+      "agent_type": "developer",
+      "description": "Extend list_layouts() in ops/slides.py to collect (filename, name) pairs before sorting, then include name in each returned dict. The current implementation discards the layout object reference after extracting the filename, so the sort must be changed to sort by filename while preserving the associated layout.name string.",
+      "status": "in_progress",
+      "acceptance_criteria": [
+        "list_layouts() returns dicts with index, file, and name keys",
+        "name value matches layout.name from python-pptx for each layout",
+        "filenames are still sorted before 1-based indexing is assigned",
+        "No other functions or commands are modified by this bead"
+      ],
+      "dependencies": [],
+      "linked_docs": [
+        "specs/drafts/improve-slide-layout-selection-guidance-for-agents.md"
+      ],
+      "execution_branch_name": "feature/b-680b5593",
+      "execution_worktree_path": "/Users/oscar.renalias/Projects/skill-pptx/.takt/worktrees/B-680b5593",
+      "expected_files": [
+        ".apm/skills/pypptx/pypptx/ops/slides.py"
+      ],
+      "expected_globs": [],
+      "touched_files": [],
+      "conflict_risks": "",
+      "handoff_summary": {
+        "completed": "",
+        "remaining": "",
+        "risks": "",
+        "verdict": "",
+        "findings_count": 0,
+        "requires_followup": false,
+        "changed_files": [],
+        "updated_docs": [],
+        "next_action": "",
+        "next_agent": "",
+        "block_reason": "",
+        "expected_files": [],
+        "expected_globs": [],
+        "touched_files": [],
+        "conflict_risks": "",
+        "design_decisions": "",
+        "test_coverage_notes": "",
+        "known_limitations": ""
+      }
+    }
   },
   "labels": [],
   "recovery_for": null,
