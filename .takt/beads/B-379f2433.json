@@ -6,7 +6,10 @@
   "status": "ready",
   "bead_type": "task",
   "parent_id": "B-90115bee",
-  "dependencies": [],
+  "dependencies": [
+    "B-bae205b8",
+    "B-d71811b9"
+  ],
   "acceptance_criteria": [
     "CLAUDE.md no longer describes pypptx.py as 'in development'",
     "CLAUDE.md Running the CLI section shows python3 pypptx.py examples",
