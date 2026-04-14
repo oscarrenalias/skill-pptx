@@ -1,0 +1,69 @@
+{
+  "bead_id": "B-f8eefe9b",
+  "title": "Update --plain rendering for slide layouts command",
+  "agent_type": "developer",
+  "description": "Update the plain-text lambda in slide_layouts_cmd (cli.py:216) to output filename and name separated by two spaces on each line, matching the format shown in the spec. The JSON output path is unchanged by this bead.",
+  "status": "ready",
+  "bead_type": "task",
+  "parent_id": "B-680b5593",
+  "dependencies": [
+    "B-774f185f"
+  ],
+  "acceptance_criteria": [
+    "--plain output shows one line per layout in the form: <filename>  <name>",
+    "JSON output structure is not altered by this bead (name field already added by prior bead)",
+    "No other CLI commands are touched"
+  ],
+  "linked_docs": [
+    "specs/drafts/improve-slide-layout-selection-guidance-for-agents.md"
+  ],
+  "feature_root_id": "B-680b5593",
+  "execution_branch_name": "feature/b-680b5593",
+  "execution_worktree_path": "/Users/oscar.renalias/Projects/skill-pptx/.takt/worktrees/B-680b5593",
+  "expected_files": [
+    ".apm/skills/pypptx/pypptx/cli.py"
+  ],
+  "expected_globs": [],
+  "touched_files": [],
+  "changed_files": [],
+  "updated_docs": [],
+  "handoff_summary": {
+    "completed": "",
+    "remaining": "",
+    "risks": "",
+    "verdict": "",
+    "findings_count": 0,
+    "requires_followup": false,
+    "changed_files": [],
+    "updated_docs": [],
+    "next_action": "",
+    "next_agent": "",
+    "block_reason": "",
+    "expected_files": [],
+    "expected_globs": [],
+    "touched_files": [],
+    "conflict_risks": "",
+    "design_decisions": "",
+    "test_coverage_notes": "",
+    "known_limitations": ""
+  },
+  "block_reason": "",
+  "conflict_risks": "",
+  "branch_name": "",
+  "worktree_path": "",
+  "lease": null,
+  "retries": 0,
+  "execution_history": [
+    {
+      "timestamp": "2026-04-14T12:54:40.843085+00:00",
+      "event": "created",
+      "agent_type": "scheduler",
+      "summary": "Bead created",
+      "details": {}
+    }
+  ],
+  "metadata": {},
+  "labels": [],
+  "recovery_for": null,
+  "priority": null
+}

@@ -486,18 +486,19 @@ def list_layouts(path: Path) -> list[dict]:
     Each dict contains:
         index -- 1-based, assigned after sorting by filename
         file  -- bare filename, e.g. "slideLayout1.xml"
+        name  -- layout name as reported by python-pptx (layout.name)
     """
     prs = _open_presentation(Path(path))
     seen: set[str] = set()
-    filenames: list[str] = []
+    pairs: list[tuple[str, str]] = []
     for master in prs.slide_masters:
         for layout in master.slide_layouts:
             filename = layout.part.partname.rsplit("/", 1)[-1]
             if filename not in seen:
                 seen.add(filename)
-                filenames.append(filename)
-    filenames.sort()
-    return [{"index": i, "file": f} for i, f in enumerate(filenames, start=1)]
+                pairs.append((filename, layout.name))
+    pairs.sort(key=lambda p: p[0])
+    return [{"index": i, "file": f, "name": n} for i, (f, n) in enumerate(pairs, start=1)]
 
 
 def add_slide(

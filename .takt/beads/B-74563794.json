@@ -1,0 +1,113 @@
+{
+  "bead_id": "B-74563794",
+  "title": "pypptx thumbnails command",
+  "agent_type": "planner",
+  "description": "Non-runnable shared execution root for the thumbnails command feature. All concrete implementation, testing, documentation, and review work lives in children.",
+  "status": "done",
+  "bead_type": "feature",
+  "parent_id": "B-d5c364a6",
+  "dependencies": [],
+  "acceptance_criteria": [
+    "`pypptx thumbnails deck.pptx` produces thumbnails.jpg containing a labeled grid of slide images",
+    "`pypptx thumbnails deck.pptx --cols 4 --output out` produces out.jpg with 4 columns",
+    "Decks exceeding cols \u00d7 (cols + 1) slides produce multiple numbered grid files",
+    "Output is JSON {\"files\": [...]}; --plain prints one path per line",
+    "Missing Pillow prints `pip install 'pypptx[thumbnails]'` to stderr and exits non-zero",
+    "Missing soffice or pdftoppm prints install instructions to stderr and exits non-zero"
+  ],
+  "linked_docs": [
+    "specs/drafts/pypptx-thumbnails-command.md"
+  ],
+  "feature_root_id": "B-74563794",
+  "execution_branch_name": "feature/b-74563794",
+  "execution_worktree_path": "/Users/oscar.renalias/Projects/skill-pptx/.takt/worktrees/B-74563794",
+  "expected_files": [],
+  "expected_globs": [],
+  "touched_files": [],
+  "changed_files": [],
+  "updated_docs": [],
+  "handoff_summary": {
+    "completed": "",
+    "remaining": "",
+    "risks": "",
+    "verdict": "",
+    "findings_count": 0,
+    "requires_followup": false,
+    "changed_files": [],
+    "updated_docs": [],
+    "next_action": "",
+    "next_agent": "",
+    "block_reason": "",
+    "expected_files": [],
+    "expected_globs": [],
+    "touched_files": [],
+    "conflict_risks": "",
+    "design_decisions": "",
+    "test_coverage_notes": "",
+    "known_limitations": ""
+  },
+  "block_reason": "",
+  "conflict_risks": "",
+  "branch_name": "",
+  "worktree_path": "",
+  "lease": null,
+  "retries": 0,
+  "execution_history": [
+    {
+      "timestamp": "2026-04-14T06:33:05.848891+00:00",
+      "event": "created",
+      "agent_type": "scheduler",
+      "summary": "Bead created",
+      "details": {}
+    },
+    {
+      "timestamp": "2026-04-14T06:33:27.894316+00:00",
+      "event": "git_commit_failed",
+      "agent_type": "scheduler",
+      "summary": "git commit failed: Command '['git', 'commit', '-m', '[bead] B-74563794: done', '--no-verify']' returned non-zero exit status 1.",
+      "details": {
+        "error": "Command '['git', 'commit', '-m', '[bead] B-74563794: done', '--no-verify']' returned non-zero exit status 1."
+      }
+    },
+    {
+      "timestamp": "2026-04-14T06:35:13.966883+00:00",
+      "event": "git_commit_failed",
+      "agent_type": "scheduler",
+      "summary": "git commit failed: Command '['git', 'commit', '-m', '[bead] B-74563794: done', '--no-verify']' returned non-zero exit status 1.",
+      "details": {
+        "error": "Command '['git', 'commit', '-m', '[bead] B-74563794: done', '--no-verify']' returned non-zero exit status 1."
+      }
+    },
+    {
+      "timestamp": "2026-04-14T06:38:57.134355+00:00",
+      "event": "git_commit_failed",
+      "agent_type": "scheduler",
+      "summary": "git commit failed: Command '['git', 'commit', '-m', '[bead] B-74563794: done', '--no-verify']' returned non-zero exit status 1.",
+      "details": {
+        "error": "Command '['git', 'commit', '-m', '[bead] B-74563794: done', '--no-verify']' returned non-zero exit status 1."
+      }
+    },
+    {
+      "timestamp": "2026-04-14T06:42:47.956056+00:00",
+      "event": "git_commit_failed",
+      "agent_type": "scheduler",
+      "summary": "git commit failed: Command '['git', 'commit', '-m', '[bead] B-74563794: done', '--no-verify']' returned non-zero exit status 1.",
+      "details": {
+        "error": "Command '['git', 'commit', '-m', '[bead] B-74563794: done', '--no-verify']' returned non-zero exit status 1."
+      }
+    },
+    {
+      "timestamp": "2026-04-14T06:55:51.209486+00:00",
+      "event": "git_commit_failed",
+      "agent_type": "scheduler",
+      "summary": "git commit failed: Command '['git', 'commit', '-m', '[bead] B-74563794: done', '--no-verify']' returned non-zero exit status 1.",
+      "details": {
+        "error": "Command '['git', 'commit', '-m', '[bead] B-74563794: done', '--no-verify']' returned non-zero exit status 1."
+      }
+    }
+  ],
+  "metadata": {},
+  "labels": [],
+  "recovery_for": null,
+  "priority": null
+}
