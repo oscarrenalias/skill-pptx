@@ -6,7 +6,10 @@
   "status": "ready",
   "bead_type": "task",
   "parent_id": "B-74563794",
-  "dependencies": [],
+  "dependencies": [
+    "B-a73f119b",
+    "B-cb4739fc"
+  ],
   "acceptance_criteria": [
     "`pypptx thumbnails --help` shows usage with --output and --cols options",
     "`pypptx thumbnails deck.pptx` prints JSON {\"files\": [...]}",
