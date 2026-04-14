@@ -123,6 +123,51 @@ prs.save("output.pptx")
 Use `python3 pypptx.py slide layouts <file>` on the template (or any existing
 deck) to find the layout indices available in that theme.
 
+### Choosing a layout
+
+**Always run `slide layouts` before choosing a layout index.** Never hardcode
+an index — layout assignments vary between templates.
+
+```bash
+python3 pypptx.py slide layouts presentation.pptx
+```
+
+> **Warning:** Layout index 1 (entry 1) is almost always the cover slide
+> ("Title Slide"). Never use it for regular content slides.
+
+Common layout names and when to use them:
+
+| Name | Use for |
+|---|---|
+| Title Slide | Cover slide only (first slide) |
+| Title and Content | Standard body slides |
+| Section Header | Section dividers |
+| Two Content | Side-by-side content |
+| Title Only | Slides with custom content below the title |
+| Blank | Fully custom slides (no placeholders) |
+
+### Use placeholders, not `add_textbox()`
+
+Before writing content, inspect what placeholders the chosen layout provides:
+
+```python
+for ph in slide.placeholders:
+    print(ph.placeholder_format.idx, ph.name)
+```
+
+Write into them by index:
+
+```python
+slide.placeholders[0].text = "My Title"
+slide.placeholders[1].text = "Body text"
+```
+
+**Never use `add_textbox()`** on a slide that has a layout with placeholders.
+It places an unstyled text box on top of the master design — wrong font, wrong
+colour, wrong position, often unreadable against the background.
+`add_textbox()` is only appropriate for fully blank slides (layout "Blank")
+where no placeholders exist.
+
 ### Design guidance
 
 **Colors** — use the theme palette from an existing file where possible.
