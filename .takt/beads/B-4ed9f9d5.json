@@ -1,0 +1,68 @@
+{
+  "bead_id": "B-4ed9f9d5",
+  "title": "Implement Pillow grid assembly with slide number labels",
+  "agent_type": "developer",
+  "description": "In thumbnails.py, implement assemble_grid() that accepts a list of PIL Images and a column count, arranges them in row-major order, and annotates each cell with its 1-based slide number label. Returns a single PIL Image.",
+  "status": "ready",
+  "bead_type": "task",
+  "parent_id": "B-74563794",
+  "dependencies": [],
+  "acceptance_criteria": [
+    "assemble_grid() accepts a list of PIL Images and an integer cols argument",
+    "Images are arranged in row-major order with no more than cols columns per row",
+    "Each cell is annotated with its 1-based slide number",
+    "The function returns a single PIL Image ready for saving"
+  ],
+  "linked_docs": [
+    "specs/drafts/pypptx-thumbnails-command.md"
+  ],
+  "feature_root_id": "B-74563794",
+  "execution_branch_name": "feature/b-74563794",
+  "execution_worktree_path": "/Users/oscar.renalias/Projects/skill-pptx/.takt/worktrees/B-74563794",
+  "expected_files": [
+    "pypptx/ops/thumbnails.py"
+  ],
+  "expected_globs": [],
+  "touched_files": [],
+  "changed_files": [],
+  "updated_docs": [],
+  "handoff_summary": {
+    "completed": "",
+    "remaining": "",
+    "risks": "",
+    "verdict": "",
+    "findings_count": 0,
+    "requires_followup": false,
+    "changed_files": [],
+    "updated_docs": [],
+    "next_action": "",
+    "next_agent": "",
+    "block_reason": "",
+    "expected_files": [],
+    "expected_globs": [],
+    "touched_files": [],
+    "conflict_risks": "",
+    "design_decisions": "",
+    "test_coverage_notes": "",
+    "known_limitations": ""
+  },
+  "block_reason": "",
+  "conflict_risks": "",
+  "branch_name": "",
+  "worktree_path": "",
+  "lease": null,
+  "retries": 0,
+  "execution_history": [
+    {
+      "timestamp": "2026-04-14T06:33:07.927846+00:00",
+      "event": "created",
+      "agent_type": "scheduler",
+      "summary": "Bead created",
+      "details": {}
+    }
+  ],
+  "metadata": {},
+  "labels": [],
+  "recovery_for": null,
+  "priority": null
+}
