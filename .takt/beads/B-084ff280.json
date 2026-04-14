@@ -227,7 +227,7 @@
     "known_limitations": ""
   },
   "block_reason": "",
-  "conflict_risks": "No conflicts expected \u2014 verify.py is a new file. CLI bead (cli.py) will import from this module; ensure the import path matches .apm/skills/pypptx/pypptx/ops/verify.py.",
+  "conflict_risks": "No conflicts expected \u2014 verify.py is a new file. CLI bead (cli.py) will import from this module; ensure the import path matches .apm/skills/pypptx/pypptx/ops/verify.py.\nNo conflicts expected \u2014 only .apm/skills/pypptx/pypptx/ops/verify.py was modified. Sibling beads touching cli.py or tests/ are unaffected.",
   "branch_name": "",
   "worktree_path": "",
   "lease": null,
