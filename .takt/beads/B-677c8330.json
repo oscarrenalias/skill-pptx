@@ -3,7 +3,7 @@
   "title": "Tests for all verify checks and CLI",
   "agent_type": "tester",
   "description": "Create tests/test_verify.py with comprehensive tests for all 5 checks and the verify CLI command. Build minimal fixture .pptx files using python-pptx directly in the tests (following the conftest.py pattern already in the project). Each of the 5 checks requires at least one positive test (triggers the check on bad input) and one negative test (clean input produces no issue). Also test --plain output format and exit codes via the Click test runner.",
-  "status": "blocked",
+  "status": "ready",
   "bead_type": "task",
   "parent_id": "B-f5bbcf85",
   "dependencies": [
@@ -173,7 +173,7 @@
     "test_coverage_notes": "",
     "known_limitations": ""
   },
-  "block_reason": "Agent timed out after 900 seconds",
+  "block_reason": "",
   "conflict_risks": "",
   "branch_name": "feature/b-f5bbcf85",
   "worktree_path": "/Users/oscar.renalias/Projects/skill-pptx/.takt/worktrees/B-f5bbcf85",
@@ -231,6 +231,13 @@
       "event": "failed",
       "agent_type": "tester",
       "summary": "Worker execution failed: Agent timed out after 900 seconds",
+      "details": {}
+    },
+    {
+      "timestamp": "2026-04-14T18:56:46.793829+00:00",
+      "event": "retried",
+      "agent_type": "tester",
+      "summary": "Requeued blocked bead after transient infrastructure/auth error",
       "details": {}
     }
   ],
