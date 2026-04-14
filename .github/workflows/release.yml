@@ -55,6 +55,7 @@ jobs:
         run: |
           rm -rf .apm/skills/pypptx
           mkdir -p .apm/skills/pypptx
+          cp apm.yml .apm/skills/pypptx/
           cp SKILL.md .apm/skills/pypptx/
           cp pypptx.py .apm/skills/pypptx/
           cp -r pypptx .apm/skills/pypptx/pypptx
