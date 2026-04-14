@@ -1,0 +1,70 @@
+{
+  "bead_id": "B-2449edfe",
+  "title": "Review verify command implementation",
+  "agent_type": "review",
+  "description": "Review the complete verify command implementation across verify.py, cli.py, tests/test_verify.py, and SKILL.md. Verify the output contract is maintained (JSON to stdout, errors to stderr, exit codes), all 5 checks match the spec, defusedxml is used for any XML parsing, no brand-specific or template-specific logic was introduced, and all acceptance criteria from the spec are met. Run the full test suite and confirm it passes.",
+  "status": "ready",
+  "bead_type": "task",
+  "parent_id": "B-f5bbcf85",
+  "dependencies": [],
+  "acceptance_criteria": [
+    "No hardcoded font names, template dimension constants, or locale-specific placeholder text patterns in verify.py",
+    "defusedxml is used for any XML parsing; xml.etree.ElementTree is not used to parse untrusted XML",
+    "JSON output contract is maintained: single JSON object to stdout, all error messages to stderr",
+    "Exit code 0 for clean files, exit code 1 for files with errors",
+    "All 5 checks are implemented per spec (patterns, thresholds, exclusion rules)",
+    "uv run pytest passes with no failures or errors",
+    "SKILL.md QA checklist is updated with pypptx verify as step 1",
+    "Code style and import conventions are consistent with the rest of pypptx/"
+  ],
+  "linked_docs": [
+    "specs/drafts/add-pypptx-verify-command-for-post-generation-validation.md"
+  ],
+  "feature_root_id": "B-f5bbcf85",
+  "execution_branch_name": "feature/b-f5bbcf85",
+  "execution_worktree_path": "/Users/oscar.renalias/Projects/skill-pptx/.takt/worktrees/B-f5bbcf85",
+  "expected_files": [],
+  "expected_globs": [],
+  "touched_files": [],
+  "changed_files": [],
+  "updated_docs": [],
+  "handoff_summary": {
+    "completed": "",
+    "remaining": "",
+    "risks": "",
+    "verdict": "",
+    "findings_count": 0,
+    "requires_followup": false,
+    "changed_files": [],
+    "updated_docs": [],
+    "next_action": "",
+    "next_agent": "",
+    "block_reason": "",
+    "expected_files": [],
+    "expected_globs": [],
+    "touched_files": [],
+    "conflict_risks": "",
+    "design_decisions": "",
+    "test_coverage_notes": "",
+    "known_limitations": ""
+  },
+  "block_reason": "",
+  "conflict_risks": "",
+  "branch_name": "",
+  "worktree_path": "",
+  "lease": null,
+  "retries": 0,
+  "execution_history": [
+    {
+      "timestamp": "2026-04-14T18:31:54.939804+00:00",
+      "event": "created",
+      "agent_type": "scheduler",
+      "summary": "Bead created",
+      "details": {}
+    }
+  ],
+  "metadata": {},
+  "labels": [],
+  "recovery_for": null,
+  "priority": null
+}
