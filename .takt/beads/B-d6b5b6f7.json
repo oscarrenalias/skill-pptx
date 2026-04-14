@@ -6,7 +6,10 @@
   "status": "ready",
   "bead_type": "task",
   "parent_id": "B-680b5593",
-  "dependencies": [],
+  "dependencies": [
+    "B-774f185f",
+    "B-f8eefe9b"
+  ],
   "acceptance_criteria": [
     "All pre-existing layout tests pass without modification to production code",
     "New unit test asserts name is a non-empty string for every layout entry returned by list_layouts()",
