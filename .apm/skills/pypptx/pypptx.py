@@ -23,11 +23,8 @@ def _bootstrap() -> None:
     os.execv(str(venv_py), [str(venv_py)] + sys.argv)
 
 
-_bootstrap()
-
-sys.path.insert(0, str(_SKILL_DIR))
-
-from pypptx.cli import cli  # noqa: E402
-
 if __name__ == "__main__":
+    _bootstrap()
+    sys.path.insert(0, str(_SKILL_DIR))
+    from pypptx.cli import cli
     cli()

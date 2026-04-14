@@ -21,6 +21,9 @@ thumbnails = [
 [project.scripts]
 pypptx = "pypptx.cli:cli"
 
+[tool.hatch.build.targets.wheel]
+packages = [".apm/skills/pypptx/pypptx"]
+
 [dependency-groups]
 dev = [
     "pytest>=8.4.2",

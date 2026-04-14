@@ -19,7 +19,7 @@ from unittest.mock import call, patch
 import pytest
 
 _REPO_ROOT = Path(__file__).parent.parent
-_SCRIPT = _REPO_ROOT / "pypptx.py"
+_SCRIPT = _REPO_ROOT / ".apm" / "skills" / "pypptx" / "pypptx.py"
 
 
 # ---------------------------------------------------------------------------
@@ -167,7 +167,7 @@ _needs_base_python = pytest.mark.skipif(
 def isolated_repo(tmp_path):
     """Temp directory containing pypptx.py and the pypptx package."""
     shutil.copy2(_SCRIPT, tmp_path / "pypptx.py")
-    shutil.copytree(_REPO_ROOT / "pypptx", tmp_path / "pypptx")
+    shutil.copytree(_REPO_ROOT / ".apm" / "skills" / "pypptx" / "pypptx", tmp_path / "pypptx")
     return tmp_path
 
 
