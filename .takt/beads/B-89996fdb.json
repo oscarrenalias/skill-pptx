@@ -1,0 +1,71 @@
+{
+  "bead_id": "B-89996fdb",
+  "title": "Add verify CLI command to cli.py",
+  "agent_type": "developer",
+  "description": "Add the verify Click command to pypptx/cli.py. The command accepts a .pptx file path argument, calls verify_pptx() from pypptx.ops.verify, and formats output via the existing output_result() helper. JSON output (default) includes errors, warnings, passed (bool: errors is empty), slide_count, error_count, and warning_count. --plain output writes one line per issue prefixed with FAIL for errors and WARN for warnings, with no output when the file is clean. Exit code 0 when errors list is empty; exit code 1 when errors are present (use sys.exit or click's standalone_mode).",
+  "status": "ready",
+  "bead_type": "task",
+  "parent_id": "B-f5bbcf85",
+  "dependencies": [],
+  "acceptance_criteria": [
+    "pypptx verify presentation.pptx command is registered under the CLI group and callable",
+    "JSON output includes errors, warnings, passed, slide_count, error_count, warning_count",
+    "--plain output writes FAIL-prefixed lines for errors and WARN-prefixed lines for warnings",
+    "--plain output produces no output when there are no issues",
+    "Exit code is 0 when errors list is empty (warnings do not affect exit code)",
+    "Exit code is 1 when any errors are present",
+    "Error messages from file-not-found or pptx parse failures go to stderr"
+  ],
+  "linked_docs": [
+    "specs/drafts/add-pypptx-verify-command-for-post-generation-validation.md"
+  ],
+  "feature_root_id": "B-f5bbcf85",
+  "execution_branch_name": "feature/b-f5bbcf85",
+  "execution_worktree_path": "/Users/oscar.renalias/Projects/skill-pptx/.takt/worktrees/B-f5bbcf85",
+  "expected_files": [
+    "pypptx/cli.py"
+  ],
+  "expected_globs": [],
+  "touched_files": [],
+  "changed_files": [],
+  "updated_docs": [],
+  "handoff_summary": {
+    "completed": "",
+    "remaining": "",
+    "risks": "",
+    "verdict": "",
+    "findings_count": 0,
+    "requires_followup": false,
+    "changed_files": [],
+    "updated_docs": [],
+    "next_action": "",
+    "next_agent": "",
+    "block_reason": "",
+    "expected_files": [],
+    "expected_globs": [],
+    "touched_files": [],
+    "conflict_risks": "",
+    "design_decisions": "",
+    "test_coverage_notes": "",
+    "known_limitations": ""
+  },
+  "block_reason": "",
+  "conflict_risks": "",
+  "branch_name": "",
+  "worktree_path": "",
+  "lease": null,
+  "retries": 0,
+  "execution_history": [
+    {
+      "timestamp": "2026-04-14T18:31:53.681727+00:00",
+      "event": "created",
+      "agent_type": "scheduler",
+      "summary": "Bead created",
+      "details": {}
+    }
+  ],
+  "metadata": {},
+  "labels": [],
+  "recovery_for": null,
+  "priority": null
+}
