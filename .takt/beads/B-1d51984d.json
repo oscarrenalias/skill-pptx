@@ -7,15 +7,15 @@
   "bead_type": "task",
   "parent_id": "B-74563794",
   "dependencies": [
-    "B-a73f119b",
-    "B-407ceaca",
-    "B-ba2dfa23",
-    "B-d92e2c06",
-    "B-4ed9f9d5",
-    "B-cb4739fc",
-    "B-52ca6e5a",
     "B-127c7e6a",
-    "B-8c9fdaa7"
+    "B-407ceaca",
+    "B-4ed9f9d5",
+    "B-52ca6e5a",
+    "B-8c9fdaa7",
+    "B-a73f119b",
+    "B-ba2dfa23",
+    "B-cb4739fc",
+    "B-d92e2c06"
   ],
   "acceptance_criteria": [
     "All spec acceptance criteria are satisfied",
