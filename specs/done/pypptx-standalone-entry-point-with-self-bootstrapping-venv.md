@@ -1,18 +1,18 @@
 ---
 name: pypptx standalone entry point with self-bootstrapping venv
 id: spec-5636a620
-description: Adds a self-contained pypptx.py entry script at the repo root that manages its own virtualenv and dependencies without requiring uv, pip, or any external tooling.
+description: "Adds a self-contained pypptx.py entry script at the repo root that manages its own virtualenv and dependencies without requiring uv, pip, or any external tooling."
 dependencies: spec-b1c47a0f
 priority: high
 complexity: low
-status: draft
+status: done
 tags:
 - cli
 - packaging
 scope:
   in: pypptx.py entry script at repo root; .venv management
   out: changes to the pypptx package itself
-feature_root_id:
+feature_root_id: null
 ---
 # pypptx standalone entry point with self-bootstrapping venv
 

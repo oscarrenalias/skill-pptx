@@ -1,0 +1,15 @@
+name: skill-pptx
+version: 0.1.0
+description: Powerpoint creation and editing skill for agents
+author: Renalias, Oscar
+dependencies:
+  apm: []
+  mcp: []
+scripts: {}
+compilation:
+  exclude:
+    - "specs/**"
+    - "tests/**"
+    - ".takt/**"
+    - ".claude/**"
+    - ".agents/**"

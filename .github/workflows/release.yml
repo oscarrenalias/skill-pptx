@@ -1,0 +1,79 @@
+name: Build and Release
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    # Skip when triggered by the release commit to avoid infinite loops
+    if: "!startsWith(github.event.head_commit.message, 'release:')"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v4
+      - name: Run tests
+        run: uv run pytest
+
+  release:
+    needs: test
+    # Only release on direct pushes to main, not on PRs
+    if: >
+      github.event_name == 'push' &&
+      github.ref == 'refs/heads/main' &&
+      !startsWith(github.event.head_commit.message, 'release:')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Bump version in apm.yml
+        id: version
+        run: |
+          NEW_VERSION=$(python3 - <<'EOF'
+          import re
+          with open('apm.yml') as f:
+              content = f.read()
+          m = re.search(r'^version:\s*(\d+)\.(\d+)\.(\d+)', content, re.MULTILINE)
+          major, minor, patch = int(m.group(1)), int(m.group(2)), int(m.group(3))
+          new_version = f"{major}.{minor}.{patch + 1}"
+          content = re.sub(r'^version:\s*\S+', f'version: {new_version}', content, flags=re.MULTILINE)
+          with open('apm.yml', 'w') as f:
+              f.write(content)
+          print(new_version)
+          EOF
+          )
+          echo "version=$NEW_VERSION" >> $GITHUB_OUTPUT
+
+      - name: Build .apm package
+        run: |
+          rm -rf .apm/skills/pypptx
+          mkdir -p .apm/skills/pypptx
+          cp SKILL.md .apm/skills/pypptx/
+          cp pypptx.py .apm/skills/pypptx/
+          cp -r pypptx .apm/skills/pypptx/pypptx
+          find .apm -type d -name '__pycache__' -exec rm -rf {} + 2>/dev/null || true
+          find .apm -name '*.pyc' -delete 2>/dev/null || true
+
+      - name: Commit, tag, and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add apm.yml .apm/
+          git commit -m "release: v${{ steps.version.outputs.version }}"
+          git tag "v${{ steps.version.outputs.version }}"
+          git push origin main
+          git push origin "v${{ steps.version.outputs.version }}"
+
+      - name: Create GitHub release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: "v${{ steps.version.outputs.version }}"
+          name: "v${{ steps.version.outputs.version }}"
+          generate_release_notes: true
