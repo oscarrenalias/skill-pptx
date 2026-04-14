@@ -1,0 +1,69 @@
+{
+  "bead_id": "B-23fe63b6",
+  "title": "Test standalone entry point",
+  "agent_type": "tester",
+  "description": "Write tests in tests/test_standalone.py covering the pypptx.py standalone entry script. Tests must cover: (1) unit-test the bootstrap guard \u2014 mock sys.prefix to contain str(_VENV) and assert _bootstrap() returns without calling subprocess; (2) integration test invoking subprocess.run(['python3', 'pypptx.py', '--version']) from the repo root and asserting exit code 0; (3) first-run integration test using a temp copy of the repo root to assert .venv/ is created and stderr contains the bootstrap message; (4) second-run integration test asserting no bootstrap output on stderr. Also run uv run pytest to confirm all pre-existing tests still pass.",
+  "status": "ready",
+  "bead_type": "task",
+  "parent_id": "B-90115bee",
+  "dependencies": [
+    "B-bae205b8",
+    "B-d71811b9"
+  ],
+  "acceptance_criteria": [
+    "tests/test_standalone.py exists with tests for bootstrap guard, version invocation, first-run venv creation, and second-run silence",
+    "uv run pytest passes with no regressions in the existing 159 tests"
+  ],
+  "linked_docs": [
+    "specs/drafts/pypptx-standalone-entry-point-with-self-bootstrapping-venv.md"
+  ],
+  "feature_root_id": "B-90115bee",
+  "execution_branch_name": "feature/b-90115bee",
+  "execution_worktree_path": "/Users/oscar.renalias/Projects/skill-pptx/.takt/worktrees/B-90115bee",
+  "expected_files": [
+    "tests/test_standalone.py"
+  ],
+  "expected_globs": [],
+  "touched_files": [],
+  "changed_files": [],
+  "updated_docs": [],
+  "handoff_summary": {
+    "completed": "",
+    "remaining": "",
+    "risks": "",
+    "verdict": "",
+    "findings_count": 0,
+    "requires_followup": false,
+    "changed_files": [],
+    "updated_docs": [],
+    "next_action": "",
+    "next_agent": "",
+    "block_reason": "",
+    "expected_files": [],
+    "expected_globs": [],
+    "touched_files": [],
+    "conflict_risks": "",
+    "design_decisions": "",
+    "test_coverage_notes": "",
+    "known_limitations": ""
+  },
+  "block_reason": "",
+  "conflict_risks": "",
+  "branch_name": "",
+  "worktree_path": "",
+  "lease": null,
+  "retries": 0,
+  "execution_history": [
+    {
+      "timestamp": "2026-04-14T07:41:54.848974+00:00",
+      "event": "created",
+      "agent_type": "scheduler",
+      "summary": "Bead created",
+      "details": {}
+    }
+  ],
+  "metadata": {},
+  "labels": [],
+  "recovery_for": null,
+  "priority": null
+}

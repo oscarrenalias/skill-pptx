@@ -1,0 +1,91 @@
+{
+  "bead_id": "B-4befdc71",
+  "title": "Test suite",
+  "agent_type": "tester",
+  "description": "Write a pytest test suite covering all ops modules and CLI commands. Use a real minimal `.pptx` fixture (generated via python-pptx in a conftest fixture) rather than mocks. Test JSON output by parsing stdout, test --plain output by string matching. Test error paths (missing files, invalid indices, conflicting flags). Test round-trip integrity: unpack \u2192 edit \u2192 pack produces a file python-pptx can re-open.",
+  "status": "done",
+  "bead_type": "task",
+  "parent_id": "B-f993e1f7",
+  "dependencies": [
+    "B-338d86fc",
+    "B-dd655ec2",
+    "B-6fa5ac31",
+    "B-9ec19a2c",
+    "B-5a1824ba",
+    "B-ce4fa0e6",
+    "B-ed5b3c37",
+    "B-f06c8351",
+    "B-ea8ae4c9",
+    "B-989bafa0",
+    "B-bffed7c3",
+    "B-150f15c0"
+  ],
+  "acceptance_criteria": [
+    "Tests exist for `unpack`, `pack`, `clean`, `list_slides`, `list_layouts`, `add_slide` (both modes), `delete_slide`, `move_slide`, and `extract_text` in `ops/`.",
+    "CLI integration tests invoke commands via click's `CliRunner` and assert JSON output is well-formed.",
+    "`--plain` output is tested for each command.",
+    "Error paths (missing file, invalid index, conflicting --duplicate/--layout) are tested and assert non-zero exit codes.",
+    "Round-trip test: unpack a fixture \u2192 pack back \u2192 re-open with python-pptx succeeds.",
+    "`pytest` exits 0 with all tests passing."
+  ],
+  "linked_docs": [
+    "specs/drafts/pypptx-cli-powerpoint-manipulation-toolkit.md"
+  ],
+  "feature_root_id": "B-f993e1f7",
+  "execution_branch_name": "feature/b-f993e1f7",
+  "execution_worktree_path": "/Users/oscar.renalias/Projects/skill-pptx/.takt/worktrees/B-f993e1f7",
+  "expected_files": [],
+  "expected_globs": [
+    "tests/**/*.py",
+    "tests/conftest.py"
+  ],
+  "touched_files": [],
+  "changed_files": [],
+  "updated_docs": [],
+  "handoff_summary": {
+    "completed": "",
+    "remaining": "",
+    "risks": "",
+    "verdict": "",
+    "findings_count": 0,
+    "requires_followup": false,
+    "changed_files": [],
+    "updated_docs": [],
+    "next_action": "",
+    "next_agent": "",
+    "block_reason": "",
+    "expected_files": [],
+    "expected_globs": [],
+    "touched_files": [],
+    "conflict_risks": "",
+    "design_decisions": "",
+    "test_coverage_notes": "",
+    "known_limitations": ""
+  },
+  "block_reason": "",
+  "conflict_risks": "",
+  "branch_name": "",
+  "worktree_path": "",
+  "lease": null,
+  "retries": 0,
+  "execution_history": [
+    {
+      "timestamp": "2026-04-13T21:08:30.193154+00:00",
+      "event": "created",
+      "agent_type": "scheduler",
+      "summary": "Bead created",
+      "details": {}
+    },
+    {
+      "timestamp": "2026-04-14T06:15:17.874736+00:00",
+      "event": "updated",
+      "agent_type": "tester",
+      "summary": "Bead updated via CLI",
+      "details": {}
+    }
+  ],
+  "metadata": {},
+  "labels": [],
+  "recovery_for": null,
+  "priority": null
+}

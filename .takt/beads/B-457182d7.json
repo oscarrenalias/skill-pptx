@@ -1,0 +1,75 @@
+{
+  "bead_id": "B-457182d7",
+  "title": "Review standalone entry point implementation",
+  "agent_type": "review",
+  "description": "Review the complete implementation: verify pypptx.py exactly matches the spec pattern (correct _DEPS list, correct sys.prefix guard, correct venv creation and pip install invocation, correct os.execv call, correct sys.path setup, shebang present, file is executable), verify .gitignore covers .venv/, verify tests are comprehensive and pass, verify CLAUDE.md no longer references 'in development', and verify the pypptx/ package directory and pyproject.toml are completely unchanged.",
+  "status": "ready",
+  "bead_type": "task",
+  "parent_id": "B-90115bee",
+  "dependencies": [
+    "B-bae205b8",
+    "B-d71811b9",
+    "B-23fe63b6",
+    "B-379f2433"
+  ],
+  "acceptance_criteria": [
+    "pypptx.py implementation matches the spec pattern exactly",
+    "_DEPS does not include Pillow",
+    "sys.prefix guard uses 'in' membership check against str(_VENV)",
+    ".gitignore contains .venv/ entry",
+    "tests/test_standalone.py covers all four scenarios (guard, version, first-run, second-run)",
+    "uv run pytest passes with no regressions",
+    "CLAUDE.md accurately describes the standalone entry point as available",
+    "pypptx/ package and pyproject.toml are byte-for-byte identical to pre-implementation"
+  ],
+  "linked_docs": [
+    "specs/drafts/pypptx-standalone-entry-point-with-self-bootstrapping-venv.md"
+  ],
+  "feature_root_id": "B-90115bee",
+  "execution_branch_name": "feature/b-90115bee",
+  "execution_worktree_path": "/Users/oscar.renalias/Projects/skill-pptx/.takt/worktrees/B-90115bee",
+  "expected_files": [],
+  "expected_globs": [],
+  "touched_files": [],
+  "changed_files": [],
+  "updated_docs": [],
+  "handoff_summary": {
+    "completed": "",
+    "remaining": "",
+    "risks": "",
+    "verdict": "",
+    "findings_count": 0,
+    "requires_followup": false,
+    "changed_files": [],
+    "updated_docs": [],
+    "next_action": "",
+    "next_agent": "",
+    "block_reason": "",
+    "expected_files": [],
+    "expected_globs": [],
+    "touched_files": [],
+    "conflict_risks": "",
+    "design_decisions": "",
+    "test_coverage_notes": "",
+    "known_limitations": ""
+  },
+  "block_reason": "",
+  "conflict_risks": "",
+  "branch_name": "",
+  "worktree_path": "",
+  "lease": null,
+  "retries": 0,
+  "execution_history": [
+    {
+      "timestamp": "2026-04-14T07:41:56.067705+00:00",
+      "event": "created",
+      "agent_type": "scheduler",
+      "summary": "Bead created",
+      "details": {}
+    }
+  ],
+  "metadata": {},
+  "labels": [],
+  "recovery_for": null,
+  "priority": null
+}

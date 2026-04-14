@@ -1,0 +1,65 @@
+{
+  "bead_id": "B-d71811b9",
+  "title": "Add .venv/ to .gitignore",
+  "agent_type": "developer",
+  "description": "Open the existing .gitignore and append a .venv/ entry if not already present. Read the file first to avoid duplicates.",
+  "status": "ready",
+  "bead_type": "task",
+  "parent_id": "B-90115bee",
+  "dependencies": [],
+  "acceptance_criteria": [
+    ".gitignore contains a line matching .venv/ or .venv",
+    "No duplicate .venv entry is introduced",
+    "No other lines in .gitignore are modified"
+  ],
+  "linked_docs": [],
+  "feature_root_id": "B-90115bee",
+  "execution_branch_name": "feature/b-90115bee",
+  "execution_worktree_path": "/Users/oscar.renalias/Projects/skill-pptx/.takt/worktrees/B-90115bee",
+  "expected_files": [
+    ".gitignore"
+  ],
+  "expected_globs": [],
+  "touched_files": [],
+  "changed_files": [],
+  "updated_docs": [],
+  "handoff_summary": {
+    "completed": "",
+    "remaining": "",
+    "risks": "",
+    "verdict": "",
+    "findings_count": 0,
+    "requires_followup": false,
+    "changed_files": [],
+    "updated_docs": [],
+    "next_action": "",
+    "next_agent": "",
+    "block_reason": "",
+    "expected_files": [],
+    "expected_globs": [],
+    "touched_files": [],
+    "conflict_risks": "",
+    "design_decisions": "",
+    "test_coverage_notes": "",
+    "known_limitations": ""
+  },
+  "block_reason": "",
+  "conflict_risks": "",
+  "branch_name": "",
+  "worktree_path": "",
+  "lease": null,
+  "retries": 0,
+  "execution_history": [
+    {
+      "timestamp": "2026-04-14T07:41:54.286084+00:00",
+      "event": "created",
+      "agent_type": "scheduler",
+      "summary": "Bead created",
+      "details": {}
+    }
+  ],
+  "metadata": {},
+  "labels": [],
+  "recovery_for": null,
+  "priority": null
+}

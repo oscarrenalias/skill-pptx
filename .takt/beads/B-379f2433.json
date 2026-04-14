@@ -1,0 +1,70 @@
+{
+  "bead_id": "B-379f2433",
+  "title": "Update CLAUDE.md for standalone entry point",
+  "agent_type": "documentation",
+  "description": "Edit CLAUDE.md to reflect that the standalone entry point is now available. Replace the sentence 'A standalone entry point (pypptx.py at the repo root) is in development \u2014 once available, use python3 pypptx.py instead of uv run pypptx.' with concrete usage guidance showing python3 pypptx.py as the preferred invocation for environments without uv. Add python3 pypptx.py examples to the 'Running the CLI' section alongside the uv run examples.",
+  "status": "ready",
+  "bead_type": "task",
+  "parent_id": "B-90115bee",
+  "dependencies": [
+    "B-bae205b8",
+    "B-d71811b9"
+  ],
+  "acceptance_criteria": [
+    "CLAUDE.md no longer describes pypptx.py as 'in development'",
+    "CLAUDE.md Running the CLI section shows python3 pypptx.py examples",
+    "No other sections of CLAUDE.md are unintentionally modified"
+  ],
+  "linked_docs": [
+    "specs/drafts/pypptx-standalone-entry-point-with-self-bootstrapping-venv.md"
+  ],
+  "feature_root_id": "B-90115bee",
+  "execution_branch_name": "feature/b-90115bee",
+  "execution_worktree_path": "/Users/oscar.renalias/Projects/skill-pptx/.takt/worktrees/B-90115bee",
+  "expected_files": [
+    "CLAUDE.md"
+  ],
+  "expected_globs": [],
+  "touched_files": [],
+  "changed_files": [],
+  "updated_docs": [],
+  "handoff_summary": {
+    "completed": "",
+    "remaining": "",
+    "risks": "",
+    "verdict": "",
+    "findings_count": 0,
+    "requires_followup": false,
+    "changed_files": [],
+    "updated_docs": [],
+    "next_action": "",
+    "next_agent": "",
+    "block_reason": "",
+    "expected_files": [],
+    "expected_globs": [],
+    "touched_files": [],
+    "conflict_risks": "",
+    "design_decisions": "",
+    "test_coverage_notes": "",
+    "known_limitations": ""
+  },
+  "block_reason": "",
+  "conflict_risks": "",
+  "branch_name": "",
+  "worktree_path": "",
+  "lease": null,
+  "retries": 0,
+  "execution_history": [
+    {
+      "timestamp": "2026-04-14T07:41:55.476780+00:00",
+      "event": "created",
+      "agent_type": "scheduler",
+      "summary": "Bead created",
+      "details": {}
+    }
+  ],
+  "metadata": {},
+  "labels": [],
+  "recovery_for": null,
+  "priority": null
+}

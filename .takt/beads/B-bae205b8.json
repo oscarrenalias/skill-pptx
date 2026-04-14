@@ -1,0 +1,73 @@
+{
+  "bead_id": "B-bae205b8",
+  "title": "Create pypptx.py bootstrap entry script",
+  "agent_type": "developer",
+  "description": "Create pypptx.py at the repo root implementing the _bootstrap() function pattern from the spec. The function must: (1) return immediately when str(_VENV) in sys.prefix (already inside managed venv), (2) create .venv using subprocess + stdlib venv module when venv_py does not exist, (3) install click, defusedxml, python-pptx (not Pillow) via venv pip with --quiet, (4) call os.execv to re-execute the full process inside the venv. After bootstrap returns, insert _SKILL_DIR onto sys.path[0] and call pypptx.cli.cli(). Include #!/usr/bin/env python3 shebang and make the file executable (chmod +x).",
+  "status": "ready",
+  "bead_type": "task",
+  "parent_id": "B-90115bee",
+  "dependencies": [],
+  "acceptance_criteria": [
+    "pypptx.py exists at repo root with #!/usr/bin/env python3 shebang",
+    "_VENV is set to _SKILL_DIR / '.venv' where _SKILL_DIR is Path(__file__).parent",
+    "_DEPS contains exactly ['click', 'defusedxml', 'python-pptx'] \u2014 no Pillow",
+    "_bootstrap() returns immediately when str(_VENV) in sys.prefix",
+    "venv is created via subprocess.check_call([sys.executable, '-m', 'venv', str(_VENV)]) when venv_py is absent",
+    "deps installed via subprocess.check_call([str(venv_py), '-m', 'pip', 'install', '--quiet', *_DEPS])",
+    "os.execv(str(venv_py), [str(venv_py)] + sys.argv) re-executes into venv",
+    "sys.path.insert(0, str(_SKILL_DIR)) placed after _bootstrap() call so pypptx package is importable",
+    "File is chmod +x"
+  ],
+  "linked_docs": [
+    "specs/drafts/pypptx-standalone-entry-point-with-self-bootstrapping-venv.md"
+  ],
+  "feature_root_id": "B-90115bee",
+  "execution_branch_name": "feature/b-90115bee",
+  "execution_worktree_path": "/Users/oscar.renalias/Projects/skill-pptx/.takt/worktrees/B-90115bee",
+  "expected_files": [
+    "pypptx.py"
+  ],
+  "expected_globs": [],
+  "touched_files": [],
+  "changed_files": [],
+  "updated_docs": [],
+  "handoff_summary": {
+    "completed": "",
+    "remaining": "",
+    "risks": "",
+    "verdict": "",
+    "findings_count": 0,
+    "requires_followup": false,
+    "changed_files": [],
+    "updated_docs": [],
+    "next_action": "",
+    "next_agent": "",
+    "block_reason": "",
+    "expected_files": [],
+    "expected_globs": [],
+    "touched_files": [],
+    "conflict_risks": "",
+    "design_decisions": "",
+    "test_coverage_notes": "",
+    "known_limitations": ""
+  },
+  "block_reason": "",
+  "conflict_risks": "",
+  "branch_name": "",
+  "worktree_path": "",
+  "lease": null,
+  "retries": 0,
+  "execution_history": [
+    {
+      "timestamp": "2026-04-14T07:41:53.880533+00:00",
+      "event": "created",
+      "agent_type": "scheduler",
+      "summary": "Bead created",
+      "details": {}
+    }
+  ],
+  "metadata": {},
+  "labels": [],
+  "recovery_for": null,
+  "priority": null
+}
