@@ -11,14 +11,14 @@ _DEPS = ["click", "defusedxml", "python-pptx"]
 
 def _bootstrap() -> None:
     if str(_VENV) in sys.prefix:
-        return
+        return  # already inside the managed venv
 
-    venv_py = _VENV / "bin" / "python"
+    venv_py = _VENV / ("Scripts/python.exe" if sys.platform == "win32" else "bin/python")
 
     if not venv_py.exists():
+        print("pypptx: first run, installing dependencies...", file=sys.stderr)
         subprocess.check_call([sys.executable, "-m", "venv", str(_VENV)])
-
-    subprocess.check_call([str(venv_py), "-m", "pip", "install", "--quiet", *_DEPS])
+        subprocess.check_call([str(venv_py), "-m", "pip", "install", "--quiet", *_DEPS])
 
     os.execv(str(venv_py), [str(venv_py)] + sys.argv)
 

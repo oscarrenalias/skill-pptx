@@ -72,6 +72,31 @@ class TestBootstrapGuard:
         first_call = mock_sub.call_args_list[0]
         assert first_call == call([sys.executable, "-m", "venv", str(_mod._VENV)])
 
+    def test_first_run_prints_stderr_message(self):
+        """On first run (venv absent), a message is printed to stderr."""
+        with patch.object(sys, "prefix", "/other/prefix"), \
+             patch.object(sys, "argv", ["pypptx.py"]), \
+             patch("subprocess.check_call"), \
+             patch("pathlib.Path.exists", return_value=False), \
+             patch("os.execv"), \
+             patch("builtins.print") as mock_print:
+            _mod._bootstrap()
+        mock_print.assert_called_once_with(
+            "pypptx: first run, installing dependencies...", file=sys.stderr
+        )
+
+    def test_pip_install_runs_only_on_first_run(self):
+        """pip install is called when venv is absent; NOT called when venv already exists."""
+        # Second-run scenario: venv_py exists, bootstrap just calls execv.
+        with patch.object(sys, "prefix", "/other/prefix"), \
+             patch.object(sys, "argv", ["pypptx.py"]), \
+             patch("subprocess.check_call") as mock_sub, \
+             patch("pathlib.Path.exists", return_value=True), \
+             patch("os.execv"):
+            _mod._bootstrap()
+        pip_calls = [c for c in mock_sub.call_args_list if "pip" in str(c)]
+        assert pip_calls == [], "pip install must not run when venv already exists"
+
     def test_execv_called_with_correct_args(self):
         """os.execv receives venv python path and the original sys.argv."""
         fake_argv = ["pypptx.py", "--version"]
