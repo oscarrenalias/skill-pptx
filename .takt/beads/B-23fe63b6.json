@@ -61,6 +61,8 @@
     ".takt/beads/B-f06c8351.json",
     ".takt/beads/B-f492282d.json",
     ".takt/beads/B-f993e1f7.json",
+    "__pycache__/pypptx.cpython-314.pyc",
+    "pypptx.py",
     "tests/test_standalone.py"
   ],
   "expected_globs": [],
@@ -104,7 +106,9 @@
     ".takt/beads/B-ed5b3c37.json",
     ".takt/beads/B-f06c8351.json",
     ".takt/beads/B-f492282d.json",
-    ".takt/beads/B-f993e1f7.json"
+    ".takt/beads/B-f993e1f7.json",
+    "__pycache__/pypptx.cpython-314.pyc",
+    "pypptx.py"
   ],
   "changed_files": [
     ".gitignore",
@@ -146,7 +150,9 @@
     ".takt/beads/B-ed5b3c37.json",
     ".takt/beads/B-f06c8351.json",
     ".takt/beads/B-f492282d.json",
-    ".takt/beads/B-f993e1f7.json"
+    ".takt/beads/B-f993e1f7.json",
+    "__pycache__/pypptx.cpython-314.pyc",
+    "pypptx.py"
   ],
   "updated_docs": [],
   "handoff_summary": {
@@ -170,7 +176,7 @@
     "known_limitations": ""
   },
   "block_reason": "",
-  "conflict_risks": "Low \u2014 only .gitignore was touched; no overlap expected with other beads.",
+  "conflict_risks": "Low \u2014 only .gitignore was touched; no overlap expected with other beads.\nNone. pypptx.py is a new file with no overlap with other beads.",
   "branch_name": "",
   "worktree_path": "",
   "lease": null,
