@@ -6,7 +6,9 @@
   "status": "ready",
   "bead_type": "task",
   "parent_id": "B-680b5593",
-  "dependencies": [],
+  "dependencies": [
+    "B-774f185f"
+  ],
   "acceptance_criteria": [
     "--plain output shows one line per layout in the form: <filename>  <name>",
     "JSON output structure is not altered by this bead (name field already added by prior bead)",
