@@ -3,7 +3,7 @@
   "title": "Review layout name feature and SKILL.md updates",
   "agent_type": "review",
   "description": "Review all implementation, test, and documentation changes for correctness and completeness. Verify the output contract is preserved (JSON to stdout, errors to stderr, exit 0/1). Check that no other CLI commands were inadvertently modified and that uv run pytest passes cleanly.",
-  "status": "ready",
+  "status": "in_progress",
   "bead_type": "task",
   "parent_id": "B-680b5593",
   "dependencies": [
@@ -207,9 +207,12 @@
   },
   "block_reason": "",
   "conflict_risks": "None \u2014 only list_layouts() was modified; no shared state with sibling beads.\nNone \u2014 only the plain formatter lambda was changed; no structural or JSON changes.",
-  "branch_name": "",
+  "branch_name": "feature/b-680b5593",
   "worktree_path": "",
-  "lease": null,
+  "lease": {
+    "owner": "review:B-011dcdd6",
+    "expires_at": "2026-04-14T13:29:38.390371+00:00"
+  },
   "retries": 0,
   "execution_history": [
     {
@@ -218,9 +221,46 @@
       "agent_type": "scheduler",
       "summary": "Bead created",
       "details": {}
+    },
+    {
+      "timestamp": "2026-04-14T12:59:38.724095+00:00",
+      "event": "skills_loaded",
+      "agent_type": "review",
+      "summary": "Loaded 6 skill(s) for isolated execution",
+      "details": {
+        "loaded_skills": [
+          "core/base-orchestrator",
+          "role/reviewer-signoff",
+          "capability/code-review",
+          "task/corrective-bead-creation",
+          "task/risk-assessment",
+          "memory"
+        ]
+      }
+    },
+    {
+      "timestamp": "2026-04-14T12:59:38.724119+00:00",
+      "event": "started",
+      "agent_type": "review",
+      "summary": "Worker started",
+      "details": {}
     }
   ],
-  "metadata": {},
+  "metadata": {
+    "execution_root": "/Users/oscar.renalias/Projects/skill-pptx/.takt/agent-runs/B-011dcdd6",
+    "workspace_repo_path": "repo",
+    "loaded_skills": [
+      "core/base-orchestrator",
+      "role/reviewer-signoff",
+      "capability/code-review",
+      "task/corrective-bead-creation",
+      "task/risk-assessment",
+      "memory"
+    ],
+    "skill_bundle_hash": "e49ae02cdd641b1b539810ca3dc9f7cb45c7fa56ae2c7f96d6d53ebce3109bd4",
+    "isolated_home": "/Users/oscar.renalias/Projects/skill-pptx/.takt/agent-runs/B-011dcdd6/home",
+    "runner_backend": "claude"
+  },
   "labels": [],
   "recovery_for": null,
   "priority": null
