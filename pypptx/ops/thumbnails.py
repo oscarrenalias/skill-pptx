@@ -154,6 +154,58 @@ def _make_hatched_placeholder(width: int, height: int) -> "PILImage.Image":
     return img
 
 
+def assemble_grid(images: "list[PILImage.Image]", cols: int) -> "PILImage.Image":
+    """Arrange a list of PIL Images into a labelled grid.
+
+    Images are placed in row-major order (left-to-right, top-to-bottom).
+    Each cell is annotated with its 1-based slide number in the bottom-left
+    corner using a white label with a dark drop-shadow for readability.
+
+    Args:
+        images: Ordered list of PIL Images, one per slide.
+        cols:   Number of columns in the grid (must be >= 1).
+
+    Returns:
+        A single PIL Image containing all thumbnails arranged as a grid.
+    """
+    import math
+    from PIL import Image, ImageDraw, ImageFont
+
+    if not images:
+        return Image.new("RGB", (1, 1), color=(255, 255, 255))
+
+    # Use first image's dimensions as the canonical cell size.
+    cell_w, cell_h = images[0].size
+
+    rows = math.ceil(len(images) / cols)
+    grid = Image.new("RGB", (cols * cell_w, rows * cell_h), color=(255, 255, 255))
+    draw = ImageDraw.Draw(grid)
+
+    # Load a font scaled to ~5 % of cell height; fall back to the built-in default.
+    font_size = max(12, cell_h // 20)
+    try:
+        # Pillow >= 10.0 supports a size argument on load_default.
+        font = ImageFont.load_default(size=font_size)
+    except TypeError:
+        font = ImageFont.load_default()
+
+    for idx, img in enumerate(images):
+        row, col = divmod(idx, cols)
+        x = col * cell_w
+        y = row * cell_h
+
+        grid.paste(img, (x, y))
+
+        label = str(idx + 1)
+        text_x = x + 4
+        text_y = y + cell_h - font_size - 6
+        # Dark drop-shadow for contrast against any background colour.
+        draw.text((text_x + 1, text_y + 1), label, fill=(0, 0, 0), font=font)
+        draw.text((text_x, text_y), label, fill=(255, 255, 255), font=font)
+
+    return grid
+
+
 def generate_thumbnails(
     pptx_path: Path | str,
     temp_dir: Path | str,
