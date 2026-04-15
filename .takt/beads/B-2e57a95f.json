@@ -125,6 +125,7 @@
     "tests/test_xlsx_*.py"
   ],
   "touched_files": [
+    ".apm/skills/pyxlsx/SKILL.md",
     ".apm/skills/pyxlsx/apm.yml",
     ".apm/skills/pyxlsx/pyproject.toml",
     ".apm/skills/pyxlsx/pyxlsx.py",
@@ -208,9 +209,14 @@
     ".takt/beads/B-fd15edb9.json",
     "pyproject.toml",
     "tests/conftest.py",
+    "tests/test_xlsx_cli.py",
+    "tests/test_xlsx_inspect.py",
+    "tests/test_xlsx_pack.py",
+    "tests/test_xlsx_write.py",
     "uv.lock"
   ],
   "changed_files": [
+    ".apm/skills/pyxlsx/SKILL.md",
     ".apm/skills/pyxlsx/apm.yml",
     ".apm/skills/pyxlsx/pyproject.toml",
     ".apm/skills/pyxlsx/pyxlsx.py",
@@ -294,6 +300,10 @@
     ".takt/beads/B-fd15edb9.json",
     "pyproject.toml",
     "tests/conftest.py",
+    "tests/test_xlsx_cli.py",
+    "tests/test_xlsx_inspect.py",
+    "tests/test_xlsx_pack.py",
+    "tests/test_xlsx_write.py",
     "uv.lock"
   ],
   "updated_docs": [],
