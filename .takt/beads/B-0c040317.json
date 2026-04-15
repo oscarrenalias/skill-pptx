@@ -91,6 +91,15 @@
       "agent_type": "developer",
       "summary": "Worker started",
       "details": {}
+    },
+    {
+      "timestamp": "2026-04-15T07:03:38.239493+00:00",
+      "event": "guardrails_applied",
+      "agent_type": "developer",
+      "summary": "Applied guardrails from .takt/agent-runs/B-0c040317/repo/templates/agents/developer.md",
+      "details": {
+        "template_path": ".takt/agent-runs/B-0c040317/repo/templates/agents/developer.md"
+      }
     }
   ],
   "metadata": {
@@ -107,7 +116,64 @@
     ],
     "skill_bundle_hash": "2cbacb3ae07c8eee2a6bb3d65b99b3e4df7fa47ac8b10c5c68be4b338a583348",
     "isolated_home": "/Users/oscar.renalias/Projects/skill-pptx/.takt/agent-runs/B-0c040317/home",
-    "runner_backend": "claude"
+    "runner_backend": "claude",
+    "guardrails": {
+      "agent_type": "developer",
+      "template_path": ".takt/agent-runs/B-0c040317/repo/templates/agents/developer.md",
+      "template_text": "# Developer Guardrails\n\nPrimary responsibility: Implement only the assigned bead inside the existing architecture and file scope.\n\nAllowed actions:\n- Modify code, configuration, or local docs required to complete the assigned bead.\n- Create sub-beads for discovered follow-up work that should be handled separately.\n- Verify your `Python` changes compile and import correctly with a quick syntax check: `python -m py_compile`.\n\nDisallowed actions:\n- Run any test suite \u2014 not even a targeted `pytest` run or any subset. Test execution is exclusively the tester agent's responsibility. Running tests wastes the agent budget and delays the pipeline.\n- Redesign unrelated architecture or broaden scope beyond the assigned bead.\n- Perform final review signoff in place of a review agent.\n- Silently absorb unrelated test, documentation, or planning work that should be handed off.\n\nExpected outputs:\n- Completed or blocked JSON with concise implementation summary.\n- Accurate touched files, changed files, risks, and follow-up handoff fields.",
+      "captured_at": "2026-04-15T07:03:38.239475+00:00"
+    },
+    "worker_prompt_context": {
+      "bead_id": "B-0c040317",
+      "feature_root_id": "B-4797d90b",
+      "title": "Pack ops: unpack and pack",
+      "agent_type": "developer",
+      "description": "Create ops/pack.py with unpack() (extracts the xlsx ZIP to a directory, defaulting to the filename stem) and pack() (rezips a directory into a valid xlsx atomically via temp file + os.replace()). Use defusedxml for any XML parsing. Wire 'pyxlsx unpack' and 'pyxlsx pack' CLI commands in cli.py.",
+      "status": "in_progress",
+      "acceptance_criteria": [
+        "unpack() extracts all files from the xlsx ZIP to the output directory and returns the directory path",
+        "pack() produces a file that openpyxl can open without errors",
+        "pack() writes atomically via temp file + os.replace()",
+        "pyxlsx unpack <file> outputs JSON with unpacked_dir key",
+        "pyxlsx pack <dir> <output.xlsx> outputs JSON with output_file key",
+        "defusedxml is used for any XML parsing in pack.py; xml.etree.ElementTree is not used for parsing"
+      ],
+      "dependencies": [
+        "B-98fd7e6c"
+      ],
+      "linked_docs": [
+        "specs/drafts/spec-c4e8b12f.md"
+      ],
+      "execution_branch_name": "feature/b-4797d90b",
+      "execution_worktree_path": "/Users/oscar.renalias/Projects/skill-pptx/.takt/worktrees/B-4797d90b",
+      "expected_files": [
+        ".apm/skills/pyxlsx/pyxlsx/ops/pack.py",
+        ".apm/skills/pyxlsx/pyxlsx/cli.py"
+      ],
+      "expected_globs": [],
+      "touched_files": [],
+      "conflict_risks": "",
+      "handoff_summary": {
+        "completed": "",
+        "remaining": "",
+        "risks": "",
+        "verdict": "",
+        "findings_count": 0,
+        "requires_followup": false,
+        "changed_files": [],
+        "updated_docs": [],
+        "next_action": "",
+        "next_agent": "",
+        "block_reason": "",
+        "expected_files": [],
+        "expected_globs": [],
+        "touched_files": [],
+        "conflict_risks": "",
+        "design_decisions": "",
+        "test_coverage_notes": "",
+        "known_limitations": ""
+      }
+    }
   },
   "labels": [],
   "recovery_for": null,
