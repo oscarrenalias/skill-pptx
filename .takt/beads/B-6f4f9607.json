@@ -6,7 +6,9 @@
   "status": "ready",
   "bead_type": "task",
   "parent_id": "B-4797d90b",
-  "dependencies": [],
+  "dependencies": [
+    "B-08c7e6b6"
+  ],
   "acceptance_criteria": [
     "python3 .apm/skills/pyxlsx/pyxlsx.py --version bootstraps a .venv, installs deps, and prints the version",
     "Subsequent runs reuse the existing .venv without reinstalling",
