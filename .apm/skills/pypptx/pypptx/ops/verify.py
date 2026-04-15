@@ -55,9 +55,9 @@ def _check_font_sizes(
     slide_index: int,
     slide,
     slide_height: int,
-    errors: list[str],
+    warnings: list[str],
 ) -> None:
-    """Check 2: report fonts below 12pt; skip footer-region shapes."""
+    """Check 2: append a warning for each font below 12pt; skip footer-region shapes."""
     footer_threshold = int(slide_height * 0.9)
 
     for shape in slide.shapes:
@@ -79,7 +79,7 @@ def _check_font_sizes(
             if sz_int < _MIN_FONT_UNITS:
                 # Convert from hundredths-of-a-point to pt for the message
                 pt = sz_int / 100.0
-                errors.append(
+                warnings.append(
                     f"Slide {slide_index}: '{shape.name}' font {pt:.1f}pt"
                     f" is below minimum (12pt)"
                 )
@@ -363,7 +363,7 @@ def verify_pptx(path: Path) -> dict:
 
     for slide_index, slide in enumerate(prs.slides, start=1):
         _check_unfilled_placeholders(slide_index, slide, errors)
-        _check_font_sizes(slide_index, slide, slide_height, errors)
+        _check_font_sizes(slide_index, slide, slide_height, warnings)
         _check_shape_overflow(slide_index, slide, slide_width, slide_height, errors)
         _check_text_clipping(slide_index, slide, slide_height, errors, warnings)
         _check_shape_overlap(slide_index, slide, warnings)
