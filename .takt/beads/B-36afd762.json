@@ -303,7 +303,7 @@
     "known_limitations": ""
   },
   "block_reason": "",
-  "conflict_risks": "pyproject.toml declares packages = [\".apm/skills/pyxlsx/pyxlsx\"]. Any bead that modifies pyproject.toml must preserve this path. No other files in this bead conflict with sibling beads.\nSibling beads that also modify pyproject.toml dev deps may conflict on that block. The conftest.py change is additive and should not conflict with existing pptx fixtures.",
+  "conflict_risks": "pyproject.toml declares packages = [\".apm/skills/pyxlsx/pyxlsx\"]. Any bead that modifies pyproject.toml must preserve this path. No other files in this bead conflict with sibling beads.\nSibling beads that also modify pyproject.toml dev deps may conflict on that block. The conftest.py change is additive and should not conflict with existing pptx fixtures.\nNone \u2014 only new file added.",
   "branch_name": "",
   "worktree_path": "",
   "lease": null,
