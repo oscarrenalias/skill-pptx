@@ -1,6 +1,6 @@
-name: pypptx
-version: 0.1.10
-description: PowerPoint (.pptx) creation and editing skill for agents
+name: skill-office
+version: 0.1.11
+description: Office productivity skills for agents — PowerPoint (.pptx) and Excel (.xlsx) manipulation
 author: Renalias, Oscar
 dependencies:
   apm: []
