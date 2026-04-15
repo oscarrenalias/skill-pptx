@@ -6,7 +6,9 @@
   "status": "ready",
   "bead_type": "task",
   "parent_id": "B-8b50ace0",
-  "dependencies": [],
+  "dependencies": [
+    "B-2be9e5d1"
+  ],
   "acceptance_criteria": [
     "The call site passes the warnings list to _check_font_sizes",
     "No remaining call sites pass errors to _check_font_sizes"
