@@ -6,7 +6,9 @@
   "status": "ready",
   "bead_type": "task",
   "parent_id": "B-4797d90b",
-  "dependencies": [],
+  "dependencies": [
+    "B-6dc0a09b"
+  ],
   "acceptance_criteria": [
     "info() returns a dict with keys file, sheets (list of names), and named_ranges (list of names)",
     "list_sheets() returns a list of dicts each with name, rows, cols, and visible",
