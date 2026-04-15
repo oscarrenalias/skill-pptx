@@ -136,10 +136,11 @@ class TestCheck2FontSize:
         _save(prs, path)
 
         result = verify_pptx(path)
-        font_errors = [e for e in result["errors"] if "font" in e and "below minimum" in e]
-        assert len(font_errors) >= 1
-        assert any("Slide 1" in e and "SmallFont" in e for e in font_errors)
-        assert any("9.0pt" in e for e in font_errors)
+        font_warns = [w for w in result["warnings"] if "font" in w and "below minimum" in w]
+        assert len(font_warns) >= 1
+        assert any("Slide 1" in w and "SmallFont" in w for w in font_warns)
+        assert any("9.0pt" in w for w in font_warns)
+        assert result["errors"] == []
 
     def test_does_not_fire_at_exactly_1200(self, tmp_path):
         prs, path = _make_pptx(tmp_path)
@@ -148,8 +149,8 @@ class TestCheck2FontSize:
         _save(prs, path)
 
         result = verify_pptx(path)
-        font_errors = [e for e in result["errors"] if "font" in e and "below minimum" in e]
-        assert font_errors == []
+        font_warns = [w for w in result["warnings"] if "font" in w and "below minimum" in w]
+        assert font_warns == []
 
     def test_does_not_fire_above_minimum(self, tmp_path):
         prs, path = _make_pptx(tmp_path)
@@ -158,8 +159,8 @@ class TestCheck2FontSize:
         _save(prs, path)
 
         result = verify_pptx(path)
-        font_errors = [e for e in result["errors"] if "below minimum" in e]
-        assert font_errors == []
+        font_warns = [w for w in result["warnings"] if "below minimum" in w]
+        assert font_warns == []
 
     def test_skips_footer_region_shapes(self, tmp_path):
         """Shapes whose top > 90% of slide height must be skipped."""
@@ -182,8 +183,8 @@ class TestCheck2FontSize:
         _save(prs, path)
 
         result = verify_pptx(path)
-        font_errors = [e for e in result["errors"] if "below minimum" in e and "FooterShape" in e]
-        assert font_errors == []
+        font_warns = [w for w in result["warnings"] if "below minimum" in w and "FooterShape" in w]
+        assert font_warns == []
 
 
 # ── Check 3: shape overflow ───────────────────────────────────────────────────
