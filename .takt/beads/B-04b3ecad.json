@@ -6,7 +6,12 @@
   "status": "ready",
   "bead_type": "task",
   "parent_id": "B-8b50ace0",
-  "dependencies": [],
+  "dependencies": [
+    "B-2be9e5d1",
+    "B-e6cc383d",
+    "B-bec8f6dd",
+    "B-b44f4324"
+  ],
   "acceptance_criteria": [
     "All changes are consistent with spec-ac19111d",
     "No other verify checks are inadvertently reclassified",
