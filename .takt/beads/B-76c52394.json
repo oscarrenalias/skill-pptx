@@ -6,7 +6,9 @@
   "status": "ready",
   "bead_type": "task",
   "parent_id": "B-4797d90b",
-  "dependencies": [],
+  "dependencies": [
+    "B-1853c640"
+  ],
   "acceptance_criteria": [
     "read_table() returns a dict with sheet, range, header_row, headers, and rows (array-of-objects)",
     "Duplicate header cell names are suffixed with their column letter (e.g. Status_C)",
