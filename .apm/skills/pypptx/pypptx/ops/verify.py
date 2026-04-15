@@ -57,7 +57,7 @@ def _check_font_sizes(
     slide_height: int,
     warnings: list[str],
 ) -> None:
-    """Check 2: report fonts below 12pt; skip footer-region shapes."""
+    """Check 2: append a warning for each font below 12pt; skip footer-region shapes."""
     footer_threshold = int(slide_height * 0.9)
 
     for shape in slide.shapes:
