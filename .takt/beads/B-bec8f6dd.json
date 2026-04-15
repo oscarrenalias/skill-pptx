@@ -3,7 +3,7 @@
   "title": "Update TestCheck2FontSize assertions from errors to warnings",
   "agent_type": "tester",
   "description": "In tests/test_verify.py, update all assertions in TestCheck2FontSize that check result[\"errors\"] for font-size violations to check result[\"warnings\"] instead. Add assertions confirming result[\"errors\"] is empty for font-size-only violation cases.",
-  "status": "ready",
+  "status": "in_progress",
   "bead_type": "task",
   "parent_id": "B-8b50ace0",
   "dependencies": [
@@ -288,9 +288,12 @@
   },
   "block_reason": "",
   "conflict_risks": "None \u2014 only `_check_font_sizes` and its single call site were modified. No sibling beads are known to touch this function.\nNone \u2014 no files were modified.",
-  "branch_name": "",
-  "worktree_path": "",
-  "lease": null,
+  "branch_name": "feature/b-8b50ace0",
+  "worktree_path": "/Users/oscar.renalias/Projects/skill-pptx/.takt/worktrees/B-8b50ace0",
+  "lease": {
+    "owner": "tester:B-bec8f6dd",
+    "expires_at": "2026-04-15T07:46:55.116428+00:00"
+  },
   "retries": 0,
   "execution_history": [
     {
@@ -299,9 +302,46 @@
       "agent_type": "scheduler",
       "summary": "Bead created",
       "details": {}
+    },
+    {
+      "timestamp": "2026-04-15T07:16:55.642497+00:00",
+      "event": "skills_loaded",
+      "agent_type": "tester",
+      "summary": "Loaded 6 skill(s) for isolated execution",
+      "details": {
+        "loaded_skills": [
+          "core/base-orchestrator",
+          "role/tester-validation",
+          "capability/test-execution",
+          "task/defect-bead-creation",
+          "task/regression-triage",
+          "memory"
+        ]
+      }
+    },
+    {
+      "timestamp": "2026-04-15T07:16:55.642521+00:00",
+      "event": "started",
+      "agent_type": "tester",
+      "summary": "Worker started",
+      "details": {}
     }
   ],
-  "metadata": {},
+  "metadata": {
+    "execution_root": "/Users/oscar.renalias/Projects/skill-pptx/.takt/agent-runs/B-bec8f6dd",
+    "workspace_repo_path": "repo",
+    "loaded_skills": [
+      "core/base-orchestrator",
+      "role/tester-validation",
+      "capability/test-execution",
+      "task/defect-bead-creation",
+      "task/regression-triage",
+      "memory"
+    ],
+    "skill_bundle_hash": "bc009dcebd8e4c16178a90ec3060a5b91679ac7fedefcdc8f0d5a8eca4b06d22",
+    "isolated_home": "/Users/oscar.renalias/Projects/skill-pptx/.takt/agent-runs/B-bec8f6dd/home",
+    "runner_backend": "claude"
+  },
   "labels": [],
   "recovery_for": null,
   "priority": null
