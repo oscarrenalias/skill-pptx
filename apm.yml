@@ -1,5 +1,5 @@
 name: skill-office
-version: 0.1.11
+version: 0.1.12
 description: Office productivity skills for agents — PowerPoint (.pptx) and Excel (.xlsx) manipulation
 author: Renalias, Oscar
 dependencies:
