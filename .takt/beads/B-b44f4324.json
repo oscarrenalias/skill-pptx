@@ -6,7 +6,10 @@
   "status": "ready",
   "bead_type": "task",
   "parent_id": "B-8b50ace0",
-  "dependencies": [],
+  "dependencies": [
+    "B-2be9e5d1",
+    "B-e6cc383d"
+  ],
   "acceptance_criteria": [
     "Docstring accurately describes the function as producing warnings",
     "No references to errors remain in the docstring for this function"
