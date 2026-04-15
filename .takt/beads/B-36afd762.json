@@ -6,7 +6,18 @@
   "status": "ready",
   "bead_type": "task",
   "parent_id": "B-4797d90b",
-  "dependencies": [],
+  "dependencies": [
+    "B-08c7e6b6",
+    "B-6f4f9607",
+    "B-6dc0a09b",
+    "B-c51f728f",
+    "B-1853c640",
+    "B-76c52394",
+    "B-cf4d49c3",
+    "B-98fd7e6c",
+    "B-0c040317",
+    "B-fd15edb9"
+  ],
   "acceptance_criteria": [
     "uv run pytest tests/test_xlsx_inspect.py passes with no failures",
     "uv run pytest tests/test_xlsx_write.py passes with no failures",
