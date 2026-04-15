@@ -5,15 +5,14 @@
 ## Running the CLI
 
 ```bash
-# With uv (preferred in the pyxlsx skill directory)
-uv run pyxlsx --help
-
 # Standalone entry point — bootstraps its own .venv on first run
-python3 .apm/skills/pyxlsx/pyxlsx.py --help
-python3 .apm/skills/pyxlsx/pyxlsx.py sheet list workplan.xlsx
+python3 .claude/skills/pyxlsx/pyxlsx.py --help
+python3 .claude/skills/pyxlsx/pyxlsx.py sheet list workplan.xlsx
 ```
 
 ---
+
+Please make sure to run the script from the right folder, and manage file paths appropriately when running.
 
 ## Output Contract
 
