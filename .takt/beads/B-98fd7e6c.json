@@ -6,7 +6,9 @@
   "status": "ready",
   "bead_type": "task",
   "parent_id": "B-4797d90b",
-  "dependencies": [],
+  "dependencies": [
+    "B-cf4d49c3"
+  ],
   "acceptance_criteria": [
     "add_sheet() inserts a blank sheet at the specified 1-based position and errors on duplicate name",
     "delete_sheet() removes the named sheet and errors if it is the last sheet",
