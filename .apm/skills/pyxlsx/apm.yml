@@ -1,0 +1,3 @@
+name: pyxlsx
+version: 0.1.0
+description: Excel (.xlsx) manipulation CLI skill for agents

@@ -1,0 +1,71 @@
+{
+  "bead_id": "B-6dc0a09b",
+  "title": "CLI skeleton",
+  "agent_type": "developer",
+  "description": "Create pyxlsx/cli.py with: a top-level click group named 'cli', an output_result() helper that writes JSON to stdout by default or human-readable plain text when --plain is active, and a --plain flag on the root group. Define 'sheet', 'table', and 'cell' click subgroups as stubs. Include --version and --help.",
+  "status": "ready",
+  "bead_type": "task",
+  "parent_id": "B-4797d90b",
+  "dependencies": [
+    "B-08c7e6b6"
+  ],
+  "acceptance_criteria": [
+    "pyxlsx --help prints usage",
+    "pyxlsx --version prints 0.1.0",
+    "output_result() emits a single JSON object to stdout when --plain is not set",
+    "output_result() emits human-readable text when --plain is set",
+    "'sheet', 'table', and 'cell' subgroups are present as click groups even if empty"
+  ],
+  "linked_docs": [
+    "specs/drafts/spec-c4e8b12f.md"
+  ],
+  "feature_root_id": "B-4797d90b",
+  "execution_branch_name": "feature/b-4797d90b",
+  "execution_worktree_path": "/Users/oscar.renalias/Projects/skill-pptx/.takt/worktrees/B-4797d90b",
+  "expected_files": [
+    ".apm/skills/pyxlsx/pyxlsx/cli.py"
+  ],
+  "expected_globs": [],
+  "touched_files": [],
+  "changed_files": [],
+  "updated_docs": [],
+  "handoff_summary": {
+    "completed": "",
+    "remaining": "",
+    "risks": "",
+    "verdict": "",
+    "findings_count": 0,
+    "requires_followup": false,
+    "changed_files": [],
+    "updated_docs": [],
+    "next_action": "",
+    "next_agent": "",
+    "block_reason": "",
+    "expected_files": [],
+    "expected_globs": [],
+    "touched_files": [],
+    "conflict_risks": "",
+    "design_decisions": "",
+    "test_coverage_notes": "",
+    "known_limitations": ""
+  },
+  "block_reason": "",
+  "conflict_risks": "",
+  "branch_name": "",
+  "worktree_path": "",
+  "lease": null,
+  "retries": 0,
+  "execution_history": [
+    {
+      "timestamp": "2026-04-15T06:48:40.690957+00:00",
+      "event": "created",
+      "agent_type": "scheduler",
+      "summary": "Bead created",
+      "details": {}
+    }
+  ],
+  "metadata": {},
+  "labels": [],
+  "recovery_for": null,
+  "priority": null
+}

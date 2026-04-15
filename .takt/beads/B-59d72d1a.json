@@ -1,0 +1,81 @@
+{
+  "bead_id": "B-59d72d1a",
+  "title": "Shared documentation",
+  "agent_type": "documentation",
+  "description": "Write SKILL.md at .apm/skills/pyxlsx/SKILL.md. Content must cover: quick command reference with example invocations and JSON output for all 11 commands, the output contract (JSON default, --plain, errors to stderr, exit codes), the formula evaluation caveat (open in Excel/LibreOffice before relying on cached values), ready-made openpyxl script patterns for table creation and bulk writes, and a cross-skill agent workflow example (extract from xlsx with table read, process, write to pptx via pypptx).",
+  "status": "ready",
+  "bead_type": "task",
+  "parent_id": "B-4797d90b",
+  "dependencies": [
+    "B-08c7e6b6",
+    "B-6f4f9607",
+    "B-6dc0a09b",
+    "B-c51f728f",
+    "B-1853c640",
+    "B-76c52394",
+    "B-cf4d49c3",
+    "B-98fd7e6c",
+    "B-0c040317",
+    "B-fd15edb9"
+  ],
+  "acceptance_criteria": [
+    "SKILL.md exists at .apm/skills/pyxlsx/SKILL.md",
+    "All 12 commands are documented with example invocations and representative JSON output",
+    "Output contract section explains JSON default, --plain, stderr, and exit codes",
+    "openpyxl escape hatch section provides working script patterns for table creation and cell writes",
+    "Formula evaluation caveat is clearly explained",
+    "Agent workflow section shows an extract-xlsx-to-pptx example"
+  ],
+  "linked_docs": [
+    "specs/drafts/spec-c4e8b12f.md"
+  ],
+  "feature_root_id": "B-4797d90b",
+  "execution_branch_name": "feature/b-4797d90b",
+  "execution_worktree_path": "/Users/oscar.renalias/Projects/skill-pptx/.takt/worktrees/B-4797d90b",
+  "expected_files": [
+    ".apm/skills/pyxlsx/SKILL.md"
+  ],
+  "expected_globs": [],
+  "touched_files": [],
+  "changed_files": [],
+  "updated_docs": [],
+  "handoff_summary": {
+    "completed": "",
+    "remaining": "",
+    "risks": "",
+    "verdict": "",
+    "findings_count": 0,
+    "requires_followup": false,
+    "changed_files": [],
+    "updated_docs": [],
+    "next_action": "",
+    "next_agent": "",
+    "block_reason": "",
+    "expected_files": [],
+    "expected_globs": [],
+    "touched_files": [],
+    "conflict_risks": "",
+    "design_decisions": "",
+    "test_coverage_notes": "",
+    "known_limitations": ""
+  },
+  "block_reason": "",
+  "conflict_risks": "",
+  "branch_name": "",
+  "worktree_path": "",
+  "lease": null,
+  "retries": 0,
+  "execution_history": [
+    {
+      "timestamp": "2026-04-15T06:48:43.885412+00:00",
+      "event": "created",
+      "agent_type": "scheduler",
+      "summary": "Bead created",
+      "details": {}
+    }
+  ],
+  "metadata": {},
+  "labels": [],
+  "recovery_for": null,
+  "priority": null
+}

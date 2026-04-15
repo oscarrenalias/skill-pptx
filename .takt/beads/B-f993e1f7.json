@@ -1,0 +1,133 @@
+{
+  "bead_id": "B-f993e1f7",
+  "title": "pypptx CLI \u2014 PowerPoint manipulation toolkit",
+  "agent_type": "planner",
+  "description": "Feature container for the full pypptx CLI implementation. All concrete work is expressed in children. This bead is not runnable \u2014 it exists only to anchor the dependency tree.",
+  "status": "done",
+  "bead_type": "feature",
+  "parent_id": "B-30d68f03",
+  "dependencies": [],
+  "acceptance_criteria": [
+    "All child beads are complete and their acceptance criteria are satisfied.",
+    "`pip install -e .` succeeds and `pypptx --version` prints the version.",
+    "Every command writes structured JSON to stdout by default and switches to human-readable text with --plain.",
+    "Errors always go to stderr; exit code is non-zero on failure.",
+    "`pypptx --help` and each subcommand --help print usage."
+  ],
+  "linked_docs": [
+    "specs/drafts/pypptx-cli-powerpoint-manipulation-toolkit.md"
+  ],
+  "feature_root_id": "B-f993e1f7",
+  "execution_branch_name": "feature/b-f993e1f7",
+  "execution_worktree_path": "/Users/oscar.renalias/Projects/skill-pptx/.takt/worktrees/B-f993e1f7",
+  "expected_files": [],
+  "expected_globs": [
+    "pypptx/**/*.py",
+    "pyproject.toml"
+  ],
+  "touched_files": [],
+  "changed_files": [],
+  "updated_docs": [],
+  "handoff_summary": {
+    "completed": "",
+    "remaining": "",
+    "risks": "",
+    "verdict": "",
+    "findings_count": 0,
+    "requires_followup": false,
+    "changed_files": [],
+    "updated_docs": [],
+    "next_action": "",
+    "next_agent": "",
+    "block_reason": "",
+    "expected_files": [],
+    "expected_globs": [],
+    "touched_files": [],
+    "conflict_risks": "",
+    "design_decisions": "",
+    "test_coverage_notes": "",
+    "known_limitations": ""
+  },
+  "block_reason": "",
+  "conflict_risks": "",
+  "branch_name": "",
+  "worktree_path": "",
+  "lease": null,
+  "retries": 0,
+  "execution_history": [
+    {
+      "timestamp": "2026-04-13T21:08:25.815978+00:00",
+      "event": "created",
+      "agent_type": "scheduler",
+      "summary": "Bead created",
+      "details": {}
+    },
+    {
+      "timestamp": "2026-04-13T21:10:16.990206+00:00",
+      "event": "git_commit_failed",
+      "agent_type": "scheduler",
+      "summary": "git commit failed: Command '['git', 'commit', '-m', '[bead] B-f993e1f7: done', '--no-verify']' returned non-zero exit status 1.",
+      "details": {
+        "error": "Command '['git', 'commit', '-m', '[bead] B-f993e1f7: done', '--no-verify']' returned non-zero exit status 1."
+      }
+    },
+    {
+      "timestamp": "2026-04-13T21:12:25.181260+00:00",
+      "event": "git_commit_failed",
+      "agent_type": "scheduler",
+      "summary": "git commit failed: Command '['git', 'commit', '-m', '[bead] B-f993e1f7: done', '--no-verify']' returned non-zero exit status 1.",
+      "details": {
+        "error": "Command '['git', 'commit', '-m', '[bead] B-f993e1f7: done', '--no-verify']' returned non-zero exit status 1."
+      }
+    },
+    {
+      "timestamp": "2026-04-13T21:13:50.299729+00:00",
+      "event": "git_commit_failed",
+      "agent_type": "scheduler",
+      "summary": "git commit failed: Command '['git', 'commit', '-m', '[bead] B-f993e1f7: done', '--no-verify']' returned non-zero exit status 1.",
+      "details": {
+        "error": "Command '['git', 'commit', '-m', '[bead] B-f993e1f7: done', '--no-verify']' returned non-zero exit status 1."
+      }
+    },
+    {
+      "timestamp": "2026-04-13T21:16:25.722469+00:00",
+      "event": "git_commit_failed",
+      "agent_type": "scheduler",
+      "summary": "git commit failed: Command '['git', 'commit', '-m', '[bead] B-f993e1f7: done', '--no-verify']' returned non-zero exit status 1.",
+      "details": {
+        "error": "Command '['git', 'commit', '-m', '[bead] B-f993e1f7: done', '--no-verify']' returned non-zero exit status 1."
+      }
+    },
+    {
+      "timestamp": "2026-04-13T21:20:43.282412+00:00",
+      "event": "git_commit_failed",
+      "agent_type": "scheduler",
+      "summary": "git commit failed: Command '['git', 'commit', '-m', '[bead] B-f993e1f7: done', '--no-verify']' returned non-zero exit status 1.",
+      "details": {
+        "error": "Command '['git', 'commit', '-m', '[bead] B-f993e1f7: done', '--no-verify']' returned non-zero exit status 1."
+      }
+    },
+    {
+      "timestamp": "2026-04-13T21:31:58.057860+00:00",
+      "event": "git_commit_failed",
+      "agent_type": "scheduler",
+      "summary": "git commit failed: Command '['git', 'commit', '-m', '[bead] B-f993e1f7: done', '--no-verify']' returned non-zero exit status 1.",
+      "details": {
+        "error": "Command '['git', 'commit', '-m', '[bead] B-f993e1f7: done', '--no-verify']' returned non-zero exit status 1."
+      }
+    },
+    {
+      "timestamp": "2026-04-14T06:15:30.774591+00:00",
+      "event": "git_commit_failed",
+      "agent_type": "scheduler",
+      "summary": "git commit failed: Command '['git', 'commit', '-m', '[bead] B-f993e1f7: done', '--no-verify']' returned non-zero exit status 1.",
+      "details": {
+        "error": "Command '['git', 'commit', '-m', '[bead] B-f993e1f7: done', '--no-verify']' returned non-zero exit status 1."
+      }
+    }
+  ],
+  "metadata": {},
+  "labels": [],
+  "recovery_for": null,
+  "priority": null
+}

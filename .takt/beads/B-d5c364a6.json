@@ -1,0 +1,61 @@
+{
+  "bead_id": "B-d5c364a6",
+  "title": "pypptx thumbnails command",
+  "agent_type": "planner",
+  "description": "Adds a `thumbnails` command to pypptx that renders each slide of a .pptx file as a JPEG and stitches them into a labeled grid image for visual inspection. The pipeline uses LibreOffice (soffice) for PDF conversion, pdftoppm for per-page JPEG rendering, and Pillow for grid assembly. Hidden slides appear as hatched grey placeholders to keep slide numbering consistent. Pillow is an optional dependency installable via `pip install 'pypptx[thumbnails]'`.",
+  "status": "done",
+  "bead_type": "epic",
+  "parent_id": null,
+  "dependencies": [],
+  "acceptance_criteria": [],
+  "linked_docs": [
+    "specs/drafts/pypptx-thumbnails-command.md"
+  ],
+  "feature_root_id": null,
+  "execution_branch_name": "",
+  "execution_worktree_path": "",
+  "expected_files": [],
+  "expected_globs": [],
+  "touched_files": [],
+  "changed_files": [],
+  "updated_docs": [],
+  "handoff_summary": {
+    "completed": "",
+    "remaining": "",
+    "risks": "",
+    "verdict": "",
+    "findings_count": 0,
+    "requires_followup": false,
+    "changed_files": [],
+    "updated_docs": [],
+    "next_action": "",
+    "next_agent": "",
+    "block_reason": "",
+    "expected_files": [],
+    "expected_globs": [],
+    "touched_files": [],
+    "conflict_risks": "",
+    "design_decisions": "",
+    "test_coverage_notes": "",
+    "known_limitations": ""
+  },
+  "block_reason": "",
+  "conflict_risks": "",
+  "branch_name": "",
+  "worktree_path": "",
+  "lease": null,
+  "retries": 0,
+  "execution_history": [
+    {
+      "timestamp": "2026-04-14T06:33:05.366749+00:00",
+      "event": "created",
+      "agent_type": "scheduler",
+      "summary": "Bead created",
+      "details": {}
+    }
+  ],
+  "metadata": {},
+  "labels": [],
+  "recovery_for": null,
+  "priority": null
+}

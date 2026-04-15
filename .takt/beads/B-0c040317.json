@@ -1,0 +1,73 @@
+{
+  "bead_id": "B-0c040317",
+  "title": "Pack ops: unpack and pack",
+  "agent_type": "developer",
+  "description": "Create ops/pack.py with unpack() (extracts the xlsx ZIP to a directory, defaulting to the filename stem) and pack() (rezips a directory into a valid xlsx atomically via temp file + os.replace()). Use defusedxml for any XML parsing. Wire 'pyxlsx unpack' and 'pyxlsx pack' CLI commands in cli.py.",
+  "status": "ready",
+  "bead_type": "task",
+  "parent_id": "B-4797d90b",
+  "dependencies": [
+    "B-98fd7e6c"
+  ],
+  "acceptance_criteria": [
+    "unpack() extracts all files from the xlsx ZIP to the output directory and returns the directory path",
+    "pack() produces a file that openpyxl can open without errors",
+    "pack() writes atomically via temp file + os.replace()",
+    "pyxlsx unpack <file> outputs JSON with unpacked_dir key",
+    "pyxlsx pack <dir> <output.xlsx> outputs JSON with output_file key",
+    "defusedxml is used for any XML parsing in pack.py; xml.etree.ElementTree is not used for parsing"
+  ],
+  "linked_docs": [
+    "specs/drafts/spec-c4e8b12f.md"
+  ],
+  "feature_root_id": "B-4797d90b",
+  "execution_branch_name": "feature/b-4797d90b",
+  "execution_worktree_path": "/Users/oscar.renalias/Projects/skill-pptx/.takt/worktrees/B-4797d90b",
+  "expected_files": [
+    ".apm/skills/pyxlsx/pyxlsx/ops/pack.py",
+    ".apm/skills/pyxlsx/pyxlsx/cli.py"
+  ],
+  "expected_globs": [],
+  "touched_files": [],
+  "changed_files": [],
+  "updated_docs": [],
+  "handoff_summary": {
+    "completed": "",
+    "remaining": "",
+    "risks": "",
+    "verdict": "",
+    "findings_count": 0,
+    "requires_followup": false,
+    "changed_files": [],
+    "updated_docs": [],
+    "next_action": "",
+    "next_agent": "",
+    "block_reason": "",
+    "expected_files": [],
+    "expected_globs": [],
+    "touched_files": [],
+    "conflict_risks": "",
+    "design_decisions": "",
+    "test_coverage_notes": "",
+    "known_limitations": ""
+  },
+  "block_reason": "",
+  "conflict_risks": "",
+  "branch_name": "",
+  "worktree_path": "",
+  "lease": null,
+  "retries": 0,
+  "execution_history": [
+    {
+      "timestamp": "2026-04-15T06:48:42.739357+00:00",
+      "event": "created",
+      "agent_type": "scheduler",
+      "summary": "Bead created",
+      "details": {}
+    }
+  ],
+  "metadata": {},
+  "labels": [],
+  "recovery_for": null,
+  "priority": null
+}

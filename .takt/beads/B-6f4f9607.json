@@ -1,0 +1,69 @@
+{
+  "bead_id": "B-6f4f9607",
+  "title": "Self-bootstrapping entry point",
+  "agent_type": "developer",
+  "description": "Create pyxlsx.py at .apm/skills/pyxlsx/pyxlsx.py \u2014 a self-bootstrapping script that creates a .venv on first run, installs click, openpyxl, and defusedxml, then re-execs itself inside the venv. Follow the same bootstrap pattern as the repo-root pypptx.py.",
+  "status": "ready",
+  "bead_type": "task",
+  "parent_id": "B-4797d90b",
+  "dependencies": [
+    "B-08c7e6b6"
+  ],
+  "acceptance_criteria": [
+    "python3 .apm/skills/pyxlsx/pyxlsx.py --version bootstraps a .venv, installs deps, and prints the version",
+    "Subsequent runs reuse the existing .venv without reinstalling",
+    "Bootstrap script follows the same re-exec pattern as pypptx.py"
+  ],
+  "linked_docs": [
+    "specs/drafts/spec-c4e8b12f.md"
+  ],
+  "feature_root_id": "B-4797d90b",
+  "execution_branch_name": "feature/b-4797d90b",
+  "execution_worktree_path": "/Users/oscar.renalias/Projects/skill-pptx/.takt/worktrees/B-4797d90b",
+  "expected_files": [
+    ".apm/skills/pyxlsx/pyxlsx.py"
+  ],
+  "expected_globs": [],
+  "touched_files": [],
+  "changed_files": [],
+  "updated_docs": [],
+  "handoff_summary": {
+    "completed": "",
+    "remaining": "",
+    "risks": "",
+    "verdict": "",
+    "findings_count": 0,
+    "requires_followup": false,
+    "changed_files": [],
+    "updated_docs": [],
+    "next_action": "",
+    "next_agent": "",
+    "block_reason": "",
+    "expected_files": [],
+    "expected_globs": [],
+    "touched_files": [],
+    "conflict_risks": "",
+    "design_decisions": "",
+    "test_coverage_notes": "",
+    "known_limitations": ""
+  },
+  "block_reason": "",
+  "conflict_risks": "",
+  "branch_name": "",
+  "worktree_path": "",
+  "lease": null,
+  "retries": 0,
+  "execution_history": [
+    {
+      "timestamp": "2026-04-15T06:48:40.199604+00:00",
+      "event": "created",
+      "agent_type": "scheduler",
+      "summary": "Bead created",
+      "details": {}
+    }
+  ],
+  "metadata": {},
+  "labels": [],
+  "recovery_for": null,
+  "priority": null
+}

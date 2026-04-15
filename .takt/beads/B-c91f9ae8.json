@@ -1,0 +1,247 @@
+{
+  "bead_id": "B-c91f9ae8",
+  "title": "Add checks 3 and 4 to verify.py (shape overflow and text clipping)",
+  "agent_type": "developer",
+  "description": "Extend pypptx/ops/verify.py with check 3 (shape overflow) and check 4 (text clipping). Check 3 compares each shape's bounding box against slide dimensions with 50,000 EMU tolerance and also flags negative left or top values as overflow errors. Check 4 estimates rendered text height by summing font_size_emu * 1.35 * estimated_line_count across paragraphs, where line count uses word_wrap state and chars_per_line = box_width / (0.55 * font_size); warns at >8% overage and errors at >20% overage. Both checks skip table shapes and footer-region shapes (top > 90% of slide height).",
+  "status": "done",
+  "bead_type": "task",
+  "parent_id": "B-f5bbcf85",
+  "dependencies": [
+    "B-0d1f2859"
+  ],
+  "acceptance_criteria": [
+    "Check 3 reports ERROR when left+width > slide_width minus 50000 EMU tolerance",
+    "Check 3 reports ERROR when top+height > slide_height minus 50000 EMU tolerance",
+    "Check 3 reports ERROR when left or top is negative",
+    "Check 3 does not trigger when shapes are within bounds",
+    "Check 4 reports WARNING when estimated text height exceeds shape height by more than 8% but at most 20%",
+    "Check 4 reports ERROR when estimated text height exceeds shape height by more than 20%",
+    "Check 4 message includes estimated height, box height, and percentage overage",
+    "Check 4 skips table shapes",
+    "Check 4 skips footer-region shapes (top > 90% of slide height)",
+    "Check 4 does not trigger on shapes with no text"
+  ],
+  "linked_docs": [
+    "specs/drafts/add-pypptx-verify-command-for-post-generation-validation.md"
+  ],
+  "feature_root_id": "B-f5bbcf85",
+  "execution_branch_name": "feature/b-f5bbcf85",
+  "execution_worktree_path": "/Users/oscar.renalias/Projects/skill-pptx/.takt/worktrees/B-f5bbcf85",
+  "expected_files": [
+    "pypptx/ops/verify.py"
+  ],
+  "expected_globs": [],
+  "touched_files": [
+    ".apm/skills/pypptx/pypptx/ops/verify.py"
+  ],
+  "changed_files": [
+    ".apm/skills/pypptx/pypptx/ops/verify.py"
+  ],
+  "updated_docs": [],
+  "handoff_summary": {
+    "completed": "Implemented _check_shape_overflow() (check 3) and _check_text_clipping() (check 4) in .apm/skills/pypptx/pypptx/ops/verify.py. Updated verify_pptx() to read slide_width and call both new checks. Added import math for math.ceil in check 4. All 10 acceptance criteria are addressed.",
+    "remaining": "Tester agent should write and run tests for both new checks (positive and negative cases for each criterion). Check 5 (significant shape overlap) is out of scope for this bead.",
+    "risks": "Check 3 overflow tolerance interpretation: implemented as `left+width > slide_width + 50000` (shapes may exceed boundary by up to 50k EMU without error). The acceptance criteria text \"slide_width minus 50000\" is ambiguous but only `+ 50000` satisfies the \"no trigger when within bounds\" criterion. Check 4 font-size fallback is 18pt when no run has an explicit size set; this may over- or under-estimate for slides using theme/inherited sizes. shape.has_table could miss non-standard table containers, but this is a python-pptx limitation.",
+    "verdict": "approved",
+    "findings_count": 0,
+    "requires_followup": false,
+    "changed_files": [
+      ".apm/skills/pypptx/pypptx/ops/verify.py"
+    ],
+    "updated_docs": [],
+    "next_action": "Tester agent should write tests for checks 3 and 4 in tests/test_verify.py, covering all acceptance criteria including negative cases.",
+    "next_agent": "tester",
+    "block_reason": "",
+    "expected_files": [
+      "pypptx/ops/verify.py"
+    ],
+    "expected_globs": [],
+    "touched_files": [
+      ".apm/skills/pypptx/pypptx/ops/verify.py"
+    ],
+    "conflict_risks": "No conflicts expected \u2014 only .apm/skills/pypptx/pypptx/ops/verify.py was modified. Sibling beads touching cli.py or tests/ are unaffected.",
+    "design_decisions": "Overflow tolerance applied as `+ 50000` (lenient) rather than `- 50000` (strict) \u2014 the only interpretation consistent with the \"no trigger when within bounds\" acceptance criterion. Text clipping falls back to 18pt font size when no explicit run size is set. Empty paragraphs are counted as 1 line each to represent blank-line spacing.",
+    "test_coverage_notes": "No tests written in this bead (developer scope). Tester should cover: (1) shape exactly fitting slide \u2014 no error; (2) shape overflowing right/bottom by > 50k EMU \u2014 error; (3) negative left/top \u2014 error; (4) table shape ignored; (5) footer-region shape ignored; (6) text fitting box \u2014 no trigger; (7) text 10% overage \u2014 warning; (8) text 25% overage \u2014 error; (9) no-text shape \u2014 no trigger.",
+    "known_limitations": "Font size estimation for check 4 uses the first run's explicit size, falling back to 18pt \u2014 theme-inherited or paragraph-level sizes are not resolved. word_wrap=None is treated as True (wrapping enabled), which matches PowerPoint default behavior."
+  },
+  "block_reason": "",
+  "conflict_risks": "No conflicts expected \u2014 only .apm/skills/pypptx/pypptx/ops/verify.py was modified. Sibling beads touching cli.py or tests/ are unaffected.",
+  "branch_name": "feature/b-f5bbcf85",
+  "worktree_path": "/Users/oscar.renalias/Projects/skill-pptx/.takt/worktrees/B-f5bbcf85",
+  "lease": null,
+  "retries": 0,
+  "execution_history": [
+    {
+      "timestamp": "2026-04-14T18:31:52.756473+00:00",
+      "event": "created",
+      "agent_type": "scheduler",
+      "summary": "Bead created",
+      "details": {}
+    },
+    {
+      "timestamp": "2026-04-14T18:34:14.105597+00:00",
+      "event": "skills_loaded",
+      "agent_type": "developer",
+      "summary": "Loaded 7 skill(s) for isolated execution",
+      "details": {
+        "loaded_skills": [
+          "core/base-orchestrator",
+          "role/developer-implementation",
+          "capability/code-edit",
+          "task/corrective-implementation",
+          "task/refactor-safe",
+          "task/migration",
+          "memory"
+        ]
+      }
+    },
+    {
+      "timestamp": "2026-04-14T18:34:14.105621+00:00",
+      "event": "started",
+      "agent_type": "developer",
+      "summary": "Worker started",
+      "details": {}
+    },
+    {
+      "timestamp": "2026-04-14T18:34:14.450860+00:00",
+      "event": "guardrails_applied",
+      "agent_type": "developer",
+      "summary": "Applied guardrails from .takt/agent-runs/B-c91f9ae8/repo/templates/agents/developer.md",
+      "details": {
+        "template_path": ".takt/agent-runs/B-c91f9ae8/repo/templates/agents/developer.md"
+      }
+    },
+    {
+      "timestamp": "2026-04-14T18:39:14.337054+00:00",
+      "event": "completed",
+      "agent_type": "developer",
+      "summary": "Added check 3 (shape overflow) and check 4 (text clipping) to pypptx/ops/verify.py. Check 3 flags negative left/top positions and shapes whose bounding box exceeds slide dimensions beyond the 50,000 EMU tolerance, skipping table and footer-region shapes. Check 4 estimates rendered text height by summing font_size_emu * 1.35 * line_count per paragraph (with word_wrap-aware line count), issuing WARNINGs at >8% overage and ERRORs at >20% overage, skipping table shapes, footer-region shapes, and shapes with no text. The verify_pptx() public function now also reads slide_width and passes it to check 3. Syntax verified clean with py_compile.",
+      "details": {}
+    }
+  ],
+  "metadata": {
+    "execution_root": "/Users/oscar.renalias/Projects/skill-pptx/.takt/agent-runs/B-c91f9ae8",
+    "workspace_repo_path": "repo",
+    "loaded_skills": [
+      "core/base-orchestrator",
+      "role/developer-implementation",
+      "capability/code-edit",
+      "task/corrective-implementation",
+      "task/refactor-safe",
+      "task/migration",
+      "memory"
+    ],
+    "skill_bundle_hash": "2cbacb3ae07c8eee2a6bb3d65b99b3e4df7fa47ac8b10c5c68be4b338a583348",
+    "isolated_home": "/Users/oscar.renalias/Projects/skill-pptx/.takt/agent-runs/B-c91f9ae8/home",
+    "runner_backend": "claude",
+    "guardrails": {
+      "agent_type": "developer",
+      "template_path": ".takt/agent-runs/B-c91f9ae8/repo/templates/agents/developer.md",
+      "template_text": "# Developer Guardrails\n\nPrimary responsibility: Implement only the assigned bead inside the existing architecture and file scope.\n\nAllowed actions:\n- Modify code, configuration, or local docs required to complete the assigned bead.\n- Create sub-beads for discovered follow-up work that should be handled separately.\n- Verify your `Python` changes compile and import correctly with a quick syntax check: `python -m py_compile`.\n\nDisallowed actions:\n- Run any test suite \u2014 not even a targeted `pytest` run or any subset. Test execution is exclusively the tester agent's responsibility. Running tests wastes the agent budget and delays the pipeline.\n- Redesign unrelated architecture or broaden scope beyond the assigned bead.\n- Perform final review signoff in place of a review agent.\n- Silently absorb unrelated test, documentation, or planning work that should be handed off.\n\nExpected outputs:\n- Completed or blocked JSON with concise implementation summary.\n- Accurate touched files, changed files, risks, and follow-up handoff fields.",
+      "captured_at": "2026-04-14T18:34:14.450844+00:00"
+    },
+    "worker_prompt_context": {
+      "bead_id": "B-c91f9ae8",
+      "feature_root_id": "B-f5bbcf85",
+      "title": "Add checks 3 and 4 to verify.py (shape overflow and text clipping)",
+      "agent_type": "developer",
+      "description": "Extend pypptx/ops/verify.py with check 3 (shape overflow) and check 4 (text clipping). Check 3 compares each shape's bounding box against slide dimensions with 50,000 EMU tolerance and also flags negative left or top values as overflow errors. Check 4 estimates rendered text height by summing font_size_emu * 1.35 * estimated_line_count across paragraphs, where line count uses word_wrap state and chars_per_line = box_width / (0.55 * font_size); warns at >8% overage and errors at >20% overage. Both checks skip table shapes and footer-region shapes (top > 90% of slide height).",
+      "status": "in_progress",
+      "acceptance_criteria": [
+        "Check 3 reports ERROR when left+width > slide_width minus 50000 EMU tolerance",
+        "Check 3 reports ERROR when top+height > slide_height minus 50000 EMU tolerance",
+        "Check 3 reports ERROR when left or top is negative",
+        "Check 3 does not trigger when shapes are within bounds",
+        "Check 4 reports WARNING when estimated text height exceeds shape height by more than 8% but at most 20%",
+        "Check 4 reports ERROR when estimated text height exceeds shape height by more than 20%",
+        "Check 4 message includes estimated height, box height, and percentage overage",
+        "Check 4 skips table shapes",
+        "Check 4 skips footer-region shapes (top > 90% of slide height)",
+        "Check 4 does not trigger on shapes with no text"
+      ],
+      "dependencies": [
+        "B-0d1f2859"
+      ],
+      "linked_docs": [
+        "specs/drafts/add-pypptx-verify-command-for-post-generation-validation.md"
+      ],
+      "execution_branch_name": "feature/b-f5bbcf85",
+      "execution_worktree_path": "/Users/oscar.renalias/Projects/skill-pptx/.takt/worktrees/B-f5bbcf85",
+      "expected_files": [
+        "pypptx/ops/verify.py"
+      ],
+      "expected_globs": [],
+      "touched_files": [],
+      "conflict_risks": "",
+      "handoff_summary": {
+        "completed": "",
+        "remaining": "",
+        "risks": "",
+        "verdict": "",
+        "findings_count": 0,
+        "requires_followup": false,
+        "changed_files": [],
+        "updated_docs": [],
+        "next_action": "",
+        "next_agent": "",
+        "block_reason": "",
+        "expected_files": [],
+        "expected_globs": [],
+        "touched_files": [],
+        "conflict_risks": "",
+        "design_decisions": "",
+        "test_coverage_notes": "",
+        "known_limitations": ""
+      }
+    },
+    "last_agent_result": {
+      "outcome": "completed",
+      "summary": "Added check 3 (shape overflow) and check 4 (text clipping) to pypptx/ops/verify.py. Check 3 flags negative left/top positions and shapes whose bounding box exceeds slide dimensions beyond the 50,000 EMU tolerance, skipping table and footer-region shapes. Check 4 estimates rendered text height by summing font_size_emu * 1.35 * line_count per paragraph (with word_wrap-aware line count), issuing WARNINGs at >8% overage and ERRORs at >20% overage, skipping table shapes, footer-region shapes, and shapes with no text. The verify_pptx() public function now also reads slide_width and passes it to check 3. Syntax verified clean with py_compile.",
+      "verdict": "approved",
+      "findings_count": 0,
+      "requires_followup": false,
+      "next_agent": "tester",
+      "block_reason": ""
+    },
+    "telemetry": {
+      "cost_usd": 0.5771000500000001,
+      "duration_ms": 298721,
+      "duration_api_ms": 293094,
+      "num_turns": 19,
+      "input_tokens": 17,
+      "output_tokens": 19134,
+      "cache_creation_tokens": 40505,
+      "cache_read_tokens": 452621,
+      "stop_reason": "end_turn",
+      "session_id": "a7605950-93e9-4b69-9a48-76a82d3f6916",
+      "permission_denials": [],
+      "prompt_chars": 6553,
+      "prompt_lines": 140,
+      "source": "provider",
+      "attempt": 1
+    },
+    "telemetry_history": [
+      {
+        "cost_usd": 0.5771000500000001,
+        "duration_ms": 298721,
+        "duration_api_ms": 293094,
+        "num_turns": 19,
+        "input_tokens": 17,
+        "output_tokens": 19134,
+        "cache_creation_tokens": 40505,
+        "cache_read_tokens": 452621,
+        "stop_reason": "end_turn",
+        "session_id": "a7605950-93e9-4b69-9a48-76a82d3f6916",
+        "permission_denials": [],
+        "prompt_chars": 6553,
+        "prompt_lines": 140,
+        "source": "provider",
+        "attempt": 1
+      }
+    ],
+    "last_commit": "2ac56a66e88831a7d5e9c0666d6597995a0c5cc8"
+  },
+  "labels": [],
+  "recovery_for": null,
+  "priority": null
+}

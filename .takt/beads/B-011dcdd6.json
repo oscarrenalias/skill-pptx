@@ -1,0 +1,367 @@
+{
+  "bead_id": "B-011dcdd6",
+  "title": "Review layout name feature and SKILL.md updates",
+  "agent_type": "review",
+  "description": "Review all implementation, test, and documentation changes for correctness and completeness. Verify the output contract is preserved (JSON to stdout, errors to stderr, exit 0/1). Check that no other CLI commands were inadvertently modified and that uv run pytest passes cleanly.",
+  "status": "done",
+  "bead_type": "task",
+  "parent_id": "B-680b5593",
+  "dependencies": [
+    "B-774f185f",
+    "B-975c975b",
+    "B-d6b5b6f7",
+    "B-f8eefe9b"
+  ],
+  "acceptance_criteria": [
+    "All developer, tester, and documentation beads are complete",
+    "Output contract is preserved across all affected commands",
+    "No regressions introduced in any existing test",
+    "SKILL.md guidance is accurate and unambiguous"
+  ],
+  "linked_docs": [
+    "specs/drafts/improve-slide-layout-selection-guidance-for-agents.md"
+  ],
+  "feature_root_id": "B-680b5593",
+  "execution_branch_name": "feature/b-680b5593",
+  "execution_worktree_path": "/Users/oscar.renalias/Projects/skill-pptx/.takt/worktrees/B-680b5593",
+  "expected_files": [
+    ".apm/skills/pypptx/pypptx/cli.py",
+    ".apm/skills/pypptx/pypptx/ops/slides.py",
+    ".apm/skills/pypptx/SKILL.md",
+    "tests/test_slides.py",
+    "tests/test_cli.py"
+  ],
+  "expected_globs": [],
+  "touched_files": [
+    ".apm/skills/pypptx/SKILL.md",
+    ".apm/skills/pypptx/pypptx/cli.py",
+    ".apm/skills/pypptx/pypptx/ops/slides.py",
+    "tests/test_cli.py",
+    "tests/test_slides.py"
+  ],
+  "changed_files": [
+    ".apm/skills/pypptx/SKILL.md",
+    ".apm/skills/pypptx/pypptx/cli.py",
+    ".apm/skills/pypptx/pypptx/ops/slides.py",
+    "tests/test_cli.py",
+    "tests/test_slides.py"
+  ],
+  "updated_docs": [
+    ".apm/skills/pypptx/SKILL.md"
+  ],
+  "handoff_summary": {
+    "completed": "Reviewed list_layouts() implementation, cli.py plain formatter, test_slides.py name field tests, test_cli.py updated plain output tests, and SKILL.md layout guidance.",
+    "remaining": "None.",
+    "risks": "None identified. Pre-existing index mismatch risk between list_layouts() (python-pptx) and _get_sorted_layouts() (filesystem) is not introduced by this change and is benign for typical single-master presentations.",
+    "verdict": "approved",
+    "findings_count": 0,
+    "requires_followup": false,
+    "changed_files": [
+      ".apm/skills/pypptx/SKILL.md",
+      ".apm/skills/pypptx/pypptx/cli.py",
+      ".apm/skills/pypptx/pypptx/ops/slides.py",
+      "tests/test_cli.py",
+      "tests/test_slides.py"
+    ],
+    "updated_docs": [
+      ".apm/skills/pypptx/SKILL.md"
+    ],
+    "next_action": "Bead is complete and can be merged.",
+    "next_agent": "",
+    "block_reason": "",
+    "expected_files": [
+      ".apm/skills/pypptx/pypptx/cli.py",
+      ".apm/skills/pypptx/pypptx/ops/slides.py",
+      ".apm/skills/pypptx/SKILL.md",
+      "tests/test_slides.py",
+      "tests/test_cli.py"
+    ],
+    "expected_globs": [],
+    "touched_files": [
+      ".apm/skills/pypptx/SKILL.md",
+      ".apm/skills/pypptx/pypptx/cli.py",
+      ".apm/skills/pypptx/pypptx/ops/slides.py",
+      "tests/test_cli.py",
+      "tests/test_slides.py"
+    ],
+    "conflict_risks": "None \u2014 only list_layouts() and the plain formatter lambda were changed; no shared state with sibling beads.",
+    "design_decisions": "list_layouts() collects (filename, name) pairs in a single pass to keep layout object in scope, then sorts by filename. Plain format uses two-space separator between file and name. SKILL.md guidance inserted before Design guidance subsection.",
+    "test_coverage_notes": "New tests: test_name_field_is_non_empty_string (unit), test_plain_output_includes_filename_and_name (CLI). Updated: test_plain_output_one_filename_per_line uses substring check to accommodate new two-field format.",
+    "known_limitations": "Pre-existing: list_layouts() (python-pptx based) and _get_sorted_layouts() (filesystem based) could return different indices for presentations with orphaned layout files or multiple masters. Not introduced by this change."
+  },
+  "block_reason": "",
+  "conflict_risks": "None \u2014 only list_layouts() and the plain formatter lambda were changed; no shared state with sibling beads.",
+  "branch_name": "feature/b-680b5593",
+  "worktree_path": "",
+  "lease": null,
+  "retries": 0,
+  "execution_history": [
+    {
+      "timestamp": "2026-04-14T12:54:42.526697+00:00",
+      "event": "created",
+      "agent_type": "scheduler",
+      "summary": "Bead created",
+      "details": {}
+    },
+    {
+      "timestamp": "2026-04-14T12:59:38.724095+00:00",
+      "event": "skills_loaded",
+      "agent_type": "review",
+      "summary": "Loaded 6 skill(s) for isolated execution",
+      "details": {
+        "loaded_skills": [
+          "core/base-orchestrator",
+          "role/reviewer-signoff",
+          "capability/code-review",
+          "task/corrective-bead-creation",
+          "task/risk-assessment",
+          "memory"
+        ]
+      }
+    },
+    {
+      "timestamp": "2026-04-14T12:59:38.724119+00:00",
+      "event": "started",
+      "agent_type": "review",
+      "summary": "Worker started",
+      "details": {}
+    },
+    {
+      "timestamp": "2026-04-14T12:59:39.068051+00:00",
+      "event": "guardrails_applied",
+      "agent_type": "review",
+      "summary": "Applied guardrails from .takt/agent-runs/B-011dcdd6/repo/templates/agents/review.md",
+      "details": {
+        "template_path": ".takt/agent-runs/B-011dcdd6/repo/templates/agents/review.md"
+      }
+    },
+    {
+      "timestamp": "2026-04-14T13:01:10.493851+00:00",
+      "event": "completed",
+      "agent_type": "review",
+      "summary": "All changes reviewed and approved \u2014 name field added correctly, output contract preserved, tests accurate, SKILL.md guidance clear.",
+      "details": {}
+    }
+  ],
+  "metadata": {
+    "execution_root": "/Users/oscar.renalias/Projects/skill-pptx/.takt/agent-runs/B-011dcdd6",
+    "workspace_repo_path": "repo",
+    "loaded_skills": [
+      "core/base-orchestrator",
+      "role/reviewer-signoff",
+      "capability/code-review",
+      "task/corrective-bead-creation",
+      "task/risk-assessment",
+      "memory"
+    ],
+    "skill_bundle_hash": "e49ae02cdd641b1b539810ca3dc9f7cb45c7fa56ae2c7f96d6d53ebce3109bd4",
+    "isolated_home": "/Users/oscar.renalias/Projects/skill-pptx/.takt/agent-runs/B-011dcdd6/home",
+    "runner_backend": "claude",
+    "guardrails": {
+      "agent_type": "review",
+      "template_path": ".takt/agent-runs/B-011dcdd6/repo/templates/agents/review.md",
+      "template_text": "# Review Guardrails\n\nPrimary responsibility: Inspect code, tests, docs, and acceptance criteria for correctness, completeness, and risk.\n\nAllowed actions:\n- Review only the changed files listed in the bead's touched_files and changed_files fields. Do not read unrelated files.\n- Validate acceptance criteria against the implementation and handoff state.\n- Block with a clear recommendation when the bead actually requires implementation work.\n\nEfficiency constraints:\n- Do not run the test suite. Testing is the tester agent's responsibility.\n- Focus on correctness, completeness, and risk \u2014 not style or formatting.\n- Keep the review concise. If there are no findings, say so and approve promptly.\n\nDisallowed actions:\n- Implement feature work, tests, or docs instead of reporting findings.\n- Rewrite architecture or silently fix issues discovered during review.\n- Mark incomplete work as accepted without evidence.\n\nExpected outputs:\n- Return JSON with `outcome` set to `completed` (reviews always complete; use `verdict` for pass/fail) and `summary` as a one-line description of the review result.\n- Return JSON with structured verdict fields for every run: `verdict`, `findings_count`, and `requires_followup`.\n- Treat `verdict` as the review signoff decision: `approved` means the bead can complete, while `needs_changes` means the bead must block for follow-up work.\n- Use `verdict=approved`, `findings_count=0`, and `requires_followup=false` when no unresolved findings remain.\n- Use `verdict=needs_changes`, set `findings_count` to the unresolved finding count, set `requires_followup=true` unless there is a stronger explicit reason not to, and always include `block_reason` when any required fix remains.\n- Keep `completed`, `remaining`, and `risks` as free-form narrative context only. They inform operators, but they do not override the structured verdict or control scheduler state.\n- Review findings ordered by severity, or an explicit statement that no findings were discovered.\n- Clear blocked handoff details when the task belongs to another agent type.",
+      "captured_at": "2026-04-14T12:59:39.068037+00:00"
+    },
+    "worker_prompt_context": {
+      "bead_id": "B-011dcdd6",
+      "feature_root_id": "B-680b5593",
+      "title": "Review layout name feature and SKILL.md updates",
+      "agent_type": "review",
+      "description": "Review all implementation, test, and documentation changes for correctness and completeness. Verify the output contract is preserved (JSON to stdout, errors to stderr, exit 0/1). Check that no other CLI commands were inadvertently modified and that uv run pytest passes cleanly.",
+      "status": "in_progress",
+      "acceptance_criteria": [
+        "All developer, tester, and documentation beads are complete",
+        "Output contract is preserved across all affected commands",
+        "No regressions introduced in any existing test",
+        "SKILL.md guidance is accurate and unambiguous"
+      ],
+      "dependencies": [
+        "B-774f185f",
+        "B-975c975b",
+        "B-d6b5b6f7",
+        "B-f8eefe9b"
+      ],
+      "linked_docs": [
+        "specs/drafts/improve-slide-layout-selection-guidance-for-agents.md"
+      ],
+      "execution_branch_name": "feature/b-680b5593",
+      "execution_worktree_path": "/Users/oscar.renalias/Projects/skill-pptx/.takt/worktrees/B-680b5593",
+      "expected_files": [
+        ".apm/skills/pypptx/pypptx/cli.py",
+        ".apm/skills/pypptx/pypptx/ops/slides.py",
+        ".takt/beads/.gitkeep",
+        ".takt/beads/B-011dcdd6.json",
+        ".takt/beads/B-127c7e6a.json",
+        ".takt/beads/B-150f15c0.json",
+        ".takt/beads/B-1d51984d.json",
+        ".takt/beads/B-23fe63b6.json",
+        ".takt/beads/B-30d68f03.json",
+        ".takt/beads/B-338d86fc.json",
+        ".takt/beads/B-379f2433.json",
+        ".takt/beads/B-407ceaca.json",
+        ".takt/beads/B-457182d7-corrective.json",
+        ".takt/beads/B-457182d7.json",
+        ".takt/beads/B-4befdc71.json",
+        ".takt/beads/B-4ed9f9d5.json",
+        ".takt/beads/B-52ca6e5a.json",
+        ".takt/beads/B-55e6880d.json",
+        ".takt/beads/B-5a1824ba.json",
+        ".takt/beads/B-5cd46262.json",
+        ".takt/beads/B-680b5593.json",
+        ".takt/beads/B-6fa5ac31.json",
+        ".takt/beads/B-74563794.json",
+        ".takt/beads/B-774f185f.json",
+        ".takt/beads/B-8c9fdaa7.json",
+        ".takt/beads/B-8f319ad4.json",
+        ".takt/beads/B-90115bee.json",
+        ".takt/beads/B-975c975b.json",
+        ".takt/beads/B-989bafa0.json",
+        ".takt/beads/B-9ec19a2c.json",
+        ".takt/beads/B-a73f119b.json",
+        ".takt/beads/B-ba2dfa23.json",
+        ".takt/beads/B-bae205b8.json",
+        ".takt/beads/B-bffed7c3.json",
+        ".takt/beads/B-cb4739fc.json",
+        ".takt/beads/B-ce4fa0e6.json",
+        ".takt/beads/B-d12458e8.json",
+        ".takt/beads/B-d5c364a6.json",
+        ".takt/beads/B-d6b5b6f7.json",
+        ".takt/beads/B-d71811b9.json",
+        ".takt/beads/B-d92e2c06.json",
+        ".takt/beads/B-d95f6847.json",
+        ".takt/beads/B-dd655ec2.json",
+        ".takt/beads/B-ea8ae4c9.json",
+        ".takt/beads/B-ed5b3c37.json",
+        ".takt/beads/B-f06c8351.json",
+        ".takt/beads/B-f492282d.json",
+        ".takt/beads/B-f8eefe9b.json",
+        ".takt/beads/B-f993e1f7.json"
+      ],
+      "expected_globs": [],
+      "touched_files": [
+        ".apm/skills/pypptx/SKILL.md",
+        ".apm/skills/pypptx/pypptx/cli.py",
+        ".apm/skills/pypptx/pypptx/ops/slides.py",
+        ".takt/beads/.gitkeep",
+        ".takt/beads/B-011dcdd6.json",
+        ".takt/beads/B-127c7e6a.json",
+        ".takt/beads/B-150f15c0.json",
+        ".takt/beads/B-1d51984d.json",
+        ".takt/beads/B-23fe63b6.json",
+        ".takt/beads/B-30d68f03.json",
+        ".takt/beads/B-338d86fc.json",
+        ".takt/beads/B-379f2433.json",
+        ".takt/beads/B-407ceaca.json",
+        ".takt/beads/B-457182d7-corrective.json",
+        ".takt/beads/B-457182d7.json",
+        ".takt/beads/B-4befdc71.json",
+        ".takt/beads/B-4ed9f9d5.json",
+        ".takt/beads/B-52ca6e5a.json",
+        ".takt/beads/B-55e6880d.json",
+        ".takt/beads/B-5a1824ba.json",
+        ".takt/beads/B-5cd46262.json",
+        ".takt/beads/B-680b5593.json",
+        ".takt/beads/B-6fa5ac31.json",
+        ".takt/beads/B-74563794.json",
+        ".takt/beads/B-774f185f.json",
+        ".takt/beads/B-8c9fdaa7.json",
+        ".takt/beads/B-8f319ad4.json",
+        ".takt/beads/B-90115bee.json",
+        ".takt/beads/B-975c975b.json",
+        ".takt/beads/B-989bafa0.json",
+        ".takt/beads/B-9ec19a2c.json",
+        ".takt/beads/B-a73f119b.json",
+        ".takt/beads/B-ba2dfa23.json",
+        ".takt/beads/B-bae205b8.json",
+        ".takt/beads/B-bffed7c3.json",
+        ".takt/beads/B-cb4739fc.json",
+        ".takt/beads/B-ce4fa0e6.json",
+        ".takt/beads/B-d12458e8.json",
+        ".takt/beads/B-d5c364a6.json",
+        ".takt/beads/B-d6b5b6f7.json",
+        ".takt/beads/B-d71811b9.json",
+        ".takt/beads/B-d92e2c06.json",
+        ".takt/beads/B-d95f6847.json",
+        ".takt/beads/B-dd655ec2.json",
+        ".takt/beads/B-ea8ae4c9.json",
+        ".takt/beads/B-ed5b3c37.json",
+        ".takt/beads/B-f06c8351.json",
+        ".takt/beads/B-f492282d.json",
+        ".takt/beads/B-f8eefe9b.json",
+        ".takt/beads/B-f993e1f7.json",
+        "tests/test_cli.py",
+        "tests/test_slides.py"
+      ],
+      "conflict_risks": "None \u2014 only list_layouts() was modified; no shared state with sibling beads.\nNone \u2014 only the plain formatter lambda was changed; no structural or JSON changes.",
+      "handoff_summary": {
+        "completed": "",
+        "remaining": "",
+        "risks": "",
+        "verdict": "",
+        "findings_count": 0,
+        "requires_followup": false,
+        "changed_files": [],
+        "updated_docs": [],
+        "next_action": "",
+        "next_agent": "",
+        "block_reason": "",
+        "expected_files": [],
+        "expected_globs": [],
+        "touched_files": [],
+        "conflict_risks": "",
+        "design_decisions": "",
+        "test_coverage_notes": "",
+        "known_limitations": ""
+      }
+    },
+    "last_agent_result": {
+      "outcome": "completed",
+      "summary": "All changes reviewed and approved \u2014 name field added correctly, output contract preserved, tests accurate, SKILL.md guidance clear.",
+      "verdict": "approved",
+      "findings_count": 0,
+      "requires_followup": false,
+      "next_agent": "",
+      "block_reason": ""
+    },
+    "telemetry": {
+      "cost_usd": 0.29512295,
+      "duration_ms": 90996,
+      "duration_api_ms": 88576,
+      "num_turns": 8,
+      "input_tokens": 8,
+      "output_tokens": 5385,
+      "cache_creation_tokens": 38721,
+      "cache_read_tokens": 212204,
+      "stop_reason": "end_turn",
+      "session_id": "9f4d407c-0a68-4161-9213-effbf36c93e7",
+      "permission_denials": [],
+      "prompt_chars": 13271,
+      "prompt_lines": 308,
+      "source": "provider",
+      "attempt": 1
+    },
+    "telemetry_history": [
+      {
+        "cost_usd": 0.29512295,
+        "duration_ms": 90996,
+        "duration_api_ms": 88576,
+        "num_turns": 8,
+        "input_tokens": 8,
+        "output_tokens": 5385,
+        "cache_creation_tokens": 38721,
+        "cache_read_tokens": 212204,
+        "stop_reason": "end_turn",
+        "session_id": "9f4d407c-0a68-4161-9213-effbf36c93e7",
+        "permission_denials": [],
+        "prompt_chars": 13271,
+        "prompt_lines": 308,
+        "source": "provider",
+        "attempt": 1
+      }
+    ]
+  },
+  "labels": [],
+  "recovery_for": null,
+  "priority": null
+}

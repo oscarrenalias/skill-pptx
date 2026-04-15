@@ -1,0 +1,73 @@
+{
+  "bead_id": "B-cf4d49c3",
+  "title": "Write ops: cell set",
+  "agent_type": "developer",
+  "description": "Create ops/write.py with set_cell(). Implements type inference: values starting with '=' stored as formula string; integer-parseable values stored as int; float-parseable as float; all else as str. Saves atomically by writing to a temp file in the same directory then os.replace(). Wire 'pyxlsx cell set' CLI command in cli.py.",
+  "status": "ready",
+  "bead_type": "task",
+  "parent_id": "B-4797d90b",
+  "dependencies": [
+    "B-76c52394"
+  ],
+  "acceptance_criteria": [
+    "set_cell() writes the inferred type to the specified cell and saves atomically",
+    "Values starting with '=' are stored as formula strings",
+    "Integer strings are stored as int, float strings as float, everything else as str",
+    "pyxlsx cell set <file> <sheet> <cell> <value> writes and outputs confirmation JSON",
+    "Round-trip: cell set followed by cell get returns the written value",
+    "Atomic write uses temp file + os.replace() in the same directory"
+  ],
+  "linked_docs": [
+    "specs/drafts/spec-c4e8b12f.md"
+  ],
+  "feature_root_id": "B-4797d90b",
+  "execution_branch_name": "feature/b-4797d90b",
+  "execution_worktree_path": "/Users/oscar.renalias/Projects/skill-pptx/.takt/worktrees/B-4797d90b",
+  "expected_files": [
+    ".apm/skills/pyxlsx/pyxlsx/ops/write.py",
+    ".apm/skills/pyxlsx/pyxlsx/cli.py"
+  ],
+  "expected_globs": [],
+  "touched_files": [],
+  "changed_files": [],
+  "updated_docs": [],
+  "handoff_summary": {
+    "completed": "",
+    "remaining": "",
+    "risks": "",
+    "verdict": "",
+    "findings_count": 0,
+    "requires_followup": false,
+    "changed_files": [],
+    "updated_docs": [],
+    "next_action": "",
+    "next_agent": "",
+    "block_reason": "",
+    "expected_files": [],
+    "expected_globs": [],
+    "touched_files": [],
+    "conflict_risks": "",
+    "design_decisions": "",
+    "test_coverage_notes": "",
+    "known_limitations": ""
+  },
+  "block_reason": "",
+  "conflict_risks": "",
+  "branch_name": "",
+  "worktree_path": "",
+  "lease": null,
+  "retries": 0,
+  "execution_history": [
+    {
+      "timestamp": "2026-04-15T06:48:41.996900+00:00",
+      "event": "created",
+      "agent_type": "scheduler",
+      "summary": "Bead created",
+      "details": {}
+    }
+  ],
+  "metadata": {},
+  "labels": [],
+  "recovery_for": null,
+  "priority": null
+}

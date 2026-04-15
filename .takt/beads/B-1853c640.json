@@ -1,0 +1,72 @@
+{
+  "bead_id": "B-1853c640",
+  "title": "Inspect ops: sheet read",
+  "agent_type": "developer",
+  "description": "Add read_sheet() to ops/inspect.py. Returns a 2D list of typed cell values for a full sheet or a specified sub-range (--range A1:H50 notation). Serialise datetime/date values as ISO-8601 strings; None for empty cells. Wire the 'pyxlsx sheet read' CLI command in cli.py.",
+  "status": "ready",
+  "bead_type": "task",
+  "parent_id": "B-4797d90b",
+  "dependencies": [
+    "B-c51f728f"
+  ],
+  "acceptance_criteria": [
+    "read_sheet() returns a dict with sheet, range, and rows (2D list)",
+    "Cell values are correctly typed: int, float, str, bool, ISO-8601 string for date/datetime, None for empty",
+    "pyxlsx sheet read <file> <sheet> returns the entire used range when --range is omitted",
+    "pyxlsx sheet read <file> <sheet> --range A1:C3 returns only the specified sub-range",
+    "--plain flag produces human-readable tabular output"
+  ],
+  "linked_docs": [
+    "specs/drafts/spec-c4e8b12f.md"
+  ],
+  "feature_root_id": "B-4797d90b",
+  "execution_branch_name": "feature/b-4797d90b",
+  "execution_worktree_path": "/Users/oscar.renalias/Projects/skill-pptx/.takt/worktrees/B-4797d90b",
+  "expected_files": [
+    ".apm/skills/pyxlsx/pyxlsx/ops/inspect.py",
+    ".apm/skills/pyxlsx/pyxlsx/cli.py"
+  ],
+  "expected_globs": [],
+  "touched_files": [],
+  "changed_files": [],
+  "updated_docs": [],
+  "handoff_summary": {
+    "completed": "",
+    "remaining": "",
+    "risks": "",
+    "verdict": "",
+    "findings_count": 0,
+    "requires_followup": false,
+    "changed_files": [],
+    "updated_docs": [],
+    "next_action": "",
+    "next_agent": "",
+    "block_reason": "",
+    "expected_files": [],
+    "expected_globs": [],
+    "touched_files": [],
+    "conflict_risks": "",
+    "design_decisions": "",
+    "test_coverage_notes": "",
+    "known_limitations": ""
+  },
+  "block_reason": "",
+  "conflict_risks": "",
+  "branch_name": "",
+  "worktree_path": "",
+  "lease": null,
+  "retries": 0,
+  "execution_history": [
+    {
+      "timestamp": "2026-04-15T06:48:41.312102+00:00",
+      "event": "created",
+      "agent_type": "scheduler",
+      "summary": "Bead created",
+      "details": {}
+    }
+  ],
+  "metadata": {},
+  "labels": [],
+  "recovery_for": null,
+  "priority": null
+}

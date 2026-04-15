@@ -1,0 +1,72 @@
+{
+  "bead_id": "B-c51f728f",
+  "title": "Inspect ops: info and sheet list",
+  "agent_type": "developer",
+  "description": "Implement ops/inspect.py with info() (returns file path, list of sheet names, list of named range names) and list_sheets() (returns per-sheet name, max_row, max_column, and visibility). Wire the 'pyxlsx info' and 'pyxlsx sheet list' CLI commands in cli.py.",
+  "status": "ready",
+  "bead_type": "task",
+  "parent_id": "B-4797d90b",
+  "dependencies": [
+    "B-6dc0a09b"
+  ],
+  "acceptance_criteria": [
+    "info() returns a dict with keys file, sheets (list of names), and named_ranges (list of names)",
+    "list_sheets() returns a list of dicts each with name, rows, cols, and visible",
+    "pyxlsx info <file> outputs JSON matching the spec and --plain produces the human-readable format",
+    "pyxlsx sheet list <file> outputs JSON matching the spec and --plain produces the tabular format",
+    "Errors are written to stderr and exit code is 1"
+  ],
+  "linked_docs": [
+    "specs/drafts/spec-c4e8b12f.md"
+  ],
+  "feature_root_id": "B-4797d90b",
+  "execution_branch_name": "feature/b-4797d90b",
+  "execution_worktree_path": "/Users/oscar.renalias/Projects/skill-pptx/.takt/worktrees/B-4797d90b",
+  "expected_files": [
+    ".apm/skills/pyxlsx/pyxlsx/ops/inspect.py",
+    ".apm/skills/pyxlsx/pyxlsx/cli.py"
+  ],
+  "expected_globs": [],
+  "touched_files": [],
+  "changed_files": [],
+  "updated_docs": [],
+  "handoff_summary": {
+    "completed": "",
+    "remaining": "",
+    "risks": "",
+    "verdict": "",
+    "findings_count": 0,
+    "requires_followup": false,
+    "changed_files": [],
+    "updated_docs": [],
+    "next_action": "",
+    "next_agent": "",
+    "block_reason": "",
+    "expected_files": [],
+    "expected_globs": [],
+    "touched_files": [],
+    "conflict_risks": "",
+    "design_decisions": "",
+    "test_coverage_notes": "",
+    "known_limitations": ""
+  },
+  "block_reason": "",
+  "conflict_risks": "",
+  "branch_name": "",
+  "worktree_path": "",
+  "lease": null,
+  "retries": 0,
+  "execution_history": [
+    {
+      "timestamp": "2026-04-15T06:48:40.980915+00:00",
+      "event": "created",
+      "agent_type": "scheduler",
+      "summary": "Bead created",
+      "details": {}
+    }
+  ],
+  "metadata": {},
+  "labels": [],
+  "recovery_for": null,
+  "priority": null
+}
