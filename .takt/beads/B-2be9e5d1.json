@@ -1,0 +1,68 @@
+{
+  "bead_id": "B-2be9e5d1",
+  "title": "Update _check_font_sizes signature and body to use warnings",
+  "agent_type": "developer",
+  "description": "In .apm/skills/pypptx/pypptx/ops/verify.py, change the _check_font_sizes function signature to replace the errors: list[str] parameter with warnings: list[str], and change errors.append(...) to warnings.append(...). Message text must remain unchanged.",
+  "status": "ready",
+  "bead_type": "task",
+  "parent_id": "B-8b50ace0",
+  "dependencies": [],
+  "acceptance_criteria": [
+    "_check_font_sizes accepts a warnings parameter instead of errors",
+    "The append call targets the warnings list",
+    "Message text is unchanged: \"Slide N: 'ShapeName' font X.Xpt is below minimum (12pt)\"",
+    "No other logic in the function is altered"
+  ],
+  "linked_docs": [
+    "specs/drafts/demote-font-size-below-12pt-check-from-error-to-warning.md"
+  ],
+  "feature_root_id": "B-8b50ace0",
+  "execution_branch_name": "feature/b-8b50ace0",
+  "execution_worktree_path": "/Users/oscar.renalias/Projects/skill-pptx/.takt/worktrees/B-8b50ace0",
+  "expected_files": [
+    ".apm/skills/pypptx/pypptx/ops/verify.py"
+  ],
+  "expected_globs": [],
+  "touched_files": [],
+  "changed_files": [],
+  "updated_docs": [],
+  "handoff_summary": {
+    "completed": "",
+    "remaining": "",
+    "risks": "",
+    "verdict": "",
+    "findings_count": 0,
+    "requires_followup": false,
+    "changed_files": [],
+    "updated_docs": [],
+    "next_action": "",
+    "next_agent": "",
+    "block_reason": "",
+    "expected_files": [],
+    "expected_globs": [],
+    "touched_files": [],
+    "conflict_risks": "",
+    "design_decisions": "",
+    "test_coverage_notes": "",
+    "known_limitations": ""
+  },
+  "block_reason": "",
+  "conflict_risks": "",
+  "branch_name": "",
+  "worktree_path": "",
+  "lease": null,
+  "retries": 0,
+  "execution_history": [
+    {
+      "timestamp": "2026-04-15T07:04:53.271566+00:00",
+      "event": "created",
+      "agent_type": "scheduler",
+      "summary": "Bead created",
+      "details": {}
+    }
+  ],
+  "metadata": {},
+  "labels": [],
+  "recovery_for": null,
+  "priority": null
+}
