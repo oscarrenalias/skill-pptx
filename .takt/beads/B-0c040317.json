@@ -6,7 +6,9 @@
   "status": "ready",
   "bead_type": "task",
   "parent_id": "B-4797d90b",
-  "dependencies": [],
+  "dependencies": [
+    "B-98fd7e6c"
+  ],
   "acceptance_criteria": [
     "unpack() extracts all files from the xlsx ZIP to the output directory and returns the directory path",
     "pack() produces a file that openpyxl can open without errors",
