@@ -287,7 +287,7 @@
     "known_limitations": ""
   },
   "block_reason": "",
-  "conflict_risks": "None \u2014 only `_check_font_sizes` and its single call site were modified. No sibling beads are known to touch this function.",
+  "conflict_risks": "None \u2014 only `_check_font_sizes` and its single call site were modified. No sibling beads are known to touch this function.\nNone \u2014 no files were modified.",
   "branch_name": "",
   "worktree_path": "",
   "lease": null,
