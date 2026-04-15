@@ -6,7 +6,9 @@
   "status": "ready",
   "bead_type": "task",
   "parent_id": "B-4797d90b",
-  "dependencies": [],
+  "dependencies": [
+    "B-c51f728f"
+  ],
   "acceptance_criteria": [
     "read_sheet() returns a dict with sheet, range, and rows (2D list)",
     "Cell values are correctly typed: int, float, str, bool, ISO-8601 string for date/datetime, None for empty",
