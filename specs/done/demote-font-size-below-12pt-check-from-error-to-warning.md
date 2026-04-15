@@ -5,7 +5,7 @@ description: Reclassify the verify font-size-below-12pt check from a hard error 
 dependencies: null
 priority: low
 complexity: null
-status: planned
+status: done
 tags: []
 scope:
   in: null
