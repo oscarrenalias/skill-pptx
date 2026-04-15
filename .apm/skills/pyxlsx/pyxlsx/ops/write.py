@@ -6,7 +6,7 @@ import os
 import sys
 import tempfile
 from pathlib import Path
-from typing import Any, Dict, Union
+from typing import Any, Dict, Optional, Union
 
 
 def _infer_type(value: str) -> Any:
@@ -100,3 +100,169 @@ def set_cell(
         "cell": cell_upper,
         "value": typed_value,
     }
+
+
+def add_sheet(
+    file: Union[str, Path],
+    name: str,
+    position: Optional[int] = None,
+) -> Dict[str, Any]:
+    """Insert a new blank sheet into the workbook and save atomically.
+
+    Args:
+        file:     Path to the .xlsx file.
+        name:     Name for the new sheet.
+        position: 1-based insertion position.  Default (``None``) appends at end.
+
+    Returns:
+        dict with keys:
+            name (str):     The new sheet name.
+            position (int): The 1-based position of the new sheet after insertion.
+    """
+    import openpyxl  # local import to keep the module importable without openpyxl installed
+
+    path = Path(file)
+    try:
+        wb = openpyxl.load_workbook(str(path), data_only=False)
+    except Exception as exc:
+        print(f"error: {exc}", file=sys.stderr)
+        sys.exit(1)
+
+    if name in wb.sheetnames:
+        print(f"error: sheet '{name}' already exists", file=sys.stderr)
+        wb.close()
+        sys.exit(1)
+
+    # openpyxl.create_sheet uses a 0-based index; None appends at end.
+    insert_index: Optional[int] = None
+    if position is not None:
+        insert_index = position - 1  # convert 1-based to 0-based
+
+    wb.create_sheet(title=name, index=insert_index)
+    actual_position = wb.sheetnames.index(name) + 1  # 1-based
+
+    dir_path = path.parent
+    try:
+        fd, tmp_path = tempfile.mkstemp(dir=str(dir_path), suffix=".tmp")
+        os.close(fd)
+        wb.save(tmp_path)
+        os.replace(tmp_path, str(path))
+    except Exception as exc:
+        try:
+            os.unlink(tmp_path)
+        except OSError:
+            pass
+        print(f"error: {exc}", file=sys.stderr)
+        sys.exit(1)
+
+    return {
+        "name": name,
+        "position": actual_position,
+    }
+
+
+def delete_sheet(
+    file: Union[str, Path],
+    name: str,
+) -> Dict[str, Any]:
+    """Delete a sheet by name and save atomically.
+
+    Args:
+        file: Path to the .xlsx file.
+        name: Name of the sheet to delete.
+
+    Returns:
+        dict with keys:
+            deleted (str): The name of the deleted sheet.
+    """
+    import openpyxl  # local import to keep the module importable without openpyxl installed
+
+    path = Path(file)
+    try:
+        wb = openpyxl.load_workbook(str(path), data_only=False)
+    except Exception as exc:
+        print(f"error: {exc}", file=sys.stderr)
+        sys.exit(1)
+
+    if name not in wb.sheetnames:
+        print(f"error: sheet '{name}' not found", file=sys.stderr)
+        wb.close()
+        sys.exit(1)
+
+    if len(wb.sheetnames) == 1:
+        print("error: cannot delete the last sheet", file=sys.stderr)
+        wb.close()
+        sys.exit(1)
+
+    del wb[name]
+
+    dir_path = path.parent
+    try:
+        fd, tmp_path = tempfile.mkstemp(dir=str(dir_path), suffix=".tmp")
+        os.close(fd)
+        wb.save(tmp_path)
+        os.replace(tmp_path, str(path))
+    except Exception as exc:
+        try:
+            os.unlink(tmp_path)
+        except OSError:
+            pass
+        print(f"error: {exc}", file=sys.stderr)
+        sys.exit(1)
+
+    return {"deleted": name}
+
+
+def rename_sheet(
+    file: Union[str, Path],
+    old_name: str,
+    new_name: str,
+) -> Dict[str, Any]:
+    """Rename a sheet and save atomically.
+
+    Args:
+        file:     Path to the .xlsx file.
+        old_name: Current name of the sheet.
+        new_name: New name for the sheet.
+
+    Returns:
+        dict with keys:
+            old_name (str): The original sheet name.
+            new_name (str): The new sheet name.
+    """
+    import openpyxl  # local import to keep the module importable without openpyxl installed
+
+    path = Path(file)
+    try:
+        wb = openpyxl.load_workbook(str(path), data_only=False)
+    except Exception as exc:
+        print(f"error: {exc}", file=sys.stderr)
+        sys.exit(1)
+
+    if old_name not in wb.sheetnames:
+        print(f"error: sheet '{old_name}' not found", file=sys.stderr)
+        wb.close()
+        sys.exit(1)
+
+    if new_name in wb.sheetnames:
+        print(f"error: sheet '{new_name}' already exists", file=sys.stderr)
+        wb.close()
+        sys.exit(1)
+
+    wb[old_name].title = new_name
+
+    dir_path = path.parent
+    try:
+        fd, tmp_path = tempfile.mkstemp(dir=str(dir_path), suffix=".tmp")
+        os.close(fd)
+        wb.save(tmp_path)
+        os.replace(tmp_path, str(path))
+    except Exception as exc:
+        try:
+            os.unlink(tmp_path)
+        except OSError:
+            pass
+        print(f"error: {exc}", file=sys.stderr)
+        sys.exit(1)
+
+    return {"old_name": old_name, "new_name": new_name}

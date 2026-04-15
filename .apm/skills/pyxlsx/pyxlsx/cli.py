@@ -12,7 +12,12 @@ from pyxlsx.ops.inspect import (
     read_sheet as _read_sheet,
     read_table as _read_table,
 )
-from pyxlsx.ops.write import set_cell as _set_cell
+from pyxlsx.ops.write import (
+    add_sheet as _add_sheet,
+    delete_sheet as _delete_sheet,
+    rename_sheet as _rename_sheet,
+    set_cell as _set_cell,
+)
 
 
 def output_result(data: dict, plain: bool, plain_fn: Callable[[dict], str]) -> None:
@@ -117,6 +122,68 @@ def sheet_read_cmd(ctx: click.Context, file: str, sheet: str, range_str: str | N
 
     try:
         result = _read_sheet(file, sheet, range_str)
+    except SystemExit:
+        sys.exit(1)
+    output_result(result, plain, plain_fn)
+
+
+@sheet.command("add")
+@click.argument("file")
+@click.argument("name")
+@click.option(
+    "--position",
+    "position",
+    default=None,
+    type=int,
+    help="1-based position to insert the new sheet (default: end).",
+)
+@click.pass_context
+def sheet_add_cmd(ctx: click.Context, file: str, name: str, position: int | None) -> None:
+    """Add a new blank sheet at the given position (default: end)."""
+    plain: bool = ctx.obj["plain"]
+
+    def plain_fn(data: dict) -> str:
+        return f"added sheet {data['name']} at position {data['position']}"
+
+    try:
+        result = _add_sheet(file, name, position)
+    except SystemExit:
+        sys.exit(1)
+    output_result(result, plain, plain_fn)
+
+
+@sheet.command("delete")
+@click.argument("file")
+@click.argument("name")
+@click.pass_context
+def sheet_delete_cmd(ctx: click.Context, file: str, name: str) -> None:
+    """Delete a sheet by name."""
+    plain: bool = ctx.obj["plain"]
+
+    def plain_fn(data: dict) -> str:
+        return f"deleted sheet {data['deleted']}"
+
+    try:
+        result = _delete_sheet(file, name)
+    except SystemExit:
+        sys.exit(1)
+    output_result(result, plain, plain_fn)
+
+
+@sheet.command("rename")
+@click.argument("file")
+@click.argument("old_name")
+@click.argument("new_name")
+@click.pass_context
+def sheet_rename_cmd(ctx: click.Context, file: str, old_name: str, new_name: str) -> None:
+    """Rename a sheet from OLD_NAME to NEW_NAME."""
+    plain: bool = ctx.obj["plain"]
+
+    def plain_fn(data: dict) -> str:
+        return f"renamed {data['old_name']} \u2192 {data['new_name']}"
+
+    try:
+        result = _rename_sheet(file, old_name, new_name)
     except SystemExit:
         sys.exit(1)
     output_result(result, plain, plain_fn)
