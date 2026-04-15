@@ -12,6 +12,10 @@ from pyxlsx.ops.inspect import (
     read_sheet as _read_sheet,
     read_table as _read_table,
 )
+from pyxlsx.ops.pack import (
+    pack as _pack,
+    unpack as _unpack,
+)
 from pyxlsx.ops.write import (
     add_sheet as _add_sheet,
     delete_sheet as _delete_sheet,
@@ -283,6 +287,42 @@ def cell_set_cmd(ctx: click.Context, file: str, sheet: str, cell: str, value: st
 
     try:
         result = _set_cell(file, sheet, cell, value)
+    except SystemExit:
+        sys.exit(1)
+    output_result(result, plain, plain_fn)
+
+
+@cli.command("unpack")
+@click.argument("file")
+@click.argument("output_dir", required=False, default=None)
+@click.pass_context
+def unpack_cmd(ctx: click.Context, file: str, output_dir: str | None) -> None:
+    """Extract FILE (xlsx) to a directory (default: filename stem)."""
+    plain: bool = ctx.obj["plain"]
+
+    def plain_fn(data: dict) -> str:
+        return data["unpacked_dir"]
+
+    try:
+        result = _unpack(file, output_dir)
+    except SystemExit:
+        sys.exit(1)
+    output_result(result, plain, plain_fn)
+
+
+@cli.command("pack")
+@click.argument("source_dir")
+@click.argument("output_file")
+@click.pass_context
+def pack_cmd(ctx: click.Context, source_dir: str, output_file: str) -> None:
+    """Rezip SOURCE_DIR into OUTPUT_FILE (.xlsx) atomically."""
+    plain: bool = ctx.obj["plain"]
+
+    def plain_fn(data: dict) -> str:
+        return data["output_file"]
+
+    try:
+        result = _pack(source_dir, output_file)
     except SystemExit:
         sys.exit(1)
     output_result(result, plain, plain_fn)
