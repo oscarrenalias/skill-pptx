@@ -5,7 +5,7 @@ description: "A Python CLI package for reading and writing .xlsx files: workbook
 dependencies: null
 priority: high
 complexity: medium
-status: planned
+status: done
 tags:
 - cli
 - xlsx
