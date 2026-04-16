@@ -53,15 +53,35 @@ jobs:
 
       - name: Update versioned files in .apm
         run: |
-          cp apm.yml .apm/skills/pypptx/apm.yml
+          # Bump version field in each skill's apm.yml without overwriting skill-specific fields
+          python3 - <<'EOF'
+          import re, glob
+          new_version = "${{ steps.version.outputs.version }}"
+          for path in glob.glob('.apm/skills/*/apm.yml'):
+              with open(path) as f:
+                  content = f.read()
+              content = re.sub(r'^version:\s*\S+', f'version: {new_version}', content, flags=re.MULTILINE)
+              with open(path, 'w') as f:
+                  f.write(content)
+          EOF
+          # Regenerate pypptx README from template
           sed 's/{{VERSION}}/${{ steps.version.outputs.version }}/g' \
             .github/apm-readme-template.md > .apm/skills/pypptx/README.md
+
+      - name: Build skills zip
+        run: |
+          cd .apm/skills
+          zip -r ../../skills-v${{ steps.version.outputs.version }}.zip . \
+            --exclude "*/.venv/*" \
+            --exclude "*/__pycache__/*" \
+            --exclude "*.pyc" \
+            --exclude "*/.git/*"
 
       - name: Commit, tag, and push
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add apm.yml .apm/skills/pypptx/apm.yml .apm/skills/pypptx/README.md
+          git add apm.yml .apm/skills/*/apm.yml .apm/skills/pypptx/README.md
           git commit -m "release: v${{ steps.version.outputs.version }}"
           git tag "v${{ steps.version.outputs.version }}"
           git push origin main
@@ -73,3 +93,4 @@ jobs:
           tag_name: "v${{ steps.version.outputs.version }}"
           name: "v${{ steps.version.outputs.version }}"
           generate_release_notes: true
+          files: skills-v${{ steps.version.outputs.version }}.zip

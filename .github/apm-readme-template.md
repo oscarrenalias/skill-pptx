@@ -3,7 +3,8 @@
 A Python CLI toolkit for reading, editing, and creating `.pptx` files,
 designed for use by AI agents.
 
-**Source repository:** https://github.com/oscarrenalias/skill-pptx
+**Source repository:** https://github.com/oscarrenalias/skill-office
+**Releases:** https://github.com/oscarrenalias/skill-office/releases
 **Version:** {{VERSION}}
 
 ## What this skill provides
@@ -18,9 +19,28 @@ See [SKILL.md](./SKILL.md) for full usage instructions.
 
 ## Installation
 
+### Via APM
+
 ```bash
-apm install oscarrenalias/skill-pptx
+apm install oscarrenalias/skill-office
 ```
+
+### Via zip (manual)
+
+Download `skills-v{{VERSION}}.zip` from the
+[releases page](https://github.com/oscarrenalias/skill-office/releases) and
+unzip it into your skills directory:
+
+```bash
+# Claude Code
+unzip skills-v{{VERSION}}.zip -d ~/.claude/skills/
+
+# Codex / other agents
+unzip skills-v{{VERSION}}.zip -d ~/.agents/skills/
+```
+
+The zip contains all skills in this package (`pypptx`, `pyxlsx`). Each skill
+self-bootstraps its own `.venv` on first run — no additional setup required.
 
 ---
 
