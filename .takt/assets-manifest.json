@@ -1,7 +1,7 @@
 {
-  "takt_version": "0.1.35",
+  "takt_version": "0.1.36",
   "installed_at": "2026-04-13T20:39:41.511169+00:00",
-  "upgraded_at": "2026-04-15T06:42:57.703994+00:00",
+  "upgraded_at": "2026-04-17T06:06:39.716729+00:00",
   "assets": {
     "templates/agents/merge-conflict.md": {
       "sha256": "37b9d67c3e4d10fe2fac0f86cb7ab170c5dec2a0f018264052cc4aa891a99d0f",
@@ -244,12 +244,17 @@
       "user_owned": false
     },
     ".claude/skills/skill-spec-management/SKILL.md": {
-      "sha256": "5590168f0ce5b3ca7839ef9cb414f183ee37f91622c6adedc9c8afa019c1a96e",
+      "sha256": "8349a1b9c6375b5d0594e033bb5b3b57f6b92f83e9c8eae1eca37253e8bd6a27",
       "source": "bundled",
       "user_owned": false
     },
     ".takt/config.yaml": {
       "sha256": "c7988f82b2c618d7806567115d39a73f14c28f98810b03a5b2835066abaf76a2",
+      "source": "bundled",
+      "user_owned": false
+    },
+    ".claude/agents/spec-reviewer.md": {
+      "sha256": "57bbb50cbd86b407ae2b4de8327c5cfe06430e1955f2ad5dd5a5ee41e7a20502",
       "source": "bundled",
       "user_owned": false
     }
