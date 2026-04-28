@@ -279,7 +279,7 @@
     "test_coverage_notes": "",
     "known_limitations": ""
   },
-  "block_reason": "",
+  "block_reason": "file-scope conflict with in-progress B-ca56a047-test",
   "conflict_risks": "None \u2014 no files were modified.",
   "branch_name": "",
   "worktree_path": "",
@@ -291,6 +291,13 @@
       "event": "created",
       "agent_type": "scheduler",
       "summary": "Bead created",
+      "details": {}
+    },
+    {
+      "timestamp": "2026-04-28T12:46:33.131713+00:00",
+      "event": "deferred",
+      "agent_type": "documentation",
+      "summary": "file-scope conflict with in-progress B-ca56a047-test",
       "details": {}
     }
   ],
