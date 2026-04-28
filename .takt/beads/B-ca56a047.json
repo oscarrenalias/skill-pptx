@@ -77,6 +77,15 @@
       "agent_type": "developer",
       "summary": "Worker started",
       "details": {}
+    },
+    {
+      "timestamp": "2026-04-28T12:45:55.867320+00:00",
+      "event": "guardrails_applied",
+      "agent_type": "developer",
+      "summary": "Applied guardrails from .takt/agent-runs/B-ca56a047/repo/templates/agents/developer.md",
+      "details": {
+        "template_path": ".takt/agent-runs/B-ca56a047/repo/templates/agents/developer.md"
+      }
     }
   ],
   "metadata": {
@@ -93,7 +102,50 @@
     ],
     "skill_bundle_hash": "2cbacb3ae07c8eee2a6bb3d65b99b3e4df7fa47ac8b10c5c68be4b338a583348",
     "isolated_home": "/Users/oscar.renalias/Projects/skill-pptx/.takt/agent-runs/B-ca56a047/home",
-    "runner_backend": "claude"
+    "runner_backend": "claude",
+    "guardrails": {
+      "agent_type": "developer",
+      "template_path": ".takt/agent-runs/B-ca56a047/repo/templates/agents/developer.md",
+      "template_text": "# Developer Guardrails\n\nPrimary responsibility: Implement only the assigned bead inside the existing architecture and file scope.\n\nAllowed actions:\n- Modify code, configuration, or local docs required to complete the assigned bead.\n- Create sub-beads for discovered follow-up work that should be handled separately.\n- Verify your `Python` changes compile and import correctly with a quick syntax check: `python -m py_compile`.\n\nDisallowed actions:\n- Run any test suite \u2014 not even a targeted `pytest` run or any subset. Test execution is exclusively the tester agent's responsibility. Running tests wastes the agent budget and delays the pipeline.\n- Redesign unrelated architecture or broaden scope beyond the assigned bead.\n- Perform final review signoff in place of a review agent.\n- Silently absorb unrelated test, documentation, or planning work that should be handed off.\n\nExpected outputs:\n- Completed or blocked JSON with concise implementation summary.\n- Accurate touched files, changed files, risks, and follow-up handoff fields.",
+      "captured_at": "2026-04-28T12:45:55.867308+00:00"
+    },
+    "worker_prompt_context": {
+      "bead_id": "B-ca56a047",
+      "feature_root_id": "B-ca56a047",
+      "title": "Audit & fix elementary-data 0.23.3 PyPI supply-chain compromise",
+      "agent_type": "developer",
+      "description": "Security advisory (2026-04-27): elementary-data 0.23.3 on PyPI was compromised with a secrets-stealing payload (SSH keys, cloud credentials, crypto wallets, CI secrets). Safe replacement is 0.23.4.\n\nSource: https://www.bleepingcomputer.com/news/security/pypi-package-with-11m-monthly-downloads-hacked-to-push-infostealer/\n\nRequired actions:\n\n1. Audit this project for any reference to `elementary-data`:\n   - pyproject.toml (any [project], [tool.poetry], [project.optional-dependencies], [dependency-groups])\n   - requirements*.txt files\n   - Lock files: uv.lock, poetry.lock, Pipfile.lock, requirements.lock\n   - Transitive dependencies in lock files (search for `elementary-data` or `elementary_data` in any lock file)\n\n2. If `elementary-data` is NOT referenced anywhere (direct or transitive): no code changes are needed. Produce a handoff stating \"not affected\" and exit successfully. Do not edit any files.\n\n3. If `elementary-data` IS referenced:\n   a. Update the dependency declaration in pyproject.toml (or requirements*.txt) to pin to `elementary-data>=0.23.4` (explicitly exclude 0.23.3 \u2014 using `>=0.23.4` is sufficient since 0.23.4 is the safe replacement).\n   b. Regenerate the lock file using the project's standard tooling (`uv lock`, `poetry lock`, `pip-compile`, etc. \u2014 match what the project already uses).\n   c. Verify the resulting lock file contains no reference to 0.23.3 anywhere (direct or transitive).\n   d. Run the full test suite (`uv run pytest tests/ -n auto -q` if applicable, otherwise the project's standard test command) to confirm nothing broke.\n\n4. Report in the handoff:\n   - Whether `elementary-data` was found (yes/no, and if yes: direct or transitive)\n   - Whether version 0.23.3 was ever resolved in the lock file (yes/no \u2014 this matters for downstream secret-rotation decisions by the operator)\n   - The exact action taken (file paths modified, new version pin, lock file regenerated)\n   - Test results\n\nDo NOT rotate any secrets \u2014 that is an operator-level decision outside the scope of this bead. Only report whether 0.23.3 was historically resolved so the operator can decide.\n\nAcceptance criteria:\n- Lock file (if any) contains no reference to elementary-data 0.23.3\n- pyproject.toml or requirements files (if they referenced the package) are pinned to >=0.23.4\n- Tests pass\n- Handoff clearly states findings: not affected / fixed / historically exposed",
+      "status": "in_progress",
+      "acceptance_criteria": [],
+      "dependencies": [],
+      "linked_docs": [],
+      "execution_branch_name": "feature/b-ca56a047",
+      "execution_worktree_path": "/Users/oscar.renalias/Projects/skill-pptx/.takt/worktrees/B-ca56a047",
+      "expected_files": [],
+      "expected_globs": [],
+      "touched_files": [],
+      "conflict_risks": "",
+      "handoff_summary": {
+        "completed": "",
+        "remaining": "",
+        "risks": "",
+        "verdict": "",
+        "findings_count": 0,
+        "requires_followup": false,
+        "changed_files": [],
+        "updated_docs": [],
+        "next_action": "",
+        "next_agent": "",
+        "block_reason": "",
+        "expected_files": [],
+        "expected_globs": [],
+        "touched_files": [],
+        "conflict_risks": "",
+        "design_decisions": "",
+        "test_coverage_notes": "",
+        "known_limitations": ""
+      }
+    }
   },
   "labels": [
     "security",
